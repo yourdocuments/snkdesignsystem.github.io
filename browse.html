@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add links | SNK Admin</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#08090d; --bg-soft:#0d0f14; --surface:#11141b; --surface-2:#161a22; --surface-3:#1b2029;
+  --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.14);
+  --text:#f5f7fa; --soft:#a9afbb; --muted:#747c89;
+  --primary:#b8ff35; --danger:#ff6262; --t:.2s ease;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,"Hind Siliguri","Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+
+.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 22px;border-bottom:1px solid var(--border);background:var(--bg-soft)}
+.brand{display:flex;align-items:center;gap:11px;margin-right:auto}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--primary);color:#10130b;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px}
+.brand strong{display:block;font-size:15px;line-height:1.2}
+.brand span{display:block;color:var(--muted);font-size:11px}
+.btn{min-height:38px;padding:0 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:var(--t);white-space:nowrap;cursor:pointer}
+.btn:hover{background:var(--surface-3);border-color:var(--border-2)}
+.btn.primary{background:var(--primary);border-color:transparent;color:#10130b}
+.btn.primary:hover{background:#caff76}
+.btn.danger{background:rgba(255,98,98,.1);border-color:rgba(255,98,98,.16);color:var(--danger)}
+.btn.sm{min-height:30px;padding:0 10px;font-size:11px}
+
+.layout{display:grid;grid-template-columns:420px minmax(0,1fr);gap:22px;padding:22px;max-width:1300px;margin:0 auto}
+.panel{border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:18px}
+.panel h2{font-size:16px;margin-bottom:14px}
+.form{display:flex;flex-direction:column;gap:13px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field>span{color:var(--soft);font-size:12px;font-weight:600}
+.hint{color:var(--muted);font-size:11px;font-weight:400}
+input[type=text],input[type=url],input[type=date],textarea{
+  width:100%;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);
+  padding:0 12px;height:42px;font-size:13px;outline:none;transition:var(--t)}
+textarea{height:auto;min-height:80px;padding:10px 12px;resize:vertical}
+input:focus,textarea:focus{border-color:rgba(184,255,53,.55);box-shadow:0 0 0 3px rgba(184,255,53,.08)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.filebox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;border:1px dashed var(--border-2);border-radius:8px;background:var(--surface-2)}
+.thumb{width:44px;height:44px;border-radius:8px;border:1px solid var(--border);background:#fff center/contain no-repeat;flex:none}
+.thumb.empty{background:var(--surface-3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px}
+.meta{flex:1;min-width:100px}.meta b{display:block;font-size:12px}.meta small{color:var(--muted);font-size:11px}
+input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);cursor:pointer}
+.btns{display:flex;gap:10px;margin-top:4px}
+.btns .btn{flex:1;min-height:42px}
+
+.list{display:flex;flex-direction:column;gap:10px}
+.item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
+.item .thumb{width:46px;height:46px;font-weight:800;font-size:16px;color:#10130b}
+.item .info{flex:1;min-width:0}
+.item .info b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .info small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.item .go{display:flex;gap:6px}
+.empty{padding:36px 16px;text-align:center;color:var(--muted);border:1px dashed var(--border-2);border-radius:12px}
+.note{margin-top:14px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--soft);font-size:12px}
+
+.toast{position:fixed;right:20px;bottom:20px;max-width:360px;padding:13px 16px;border:1px solid var(--border-2);border-radius:12px;background:var(--surface-2);box-shadow:0 25px 60px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:var(--t);z-index:50;font-size:13px}
+.toast.show{opacity:1;visibility:visible;transform:none}
+.toast.err{border-color:rgba(255,98,98,.35)}
+
+@media (max-width:900px){.layout{grid-template-columns:1fr;padding:14px}}
+</style>
+</head>
+
+<body>
+<header class="top">
+  <div class="brand">
+    <div class="brand-mark">SNK</div>
+    <div><strong>Add links</strong><span>Admin / public page cards</span></div>
+  </div>
+  <button class="btn" type="button" id="exportBtn">Save backup</button>
+  <button class="btn" type="button" id="importBtn">Open backup</button>
+  <input type="file" id="importInput" accept="application/json,.json" hidden>
+  <a class="btn primary" href="browse.html" target="_blank" rel="noopener">Open public page</a>
+</header>
+
+<div class="layout">
+
+  <!-- FORM -->
+  <section class="panel">
+    <h2 id="formTitle">New card</h2>
+    <form class="form" id="form" autocomplete="off">
+      <label class="field"><span>Company name</span><input type="text" id="name" required></label>
+      <label class="field"><span>Link (paste the URL)</span><input type="url" id="url" placeholder="https://" required></label>
+      <div class="row2">
+        <label class="field"><span>Category</span><input type="text" id="category" list="cats" placeholder="Healthcare"></label>
+        <label class="field"><span>Date</span><input type="date" id="date"></label>
+      </div>
+      <datalist id="cats"></datalist>
+      <label class="field"><span>Short description</span><textarea id="description" rows="3" maxlength="180"></textarea></label>
+
+      <div class="filebox">
+        <div class="thumb empty" id="logoThumb">None</div>
+        <div class="meta"><b>Logo</b><small>Square image works best.</small></div>
+        <label class="btn sm">Upload<input type="file" accept="image/*" hidden id="logoFile"></label>
+        <button class="btn sm danger" type="button" id="logoClear">Remove</button>
+      </div>
+      <div class="filebox">
+        <div class="thumb empty" id="coverThumb">None</div>
+        <div class="meta"><b>Cover image</b><small>Wide image. Without it, the card uses the color below.</small></div>
+        <label class="btn sm">Upload<input type="file" accept="image/*" hidden id="coverFile"></label>
+        <button class="btn sm danger" type="button" id="coverClear">Remove</button>
+      </div>
+      <label class="field"><span>Card color</span><input type="color" id="color" value="#1d5b73"></label>
+
+      <div class="btns">
+        <button class="btn" type="button" id="cancelBtn">Clear form</button>
+        <button class="btn primary" type="submit" id="saveBtn">Add card</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- LIST -->
+  <section class="panel">
+    <h2>Cards on the public page <span class="hint" id="count"></span></h2>
+    <div class="list" id="list"></div>
+    <div class="note">Cards are saved in this browser for now. They will show for every visitor once Firebase is connected. Use Save backup to keep a copy.</div>
+  </section>
+</div>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function () {
+  'use strict';
+  var KEY = 'snk_links_v1';
+  var $ = function (s) { return document.querySelector(s); };
+
+  /* Data layer: swap these two functions for Firestore later. */
+  function load() { try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; } catch (e) { return []; } }
+  function persist() {
+    try { localStorage.setItem(KEY, JSON.stringify(items)); return true; }
+    catch (e) { toast('Browser storage is full. Remove a large image or save a backup.', true); return false; }
+  }
+
+  var items = load();
+  var editId = null, logo = null, cover = null;
+
+  function uid() { return 'l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
+  function today() { var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
+  function cleanUrl(u) {
+    u = String(u || '').trim(); if (!u) return '';
+    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
+    try { var x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; }
+  }
+  function toast(m, err) {
+    var t = $('#toast'); t.textContent = m; t.classList.toggle('err', !!err); t.classList.add('show');
+    clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('show'); }, 3200);
+  }
+  function h(tag, cls, kids) {
+    var n = document.createElement(tag); if (cls) n.className = cls;
+    (Array.isArray(kids) ? kids : kids == null ? [] : [kids]).forEach(function (k) { n.append(k); });
+    return n;
+  }
+
+  function readImage(file, maxDim) {
+    return new Promise(function (res, rej) {
+      var url = URL.createObjectURL(file), img = new Image();
+      img.onload = function () {
+        var w = img.naturalWidth, hh = img.naturalHeight, k = Math.min(1, maxDim / Math.max(w, hh));
+        w = Math.max(1, Math.round(w * k)); hh = Math.max(1, Math.round(hh * k));
+        var c = document.createElement('canvas'); c.width = w; c.height = hh;
+        var x = c.getContext('2d'), alpha = /png|webp|gif/.test(file.type);
+        if (!alpha) { x.fillStyle = '#fff'; x.fillRect(0, 0, w, hh); }
+        x.drawImage(img, 0, 0, w, hh); URL.revokeObjectURL(url);
+        res(c.toDataURL(alpha ? 'image/png' : 'image/jpeg', 0.85));
+      };
+      img.onerror = function () { URL.revokeObjectURL(url); rej(new Error('Could not read this image.')); };
+      img.src = url;
+    });
+  }
+
+  function thumb(el, src, emptyText) {
+    if (src) { el.classList.remove('empty'); el.textContent = ''; el.style.backgroundImage = 'url("' + src + '")'; }
+    else { el.classList.add('empty'); el.style.backgroundImage = ''; el.textContent = emptyText; }
+  }
+
+  function resetForm() {
+    editId = null; logo = null; cover = null;
+    $('#form').reset(); $('#date').value = today(); $('#color').value = '#1d5b73';
+    thumb($('#logoThumb'), null, 'None'); thumb($('#coverThumb'), null, 'None');
+    $('#formTitle').textContent = 'New card'; $('#saveBtn').textContent = 'Add card';
+  }
+
+  function cats() {
+    var seen = {}; $('#cats').innerHTML = '';
+    items.forEach(function (i) { if (i.category && !seen[i.category]) { seen[i.category] = 1; var o = document.createElement('option'); o.value = i.category; $('#cats').append(o); } });
+  }
+
+  function draw() {
+    var box = $('#list'); box.innerHTML = '';
+    $('#count').textContent = items.length ? '(' + items.length + ')' : '';
+    if (!items.length) { box.append(h('div', 'empty', 'No cards yet. Add your first company on the left.')); cats(); return; }
+    items.forEach(function (i, idx) {
+      var t = h('div', 'thumb', i.logo ? '' : (i.name || '?').charAt(0).toUpperCase());
+      if (i.logo) t.style.backgroundImage = 'url("' + i.logo + '")'; else t.style.background = i.color || '#1d5b73';
+      var info = h('div', 'info', [h('b', null, i.name), h('small', null, i.url || 'No link')]);
+      var edit = h('button', 'btn sm', 'Edit'); edit.type = 'button';
+      var del = h('button', 'btn sm danger', 'Delete'); del.type = 'button';
+      edit.addEventListener('click', function () { startEdit(i.id); });
+      del.addEventListener('click', function () {
+        if (!confirm('Delete "' + i.name + '"?')) return;
+        items.splice(idx, 1); if (persist()) { draw(); toast('Deleted.'); }
+        if (editId === i.id) resetForm();
+      });
+      box.append(h('div', 'item', [t, info, h('div', 'go', [edit, del])]));
+    });
+    cats();
+  }
+
+  function startEdit(id) {
+    var i = items.find(function (x) { return x.id === id; }); if (!i) return;
+    editId = id; logo = i.logo || null; cover = i.cover || null;
+    $('#name').value = i.name || ''; $('#url').value = i.url || ''; $('#category').value = i.category || '';
+    $('#date').value = i.date || today(); $('#description').value = i.description || ''; $('#color').value = i.color || '#1d5b73';
+    thumb($('#logoThumb'), logo, 'None'); thumb($('#coverThumb'), cover, 'None');
+    $('#formTitle').textContent = 'Edit card'; $('#saveBtn').textContent = 'Save changes';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  $('#form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var url = cleanUrl($('#url').value);
+    if (!url) { toast('This link is not valid. Paste the full address, like https://example.com', true); return; }
+    var rec = {
+      id: editId || uid(), name: $('#name').value.trim(), url: url, category: $('#category').value.trim(),
+      date: $('#date').value || today(), description: $('#description').value.trim(),
+      color: $('#color').value, logo: logo, cover: cover
+    };
+    var wasEdit = !!editId;
+    if (wasEdit) items = items.map(function (x) { return x.id === editId ? rec : x; });
+    else items.unshift(rec);
+    if (!persist()) { if (!wasEdit) items.shift(); return; }
+    draw(); resetForm(); toast(wasEdit ? 'Changes saved.' : 'Card added.');
+  });
+
+  $('#cancelBtn').addEventListener('click', resetForm);
+  function pick(inputSel, max, setter, thumbSel) {
+    $(inputSel).addEventListener('change', function (e) {
+      var f = e.target.files && e.target.files[0]; if (!f) return;
+      readImage(f, max).then(function (d) { setter(d); thumb($(thumbSel), d, 'None'); })
+        .catch(function (err) { toast(err.message, true); });
+      e.target.value = '';
+    });
+  }
+  pick('#logoFile', 400, function (d) { logo = d; }, '#logoThumb');
+  pick('#coverFile', 1100, function (d) { cover = d; }, '#coverThumb');
+  $('#logoClear').addEventListener('click', function () { logo = null; thumb($('#logoThumb'), null, 'None'); });
+  $('#coverClear').addEventListener('click', function () { cover = null; thumb($('#coverThumb'), null, 'None'); });
+
+  /* backup */
+  $('#exportBtn').addEventListener('click', function () {
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(new Blob([JSON.stringify(items)], { type: 'application/json' }));
+    a.download = 'snk-links-backup.json'; document.body.append(a); a.click(); a.remove();
+    toast('Backup saved.');
+  });
+  $('#importBtn').addEventListener('click', function () { $('#importInput').click(); });
+  $('#importInput').addEventListener('change', function (e) {
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function () {
+      try {
+        var d = JSON.parse(r.result); if (!Array.isArray(d)) throw 0;
+        items = d.filter(function (x) { return x && x.name; }); if (persist()) { draw(); toast('Backup opened.'); }
+      } catch (err) { toast('This is not a valid backup file.', true); }
+    };
+    r.readAsText(f); e.target.value = '';
+  });
+
+  resetForm(); draw();
+})();
+</script>
+</body>
+</html>
