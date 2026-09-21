@@ -1,1 +1,2782 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Admin Dashboard | SNK Design Agency</title>
+
+  <meta
+    name="description"
+    content="SNK Design Agency Admin Dashboard"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="admin.css"
+  >
+</head>
+
+<body>
+
+  <!-- =====================================================
+       MOBILE OVERLAY
+       ===================================================== -->
+
+  <div
+    class="sidebar-overlay"
+    id="sidebarOverlay"
+  ></div>
+
+
+  <!-- =====================================================
+       SIDEBAR
+       ===================================================== -->
+
+  <aside
+    class="sidebar"
+    id="sidebar"
+  >
+
+    <div class="sidebar-logo">
+
+      <div class="logo-mark">
+        SNK
+      </div>
+
+      <div class="logo-text">
+        <strong>SNK Design</strong>
+        <span>ADMIN PANEL</span>
+      </div>
+
+    </div>
+
+
+    <nav class="sidebar-nav">
+
+      <p class="nav-label">
+        MAIN
+      </p>
+
+      <button
+        class="side-link active"
+        data-section="dashboard"
+      >
+        <span class="side-icon">⌂</span>
+        <span>Dashboard</span>
+      </button>
+
+
+      <button
+        class="side-link"
+        data-section="customers"
+      >
+        <span class="side-icon">♙</span>
+        <span>Customers</span>
+      </button>
+
+
+      <button
+        class="side-link"
+        data-section="projects"
+      >
+        <span class="side-icon">▣</span>
+        <span>Projects</span>
+      </button>
+
+
+      <button
+        class="side-link"
+        data-section="payments"
+      >
+        <span class="side-icon">৳</span>
+        <span>Payments</span>
+      </button>
+
+
+      <p class="nav-label nav-label-space">
+        SYSTEM
+      </p>
+
+
+      <button
+        class="side-link"
+        data-section="messages"
+      >
+        <span class="side-icon">✉</span>
+        <span>Messages</span>
+
+        <span class="notification-count">
+          3
+        </span>
+      </button>
+
+
+      <button
+        class="side-link"
+        data-section="settings"
+      >
+        <span class="side-icon">⚙</span>
+        <span>Settings</span>
+      </button>
+
+    </nav>
+
+
+    <div class="sidebar-bottom">
+
+      <div class="admin-profile">
+
+        <div class="admin-avatar">
+          A
+        </div>
+
+        <div class="admin-info">
+          <strong>Administrator</strong>
+          <span>Super Admin</span>
+        </div>
+
+      </div>
+
+
+      <button
+        class="logout-button"
+        id="logoutButton"
+      >
+        <span>↪</span>
+        Logout
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- =====================================================
+       MAIN AREA
+       ===================================================== -->
+
+  <main class="main-content">
+
+
+    <!-- ===================================================
+         TOP BAR
+         =================================================== -->
+
+    <header class="topbar">
+
+      <div class="topbar-left">
+
+        <button
+          class="mobile-menu-button"
+          id="mobileMenuButton"
+          aria-label="Open menu"
+        >
+          ☰
+        </button>
+
+        <div>
+          <p class="topbar-small">
+            Welcome back
+          </p>
+
+          <h1 id="pageTitle">
+            Dashboard
+          </h1>
+        </div>
+
+      </div>
+
+
+      <div class="topbar-right">
+
+        <button
+          class="icon-button"
+          id="notificationButton"
+          aria-label="Notifications"
+        >
+          🔔
+          <span class="notification-dot"></span>
+        </button>
+
+
+        <div class="top-admin">
+
+          <div class="top-admin-avatar">
+            A
+          </div>
+
+          <div class="top-admin-info">
+            <strong>Admin</strong>
+            <span>Super Admin</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <!-- ===================================================
+         DASHBOARD SECTION
+         =================================================== -->
+
+    <section
+      class="content-section active"
+      id="dashboard"
+    >
+
+      <div class="section-header">
+
+        <div>
+          <span class="section-label">
+            OVERVIEW
+          </span>
+
+          <h2>
+            Business Overview
+          </h2>
+
+          <p>
+            Monitor your agency performance and customer activity.
+          </p>
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="addCustomerTop"
+        >
+          + Add Customer
+        </button>
+
+      </div>
+
+
+      <!-- STATS -->
+
+      <div class="stats-cards">
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              ♙
+            </div>
+
+            <span class="stat-badge positive">
+              +12%
+            </span>
+
+          </div>
+
+          <p>Total Customers</p>
+
+          <h3 id="totalCustomers">
+            0
+          </h3>
+
+          <small>
+            Compared to last month
+          </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              ▣
+            </div>
+
+            <span class="stat-badge positive">
+              +8%
+            </span>
+
+          </div>
+
+          <p>Active Projects</p>
+
+          <h3 id="activeProjects">
+            0
+          </h3>
+
+          <small>
+            Currently in progress
+          </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <div class="stat-icon">
+              ✓
+            </div>
+
+            <span class="stat-badge positive">
+              +18%
+            </span>
+
+          </div>
+
+          <p>Completed Projects</p>
+
+          <h3 id="completedProjects">
+            0
+          </h3>
+
+          <small>
+            Successfully delivered
+          </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+          <div class="stat-top">
+
+            <div class="stat-icon money">
+              ৳
+            </div>
+
+            <span class="stat-badge positive">
+              +15%
+            </span>
+
+          </div>
+
+          <p>Total Revenue</p>
+
+          <h3>
+            ৳<span id="totalRevenue">0</span>
+          </h3>
+
+          <small>
+            From completed payments
+          </small>
+
+        </div>
+
+      </div>
+
+
+      <!-- DASHBOARD GRID -->
+
+      <div class="dashboard-grid">
+
+
+        <!-- RECENT CUSTOMERS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+              <h3>Recent Customers</h3>
+              <p>Latest customers added to your agency.</p>
+            </div>
+
+            <button
+              class="text-button"
+              data-go="customers"
+            >
+              View All →
+            </button>
+
+          </div>
+
+
+          <div
+            class="customer-list"
+            id="recentCustomers"
+          ></div>
+
+        </div>
+
+
+        <!-- PROJECT STATUS -->
+
+        <div class="dashboard-card">
+
+          <div class="card-header">
+
+            <div>
+              <h3>Project Status</h3>
+              <p>Current project distribution.</p>
+            </div>
+
+          </div>
+
+
+          <div class="project-status">
+
+            <div class="status-row">
+
+              <div class="status-name">
+                <span class="status-dot pending"></span>
+                Pending
+              </div>
+
+              <strong id="pendingCount">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="status-progress">
+              <span
+                id="pendingProgress"
+                class="progress-pending"
+              ></span>
+            </div>
+
+
+            <div class="status-row">
+
+              <div class="status-name">
+                <span class="status-dot working"></span>
+                In Progress
+              </div>
+
+              <strong id="progressCount">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="status-progress">
+              <span
+                id="progressProgress"
+                class="progress-working"
+              ></span>
+            </div>
+
+
+            <div class="status-row">
+
+              <div class="status-name">
+                <span class="status-dot completed"></span>
+                Completed
+              </div>
+
+              <strong id="statusCompletedCount">
+                0
+              </strong>
+
+            </div>
+
+
+            <div class="status-progress">
+              <span
+                id="completedProgress"
+                class="progress-completed"
+              ></span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- QUICK ACTIONS -->
+
+      <div class="dashboard-card quick-card">
+
+        <div class="card-header">
+
+          <div>
+            <h3>Quick Actions</h3>
+
+            <p>
+              Manage your agency from here.
+            </p>
+          </div>
+
+        </div>
+
+
+        <div class="quick-actions">
+
+          <button
+            class="quick-action"
+            data-action="customer"
+          >
+            <span>♙</span>
+            <strong>Add Customer</strong>
+            <small>Create a new customer profile</small>
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-action="project"
+          >
+            <span>▣</span>
+            <strong>Add Project</strong>
+            <small>Create a new project</small>
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-action="payment"
+          >
+            <span>৳</span>
+            <strong>Add Payment</strong>
+            <small>Record customer payment</small>
+          </button>
+
+
+          <button
+            class="quick-action"
+            data-action="message"
+          >
+            <span>✉</span>
+            <strong>Messages</strong>
+            <small>Check customer messages</small>
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         CUSTOMERS SECTION
+         =================================================== -->
+
+    <section
+      class="content-section"
+      id="customers"
+    >
+
+      <div class="section-header">
+
+        <div>
+          <span class="section-label">
+            CUSTOMER MANAGEMENT
+          </span>
+
+          <h2>
+            Customers
+          </h2>
+
+          <p>
+            Add, edit and manage your agency customers.
+          </p>
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="addCustomerButton"
+        >
+          + Add Customer
+        </button>
+
+      </div>
+
+
+      <div class="toolbar">
+
+        <div class="search-box">
+
+          <span>⌕</span>
+
+          <input
+            type="search"
+            id="customerSearch"
+            placeholder="Search customers..."
+          >
+
+        </div>
+
+
+        <select id="customerStatusFilter">
+
+          <option value="all">
+            All Status
+          </option>
+
+          <option value="active">
+            Active
+          </option>
+
+          <option value="completed">
+            Completed
+          </option>
+
+          <option value="pending">
+            Pending
+          </option>
+
+        </select>
+
+
+        <select id="customerCategoryFilter">
+
+          <option value="all">
+            All Categories
+          </option>
+
+          <option value="Web Design">
+            Web Design
+          </option>
+
+          <option value="Graphic Design">
+            Graphic Design
+          </option>
+
+          <option value="Branding">
+            Branding
+          </option>
+
+          <option value="Digital Marketing">
+            Digital Marketing
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <div class="table-card">
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+
+                <th>Customer</th>
+                <th>Contact</th>
+                <th>Category</th>
+                <th>Project</th>
+                <th>Status</th>
+                <th>Payment</th>
+                <th>Action</th>
+
+              </tr>
+
+            </thead>
+
+            <tbody
+              id="customerTableBody"
+            ></tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PROJECTS SECTION
+         =================================================== -->
+
+    <section
+      class="content-section"
+      id="projects"
+    >
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            PROJECT MANAGEMENT
+          </span>
+
+          <h2>
+            Projects
+          </h2>
+
+          <p>
+            Track all agency projects and their progress.
+          </p>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="addProjectButton"
+        >
+          + Add Project
+        </button>
+
+      </div>
+
+
+      <div class="project-grid">
+
+        <div class="project-card">
+
+          <div class="project-card-top">
+
+            <span class="project-category">
+              WEB DESIGN
+            </span>
+
+            <span class="status-pill working">
+              In Progress
+            </span>
+
+          </div>
+
+          <h3>
+            Business Website
+          </h3>
+
+          <p>
+            Modern responsive business website.
+          </p>
+
+          <div class="project-meta">
+
+            <span>
+              Client: Demo Client
+            </span>
+
+            <span>
+              65%
+            </span>
+
+          </div>
+
+          <div class="project-progress">
+            <span style="width:65%"></span>
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-card-top">
+
+            <span class="project-category">
+              BRANDING
+            </span>
+
+            <span class="status-pill pending">
+              Pending
+            </span>
+
+          </div>
+
+          <h3>
+            Brand Identity
+          </h3>
+
+          <p>
+            Logo and complete visual identity.
+          </p>
+
+          <div class="project-meta">
+
+            <span>
+              Client: Demo Client
+            </span>
+
+            <span>
+              20%
+            </span>
+
+          </div>
+
+          <div class="project-progress">
+            <span style="width:20%"></span>
+          </div>
+
+        </div>
+
+
+        <div class="project-card">
+
+          <div class="project-card-top">
+
+            <span class="project-category">
+              GRAPHIC DESIGN
+            </span>
+
+            <span class="status-pill completed">
+              Completed
+            </span>
+
+          </div>
+
+          <h3>
+            Social Media Package
+          </h3>
+
+          <p>
+            Social media post and campaign designs.
+          </p>
+
+          <div class="project-meta">
+
+            <span>
+              Client: Demo Client
+            </span>
+
+            <span>
+              100%
+            </span>
+
+          </div>
+
+          <div class="project-progress">
+            <span style="width:100%"></span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         PAYMENTS SECTION
+         =================================================== -->
+
+    <section
+      class="content-section"
+      id="payments"
+    >
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            FINANCIAL
+          </span>
+
+          <h2>
+            Payments
+          </h2>
+
+          <p>
+            Monitor customer payments and revenue.
+          </p>
+
+        </div>
+
+
+        <button
+          class="primary-button"
+          id="addPaymentButton"
+        >
+          + Add Payment
+        </button>
+
+      </div>
+
+
+      <div class="payment-summary">
+
+        <div class="payment-box">
+
+          <span>
+            Total Revenue
+          </span>
+
+          <strong>
+            ৳<span id="paymentRevenue">0</span>
+          </strong>
+
+        </div>
+
+
+        <div class="payment-box">
+
+          <span>
+            Paid
+          </span>
+
+          <strong>
+            ৳<span id="paidRevenue">0</span>
+          </strong>
+
+        </div>
+
+
+        <div class="payment-box">
+
+          <span>
+            Due
+          </span>
+
+          <strong>
+            ৳<span id="dueRevenue">0</span>
+          </strong>
+
+        </div>
+
+      </div>
+
+
+      <div class="table-card">
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>Customer</th>
+                <th>Project</th>
+                <th>Total</th>
+                <th>Paid</th>
+                <th>Due</th>
+                <th>Status</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="paymentTableBody">
+
+              <tr>
+
+                <td colspan="6">
+
+                  <div class="empty-state">
+                    No payment records yet.
+                  </div>
+
+                </td>
+
+              </tr>
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         MESSAGES SECTION
+         =================================================== -->
+
+    <section
+      class="content-section"
+      id="messages"
+    >
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            COMMUNICATION
+          </span>
+
+          <h2>
+            Messages
+          </h2>
+
+          <p>
+            Customer enquiries and messages.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="messages-card">
+
+        <div class="empty-state large">
+
+          <div class="empty-icon">
+            ✉
+          </div>
+
+          <h3>
+            No Messages Yet
+          </h3>
+
+          <p>
+            Customer messages will appear here.
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ===================================================
+         SETTINGS SECTION
+         =================================================== -->
+
+    <section
+      class="content-section"
+      id="settings"
+    >
+
+      <div class="section-header">
+
+        <div>
+
+          <span class="section-label">
+            SYSTEM
+          </span>
+
+          <h2>
+            Settings
+          </h2>
+
+          <p>
+            Manage your admin dashboard settings.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="settings-grid">
+
+        <div class="settings-card">
+
+          <div class="settings-icon">
+            ◉
+          </div>
+
+          <div>
+
+            <h3>
+              Admin Profile
+            </h3>
+
+            <p>
+              Manage administrator information.
+            </p>
+
+          </div>
+
+          <button class="secondary-button">
+            Manage
+          </button>
+
+        </div>
+
+
+        <div class="settings-card">
+
+          <div class="settings-icon">
+            🔐
+          </div>
+
+          <div>
+
+            <h3>
+              Security
+            </h3>
+
+            <p>
+              Manage password and security settings.
+            </p>
+
+          </div>
+
+          <button class="secondary-button">
+            Manage
+          </button>
+
+        </div>
+
+
+        <div class="settings-card">
+
+          <div class="settings-icon">
+            ⚙
+          </div>
+
+          <div>
+
+            <h3>
+              Website Settings
+            </h3>
+
+            <p>
+              Manage agency website settings.
+            </p>
+
+          </div>
+
+          <button class="secondary-button">
+            Manage
+          </button>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       ADD CUSTOMER MODAL
+       ===================================================== -->
+
+  <div
+    class="modal"
+    id="customerModal"
+  >
+
+    <div class="modal-box">
+
+      <div class="modal-header">
+
+        <div>
+
+          <span class="section-label">
+            CUSTOMER
+          </span>
+
+          <h3 id="customerModalTitle">
+            Add Customer
+          </h3>
+
+        </div>
+
+
+        <button
+          class="modal-close"
+          data-close-modal
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="customerForm">
+
+        <input
+          type="hidden"
+          id="customerId"
+        >
+
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label>
+              Customer Name
+            </label>
+
+            <input
+              type="text"
+              id="customerName"
+              placeholder="Enter customer name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Phone
+            </label>
+
+            <input
+              type="tel"
+              id="customerPhone"
+              placeholder="+880..."
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="customerEmail"
+              placeholder="customer@email.com"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Category
+            </label>
+
+            <select id="customerCategory">
+
+              <option value="Web Design">
+                Web Design
+              </option>
+
+              <option value="Graphic Design">
+                Graphic Design
+              </option>
+
+              <option value="Branding">
+                Branding
+              </option>
+
+              <option value="Digital Marketing">
+                Digital Marketing
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Project Name
+            </label>
+
+            <input
+              type="text"
+              id="customerProject"
+              placeholder="Project name"
+              required
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Status
+            </label>
+
+            <select id="customerStatus">
+
+              <option value="pending">
+                Pending
+              </option>
+
+              <option value="active">
+                Active
+              </option>
+
+              <option value="completed">
+                Completed
+              </option>
+
+            </select>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Total Amount
+            </label>
+
+            <input
+              type="number"
+              id="customerAmount"
+              placeholder="0"
+              min="0"
+            >
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label>
+              Payment Status
+            </label>
+
+            <select id="customerPayment">
+
+              <option value="unpaid">
+                Unpaid
+              </option>
+
+              <option value="partial">
+                Partial
+              </option>
+
+              <option value="paid">
+                Paid
+              </option>
+
+            </select>
+
+          </div>
+
+        </div>
+
+
+        <div class="form-group full">
+
+          <label>
+            Notes
+          </label>
+
+          <textarea
+            id="customerNotes"
+            rows="4"
+            placeholder="Additional notes..."
+          ></textarea>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Save Customer
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       TOAST
+       ===================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+  >
+    <span id="toastIcon">✓</span>
+
+    <span id="toastMessage">
+      Successfully saved.
+    </span>
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script>
+
+    /* =====================================================
+       DATA
+       ===================================================== */
+
+    const STORAGE_KEY = "snk_design_customers";
+
+    let customers = JSON.parse(
+      localStorage.getItem(STORAGE_KEY)
+    ) || [];
+
+
+    /* =====================================================
+       ELEMENTS
+       ===================================================== */
+
+    const sidebar =
+      document.getElementById("sidebar");
+
+    const sidebarOverlay =
+      document.getElementById("sidebarOverlay");
+
+    const mobileMenuButton =
+      document.getElementById("mobileMenuButton");
+
+    const pageTitle =
+      document.getElementById("pageTitle");
+
+    const sideLinks =
+      document.querySelectorAll(".side-link");
+
+    const sections =
+      document.querySelectorAll(".content-section");
+
+    const customerModal =
+      document.getElementById("customerModal");
+
+    const customerForm =
+      document.getElementById("customerForm");
+
+
+    /* =====================================================
+       DEFAULT DEMO DATA
+       ===================================================== */
+
+    if (customers.length === 0) {
+
+      customers = [
+
+        {
+          id: Date.now() + 1,
+          name: "Demo Client",
+          phone: "+880 1700-000000",
+          email: "client@example.com",
+          category: "Web Design",
+          project: "Business Website",
+          status: "active",
+          amount: 25000,
+          payment: "partial",
+          notes: "Demo customer"
+        },
+
+        {
+          id: Date.now() + 2,
+          name: "Sample Business",
+          phone: "+880 1800-000000",
+          email: "business@example.com",
+          category: "Branding",
+          project: "Brand Identity",
+          status: "pending",
+          amount: 15000,
+          payment: "unpaid",
+          notes: "Demo customer"
+        },
+
+        {
+          id: Date.now() + 3,
+          name: "Creative Client",
+          phone: "+880 1900-000000",
+          email: "creative@example.com",
+          category: "Graphic Design",
+          project: "Social Media Package",
+          status: "completed",
+          amount: 12000,
+          payment: "paid",
+          notes: "Demo customer"
+        }
+
+      ];
+
+      saveCustomers();
+    }
+
+
+    /* =====================================================
+       SAVE DATA
+       ===================================================== */
+
+    function saveCustomers() {
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(customers)
+      );
+
+    }
+
+
+    /* =====================================================
+       NAVIGATION
+       ===================================================== */
+
+    function showSection(sectionId) {
+
+      sections.forEach(section => {
+
+        section.classList.toggle(
+          "active",
+          section.id === sectionId
+        );
+
+      });
+
+
+      sideLinks.forEach(link => {
+
+        link.classList.toggle(
+          "active",
+          link.dataset.section === sectionId
+        );
+
+      });
+
+
+      const titles = {
+
+        dashboard: "Dashboard",
+        customers: "Customers",
+        projects: "Projects",
+        payments: "Payments",
+        messages: "Messages",
+        settings: "Settings"
+
+      };
+
+
+      pageTitle.textContent =
+        titles[sectionId] || "Dashboard";
+
+
+      closeMobileSidebar();
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+
+    }
+
+
+    sideLinks.forEach(link => {
+
+      link.addEventListener(
+        "click",
+        () => {
+
+          showSection(
+            link.dataset.section
+          );
+
+        }
+      );
+
+    });
+
+
+    document
+      .querySelectorAll("[data-go]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            showSection(
+              button.dataset.go
+            );
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       MOBILE SIDEBAR
+       ===================================================== */
+
+    function openMobileSidebar() {
+
+      sidebar.classList.add("open");
+
+      sidebarOverlay.classList.add("active");
+
+    }
+
+
+    function closeMobileSidebar() {
+
+      sidebar.classList.remove("open");
+
+      sidebarOverlay.classList.remove("active");
+
+    }
+
+
+    mobileMenuButton.addEventListener(
+      "click",
+      openMobileSidebar
+    );
+
+
+    sidebarOverlay.addEventListener(
+      "click",
+      closeMobileSidebar
+    );
+
+
+    /* =====================================================
+       MODAL
+       ===================================================== */
+
+    function openCustomerModal(customer = null) {
+
+      customerModal.classList.add("active");
+
+      if (customer) {
+
+        document.getElementById(
+          "customerModalTitle"
+        ).textContent = "Edit Customer";
+
+        document.getElementById(
+          "customerId"
+        ).value = customer.id;
+
+        document.getElementById(
+          "customerName"
+        ).value = customer.name;
+
+        document.getElementById(
+          "customerPhone"
+        ).value = customer.phone;
+
+        document.getElementById(
+          "customerEmail"
+        ).value = customer.email;
+
+        document.getElementById(
+          "customerCategory"
+        ).value = customer.category;
+
+        document.getElementById(
+          "customerProject"
+        ).value = customer.project;
+
+        document.getElementById(
+          "customerStatus"
+        ).value = customer.status;
+
+        document.getElementById(
+          "customerAmount"
+        ).value = customer.amount;
+
+        document.getElementById(
+          "customerPayment"
+        ).value = customer.payment;
+
+        document.getElementById(
+          "customerNotes"
+        ).value = customer.notes || "";
+
+      } else {
+
+        document.getElementById(
+          "customerModalTitle"
+        ).textContent = "Add Customer";
+
+        customerForm.reset();
+
+        document.getElementById(
+          "customerId"
+        ).value = "";
+
+      }
+
+    }
+
+
+    function closeCustomerModal() {
+
+      customerModal.classList.remove(
+        "active"
+      );
+
+    }
+
+
+    document
+      .querySelectorAll("[data-close-modal]")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          closeCustomerModal
+        );
+
+      });
+
+
+    customerModal.addEventListener(
+      "click",
+      event => {
+
+        if (
+          event.target === customerModal
+        ) {
+          closeCustomerModal();
+        }
+
+      }
+    );
+
+
+    document
+      .getElementById("addCustomerTop")
+      .addEventListener(
+        "click",
+        () => openCustomerModal()
+      );
+
+
+    document
+      .getElementById("addCustomerButton")
+      .addEventListener(
+        "click",
+        () => openCustomerModal()
+      );
+
+
+    /* =====================================================
+       CUSTOMER FORM
+       ===================================================== */
+
+    customerForm.addEventListener(
+      "submit",
+      event => {
+
+        event.preventDefault();
+
+
+        const id =
+          document.getElementById(
+            "customerId"
+          ).value;
+
+
+        const customerData = {
+
+          id: id
+            ? Number(id)
+            : Date.now(),
+
+          name:
+            document.getElementById(
+              "customerName"
+            ).value.trim(),
+
+          phone:
+            document.getElementById(
+              "customerPhone"
+            ).value.trim(),
+
+          email:
+            document.getElementById(
+              "customerEmail"
+            ).value.trim(),
+
+          category:
+            document.getElementById(
+              "customerCategory"
+            ).value,
+
+          project:
+            document.getElementById(
+              "customerProject"
+            ).value.trim(),
+
+          status:
+            document.getElementById(
+              "customerStatus"
+            ).value,
+
+          amount:
+            Number(
+              document.getElementById(
+                "customerAmount"
+              ).value
+            ) || 0,
+
+          payment:
+            document.getElementById(
+              "customerPayment"
+            ).value,
+
+          notes:
+            document.getElementById(
+              "customerNotes"
+            ).value.trim()
+
+        };
+
+
+        if (id) {
+
+          customers =
+            customers.map(customer =>
+              customer.id === Number(id)
+                ? customerData
+                : customer
+            );
+
+          showToast(
+            "Customer updated successfully."
+          );
+
+        } else {
+
+          customers.unshift(
+            customerData
+          );
+
+          showToast(
+            "Customer added successfully."
+          );
+
+        }
+
+
+        saveCustomers();
+
+        renderCustomers();
+
+        updateDashboard();
+
+        closeCustomerModal();
+
+      }
+    );
+
+
+    /* =====================================================
+       CUSTOMER TABLE
+       ===================================================== */
+
+    function renderCustomers() {
+
+      const tbody =
+        document.getElementById(
+          "customerTableBody"
+        );
+
+
+      const search =
+        document
+          .getElementById(
+            "customerSearch"
+          )
+          .value
+          .toLowerCase()
+          .trim();
+
+
+      const status =
+        document.getElementById(
+          "customerStatusFilter"
+        ).value;
+
+
+      const category =
+        document.getElementById(
+          "customerCategoryFilter"
+        ).value;
+
+
+      const filtered =
+        customers.filter(customer => {
+
+          const matchesSearch =
+            customer.name
+              .toLowerCase()
+              .includes(search) ||
+
+            customer.phone
+              .toLowerCase()
+              .includes(search) ||
+
+            customer.project
+              .toLowerCase()
+              .includes(search);
+
+
+          const matchesStatus =
+            status === "all" ||
+            customer.status === status;
+
+
+          const matchesCategory =
+            category === "all" ||
+            customer.category === category;
+
+
+          return (
+            matchesSearch &&
+            matchesStatus &&
+            matchesCategory
+          );
+
+        });
+
+
+      if (filtered.length === 0) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td colspan="7">
+
+              <div class="empty-state">
+                No customers found.
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+
+      tbody.innerHTML =
+        filtered.map(customer => `
+
+          <tr>
+
+            <td>
+
+              <div class="table-customer">
+
+                <div class="customer-avatar">
+                  ${getInitials(customer.name)}
+                </div>
+
+                <div>
+
+                  <strong>
+                    ${escapeHtml(customer.name)}
+                  </strong>
+
+                  <span>
+                    ID #${customer.id}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </td>
+
+
+            <td>
+
+              <div class="contact-info">
+
+                <span>
+                  ${escapeHtml(customer.phone)}
+                </span>
+
+                <small>
+                  ${escapeHtml(customer.email || "No email")}
+                </small>
+
+              </div>
+
+            </td>
+
+
+            <td>
+              <span class="category-tag">
+                ${escapeHtml(customer.category)}
+              </span>
+            </td>
+
+
+            <td>
+              ${escapeHtml(customer.project)}
+            </td>
+
+
+            <td>
+              ${statusBadge(customer.status)}
+            </td>
+
+
+            <td>
+              ${paymentBadge(customer.payment)}
+            </td>
+
+
+            <td>
+
+              <div class="action-buttons">
+
+                <button
+                  class="action-btn edit"
+                  onclick="editCustomer(${customer.id})"
+                  title="Edit"
+                >
+                  ✎
+                </button>
+
+                <button
+                  class="action-btn delete"
+                  onclick="deleteCustomer(${customer.id})"
+                  title="Delete"
+                >
+                  ×
+                </button>
+
+              </div>
+
+            </td>
+
+          </tr>
+
+        `).join("");
+
+    }
+
+
+    /* =====================================================
+       HELPERS
+       ===================================================== */
+
+    function getInitials(name) {
+
+      return name
+        .split(" ")
+        .slice(0, 2)
+        .map(word => word.charAt(0))
+        .join("")
+        .toUpperCase();
+
+    }
+
+
+    function statusBadge(status) {
+
+      const labels = {
+
+        pending: "Pending",
+        active: "Active",
+        completed: "Completed"
+
+      };
+
+
+      return `
+
+        <span class="status-pill ${status}">
+          ${labels[status] || status}
+        </span>
+
+      `;
+
+    }
+
+
+    function paymentBadge(payment) {
+
+      const labels = {
+
+        unpaid: "Unpaid",
+        partial: "Partial",
+        paid: "Paid"
+
+      };
+
+
+      return `
+
+        <span class="payment-pill ${payment}">
+          ${labels[payment] || payment}
+        </span>
+
+      `;
+
+    }
+
+
+    function escapeHtml(value) {
+
+      return String(value)
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+    }
+
+
+    /* =====================================================
+       EDIT CUSTOMER
+       ===================================================== */
+
+    window.editCustomer =
+      function(id) {
+
+        const customer =
+          customers.find(
+            item => item.id === id
+          );
+
+        if (customer) {
+
+          openCustomerModal(
+            customer
+          );
+
+        }
+
+      };
+
+
+    /* =====================================================
+       DELETE CUSTOMER
+       ===================================================== */
+
+    window.deleteCustomer =
+      function(id) {
+
+        const customer =
+          customers.find(
+            item => item.id === id
+          );
+
+
+        if (!customer) {
+          return;
+        }
+
+
+        const confirmed =
+          confirm(
+            `Delete ${customer.name}?`
+          );
+
+
+        if (!confirmed) {
+          return;
+        }
+
+
+        customers =
+          customers.filter(
+            item => item.id !== id
+          );
+
+
+        saveCustomers();
+
+        renderCustomers();
+
+        updateDashboard();
+
+        showToast(
+          "Customer deleted successfully."
+        );
+
+      };
+
+
+    /* =====================================================
+       DASHBOARD UPDATE
+       ===================================================== */
+
+    function updateDashboard() {
+
+      const total =
+        customers.length;
+
+
+      const active =
+        customers.filter(
+          customer =>
+            customer.status === "active"
+        ).length;
+
+
+      const completed =
+        customers.filter(
+          customer =>
+            customer.status === "completed"
+        ).length;
+
+
+      const pending =
+        customers.filter(
+          customer =>
+            customer.status === "pending"
+        ).length;
+
+
+      const revenue =
+        customers.reduce(
+          (sum, customer) =>
+            sum + Number(customer.amount || 0),
+          0
+        );
+
+
+      document.getElementById(
+        "totalCustomers"
+      ).textContent = total;
+
+
+      document.getElementById(
+        "activeProjects"
+      ).textContent = active;
+
+
+      document.getElementById(
+        "completedProjects"
+      ).textContent = completed;
+
+
+      document.getElementById(
+        "totalRevenue"
+      ).textContent =
+        revenue.toLocaleString();
+
+
+      document.getElementById(
+        "pendingCount"
+      ).textContent = pending;
+
+
+      document.getElementById(
+        "progressCount"
+      ).textContent = active;
+
+
+      document.getElementById(
+        "statusCompletedCount"
+      ).textContent = completed;
+
+
+      const totalProjects =
+        Math.max(
+          pending + active + completed,
+          1
+        );
+
+
+      document.getElementById(
+        "pendingProgress"
+      ).style.width =
+        `${(pending / totalProjects) * 100}%`;
+
+
+      document.getElementById(
+        "progressProgress"
+      ).style.width =
+        `${(active / totalProjects) * 100}%`;
+
+
+      document.getElementById(
+        "completedProgress"
+      ).style.width =
+        `${(completed / totalProjects) * 100}%`;
+
+
+      updateRecentCustomers();
+
+      updatePaymentSummary();
+
+    }
+
+
+    /* =====================================================
+       RECENT CUSTOMERS
+       ===================================================== */
+
+    function updateRecentCustomers() {
+
+      const container =
+        document.getElementById(
+          "recentCustomers"
+        );
+
+
+      const recent =
+        customers.slice(0, 5);
+
+
+      if (recent.length === 0) {
+
+        container.innerHTML = `
+
+          <div class="empty-state">
+            No customers yet.
+          </div>
+
+        `;
+
+        return;
+
+      }
+
+
+      container.innerHTML =
+        recent.map(customer => `
+
+          <div class="recent-customer">
+
+            <div class="customer-avatar">
+              ${getInitials(customer.name)}
+            </div>
+
+            <div class="recent-info">
+
+              <strong>
+                ${escapeHtml(customer.name)}
+              </strong>
+
+              <span>
+                ${escapeHtml(customer.project)}
+              </span>
+
+            </div>
+
+            <div>
+              ${statusBadge(customer.status)}
+            </div>
+
+          </div>
+
+        `).join("");
+
+    }
+
+
+    /* =====================================================
+       PAYMENT SUMMARY
+       ===================================================== */
+
+    function updatePaymentSummary() {
+
+      const total =
+        customers.reduce(
+          (sum, customer) =>
+            sum + Number(customer.amount || 0),
+          0
+        );
+
+
+      const paid =
+        customers.reduce(
+          (sum, customer) => {
+
+            if (
+              customer.payment === "paid"
+            ) {
+              return (
+                sum +
+                Number(customer.amount || 0)
+              );
+            }
+
+            if (
+              customer.payment === "partial"
+            ) {
+              return (
+                sum +
+                Number(customer.amount || 0) * 0.5
+              );
+            }
+
+            return sum;
+
+          },
+          0
+        );
+
+
+      const due =
+        Math.max(
+          total - paid,
+          0
+        );
+
+
+      document.getElementById(
+        "paymentRevenue"
+      ).textContent =
+        total.toLocaleString();
+
+
+      document.getElementById(
+        "paidRevenue"
+      ).textContent =
+        Math.round(paid).toLocaleString();
+
+
+      document.getElementById(
+        "dueRevenue"
+      ).textContent =
+        Math.round(due).toLocaleString();
+
+
+      renderPaymentTable();
+
+    }
+
+
+    /* =====================================================
+       PAYMENT TABLE
+       ===================================================== */
+
+    function renderPaymentTable() {
+
+      const tbody =
+        document.getElementById(
+          "paymentTableBody"
+        );
+
+
+      if (customers.length === 0) {
+
+        tbody.innerHTML = `
+
+          <tr>
+
+            <td colspan="6">
+
+              <div class="empty-state">
+                No payment records yet.
+              </div>
+
+            </td>
+
+          </tr>
+
+        `;
+
+        return;
+
+      }
+
+
+      tbody.innerHTML =
+        customers.map(customer => {
+
+          const total =
+            Number(customer.amount || 0);
+
+
+          let paid = 0;
+
+
+          if (
+            customer.payment === "paid"
+          ) {
+            paid = total;
+          }
+
+          if (
+            customer.payment === "partial"
+          ) {
+            paid = total * 0.5;
+          }
+
+
+          const due =
+            total - paid;
+
+
+          return `
+
+            <tr>
+
+              <td>
+                ${escapeHtml(customer.name)}
+              </td>
+
+              <td>
+                ${escapeHtml(customer.project)}
+              </td>
+
+              <td>
+                ৳${total.toLocaleString()}
+              </td>
+
+              <td>
+                ৳${Math.round(paid).toLocaleString()}
+              </td>
+
+              <td>
+                ৳${Math.round(due).toLocaleString()}
+              </td>
+
+              <td>
+                ${paymentBadge(customer.payment)}
+              </td>
+
+            </tr>
+
+          `;
+
+        }).join("");
+
+    }
+
+
+    /* =====================================================
+       SEARCH / FILTER
+       ===================================================== */
+
+    document
+      .getElementById("customerSearch")
+      .addEventListener(
+        "input",
+        renderCustomers
+      );
+
+
+    document
+      .getElementById("customerStatusFilter")
+      .addEventListener(
+        "change",
+        renderCustomers
+      );
+
+
+    document
+      .getElementById("customerCategoryFilter")
+      .addEventListener(
+        "change",
+        renderCustomers
+      );
+
+
+    /* =====================================================
+       QUICK ACTIONS
+       ===================================================== */
+
+    document
+      .querySelectorAll(".quick-action")
+      .forEach(button => {
+
+        button.addEventListener(
+          "click",
+          () => {
+
+            const action =
+              button.dataset.action;
+
+
+            if (action === "customer") {
+
+              showSection("customers");
+
+              openCustomerModal();
+
+            }
+
+
+            if (action === "project") {
+
+              showSection("projects");
+
+              showToast(
+                "Project management is ready for the next step."
+              );
+
+            }
+
+
+            if (action === "payment") {
+
+              showSection("payments");
+
+              showToast(
+                "Payment management is ready for the next step."
+              );
+
+            }
+
+
+            if (action === "message") {
+
+              showSection("messages");
+
+            }
+
+          }
+        );
+
+      });
+
+
+    /* =====================================================
+       ADD PROJECT
+       ===================================================== */
+
+    document
+      .getElementById("addProjectButton")
+      .addEventListener(
+        "click",
+        () => {
+
+          showToast(
+            "Project module will be connected next."
+          );
+
+        }
+      );
+
+
+    /* =====================================================
+       ADD PAYMENT
+       ===================================================== */
+
+    document
+      .getElementById("addPaymentButton")
+      .addEventListener(
+        "click",
+        () => {
+
+          showToast(
+            "Payment module will be connected next."
+          );
+
+        }
+      );
+
+
+    /* =====================================================
+       LOGOUT
+       ===================================================== */
+
+    document
+      .getElementById("logoutButton")
+      .addEventListener(
+        "click",
+        () => {
+
+          const confirmed =
+            confirm(
+              "Are you sure you want to logout?"
+            );
+
+
+          if (!confirmed) {
+            return;
+          }
+
+
+          showToast(
+            "Logout system will be connected with Firebase."
+          );
+
+        }
+      );
+
+
+    /* =====================================================
+       TOAST
+       ===================================================== */
+
+    function showToast(message) {
+
+      const toast =
+        document.getElementById(
+          "toast"
+        );
+
+      const toastMessage =
+        document.getElementById(
+          "toastMessage"
+        );
+
+
+      toastMessage.textContent =
+        message;
+
+
+      toast.classList.add(
+        "show"
+      );
+
+
+      clearTimeout(
+        window.toastTimer
+      );
+
+
+      window.toastTimer =
+        setTimeout(
+          () => {
+
+            toast.classList.remove(
+              "show"
+            );
+
+          },
+          3000
+        );
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+       ===================================================== */
+
+    renderCustomers();
+
+    updateDashboard();
+
+  </script>
+
+</body>
+</html>
