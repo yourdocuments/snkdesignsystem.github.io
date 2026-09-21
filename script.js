@@ -1,145 +1,107 @@
 /* =========================================================
    SNK DESIGN AGENCY
-   Main JavaScript
+   MAIN JAVASCRIPT
    ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =========================================================
+  /* =======================================================
      ELEMENTS
-     ========================================================= */
+     ======================================================= */
 
-  const menuToggle = document.getElementById("menuToggle");
-  const navMenu = document.getElementById("navMenu");
-  const header = document.getElementById("header");
+  const mobileButton =
+    document.getElementById("mobileMenuButton");
 
-  const navLinks = document.querySelectorAll(".nav-link");
+  const mainNav =
+    document.getElementById("mainNav");
 
-  const allAnchors = document.querySelectorAll(
-    'a[href^="#"]'
-  );
+  const siteHeader =
+    document.getElementById("siteHeader");
+
+  const navLinks =
+    document.querySelectorAll(".nav-link");
 
 
-  /* =========================================================
+  /* =======================================================
      MOBILE MENU
-     ========================================================= */
+     ======================================================= */
 
-  if (menuToggle && navMenu) {
+  if (mobileButton && mainNav) {
 
-    menuToggle.addEventListener("click", function () {
-
-      navMenu.classList.toggle("active");
-
-      menuToggle.classList.toggle("active");
+    mobileButton.addEventListener("click", function () {
 
       const isOpen =
-        navMenu.classList.contains("active");
+        mainNav.classList.toggle("mobile-open");
 
-      menuToggle.setAttribute(
+      mobileButton.classList.toggle(
+        "active",
+        isOpen
+      );
+
+      mobileButton.setAttribute(
         "aria-expanded",
         isOpen ? "true" : "false"
       );
 
     });
 
-  }
 
+    /* Close menu after clicking navigation */
 
-  /* =========================================================
-     CLOSE MOBILE MENU AFTER CLICK
-     ========================================================= */
+    navLinks.forEach(function (link) {
 
-  navLinks.forEach(function (link) {
+      link.addEventListener("click", function () {
 
-    link.addEventListener("click", function () {
+        mainNav.classList.remove("mobile-open");
 
-      if (navMenu) {
-        navMenu.classList.remove("active");
-      }
+        mobileButton.classList.remove("active");
 
-      if (menuToggle) {
-        menuToggle.classList.remove("active");
-
-        menuToggle.setAttribute(
+        mobileButton.setAttribute(
           "aria-expanded",
           "false"
         );
-      }
+
+      });
 
     });
 
-  });
+  }
 
 
-  /* =========================================================
-     CLOSE MENU WHEN CLICKING OUTSIDE
-     ========================================================= */
-
-  document.addEventListener("click", function (event) {
-
-    if (!navMenu || !menuToggle) {
-      return;
-    }
-
-    const clickedInsideMenu =
-      navMenu.contains(event.target);
-
-    const clickedMenuButton =
-      menuToggle.contains(event.target);
-
-    if (
-      !clickedInsideMenu &&
-      !clickedMenuButton
-    ) {
-
-      navMenu.classList.remove("active");
-
-      menuToggle.classList.remove("active");
-
-      menuToggle.setAttribute(
-        "aria-expanded",
-        "false"
-      );
-
-    }
-
-  });
-
-
-  /* =========================================================
+  /* =======================================================
      HEADER SCROLL EFFECT
-     ========================================================= */
+     ======================================================= */
 
-  function updateHeader() {
+  function handleHeaderScroll() {
 
-    if (!header) {
+    if (!siteHeader) {
       return;
     }
 
-    if (window.scrollY > 30) {
+    if (window.scrollY > 40) {
 
-      header.classList.add("scrolled");
+      siteHeader.classList.add("scrolled");
 
     } else {
 
-      header.classList.remove("scrolled");
+      siteHeader.classList.remove("scrolled");
 
     }
 
   }
 
-  updateHeader();
 
   window.addEventListener(
     "scroll",
-    updateHeader,
-    { passive: true }
+    handleHeaderScroll
   );
 
+  handleHeaderScroll();
 
-  /* =========================================================
+
+  /* =======================================================
      ACTIVE NAVIGATION
-     ========================================================= */
+     ======================================================= */
 
   const sections =
     document.querySelectorAll("section[id]");
@@ -149,22 +111,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
     let currentSection = "";
 
-    const scrollPosition =
-      window.scrollY + 200;
-
-
     sections.forEach(function (section) {
 
       const sectionTop =
-        section.offsetTop;
+        section.offsetTop - 170;
 
-      const sectionHeight =
-        section.offsetHeight;
+      const sectionBottom =
+        sectionTop + section.offsetHeight;
 
       if (
-        scrollPosition >= sectionTop &&
-        scrollPosition <
-          sectionTop + sectionHeight
+        window.scrollY >= sectionTop &&
+        window.scrollY < sectionBottom
       ) {
 
         currentSection =
@@ -179,13 +136,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
       link.classList.remove("active");
 
-      const linkTarget =
+      const href =
         link.getAttribute("href");
 
-
       if (
-        linkTarget ===
-        "#" + currentSection
+        href === "#" + currentSection
       ) {
 
         link.classList.add("active");
@@ -197,21 +152,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  window.addEventListener(
+    "scroll",
+    updateActiveNavigation
+  );
+
   updateActiveNavigation();
 
 
-  window.addEventListener(
-    "scroll",
-    updateActiveNavigation,
-    { passive: true }
-  );
-
-
-  /* =========================================================
+  /* =======================================================
      SMOOTH SCROLL
-     ========================================================= */
+     ======================================================= */
 
-  allAnchors.forEach(function (anchor) {
+  document.querySelectorAll(
+    'a[href^="#"]'
+  ).forEach(function (anchor) {
 
     anchor.addEventListener(
       "click",
@@ -220,49 +175,33 @@ document.addEventListener("DOMContentLoaded", function () {
         const targetId =
           this.getAttribute("href");
 
-
         if (
           !targetId ||
           targetId === "#"
         ) {
-
           return;
-
         }
-
 
         const target =
           document.querySelector(targetId);
 
-
         if (!target) {
-
           return;
-
         }
-
 
         event.preventDefault();
 
-
         const headerHeight =
-          header
-            ? header.offsetHeight
+          siteHeader
+            ? siteHeader.offsetHeight
             : 0;
 
-
         const targetPosition =
-          target.getBoundingClientRect().top +
-          window.scrollY -
-          headerHeight;
-
+          target.offsetTop - headerHeight;
 
         window.scrollTo({
-
           top: targetPosition,
-
           behavior: "smooth"
-
         });
 
       }
@@ -271,9 +210,9 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* =========================================================
-     ESCAPE KEY — CLOSE MOBILE MENU
-     ========================================================= */
+  /* =======================================================
+     ESC KEY — CLOSE MOBILE MENU
+     ======================================================= */
 
   document.addEventListener(
     "keydown",
@@ -283,23 +222,15 @@ document.addEventListener("DOMContentLoaded", function () {
         return;
       }
 
-
-      if (navMenu) {
-
-        navMenu.classList.remove(
-          "active"
-        );
-
+      if (mainNav) {
+        mainNav.classList.remove("mobile-open");
       }
 
+      if (mobileButton) {
 
-      if (menuToggle) {
+        mobileButton.classList.remove("active");
 
-        menuToggle.classList.remove(
-          "active"
-        );
-
-        menuToggle.setAttribute(
+        mobileButton.setAttribute(
           "aria-expanded",
           "false"
         );
@@ -310,145 +241,71 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  /* =========================================================
-     BUTTON RIPPLE EFFECT
-     ========================================================= */
+  /* =======================================================
+     CLOSE MENU WHEN CLICKING OUTSIDE
+     ======================================================= */
 
-  const buttons =
-    document.querySelectorAll(
-      ".btn, .nav-cta"
-    );
+  document.addEventListener(
+    "click",
+    function (event) {
 
+      if (!mainNav || !mobileButton) {
+        return;
+      }
 
-  buttons.forEach(function (button) {
+      const clickedInsideNav =
+        mainNav.contains(event.target);
 
-    button.addEventListener(
-      "click",
-      function () {
+      const clickedButton =
+        mobileButton.contains(event.target);
 
-        button.classList.remove(
-          "clicked"
+      if (
+        !clickedInsideNav &&
+        !clickedButton
+      ) {
+
+        mainNav.classList.remove(
+          "mobile-open"
         );
 
+        mobileButton.classList.remove(
+          "active"
+        );
 
-        void button.offsetWidth;
-
-
-        button.classList.add(
-          "clicked"
+        mobileButton.setAttribute(
+          "aria-expanded",
+          "false"
         );
 
       }
-    );
 
-  });
-
-
-  /* =========================================================
-     SERVICE CARD HOVER
-     ========================================================= */
-
-  const serviceCards =
-    document.querySelectorAll(
-      ".service-card"
-    );
-
-
-  serviceCards.forEach(function (card) {
-
-    card.addEventListener(
-      "mouseenter",
-      function () {
-
-        card.classList.add(
-          "is-hovered"
-        );
-
-      }
-    );
-
-
-    card.addEventListener(
-      "mouseleave",
-      function () {
-
-        card.classList.remove(
-          "is-hovered"
-        );
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     WORK CARD HOVER
-     ========================================================= */
-
-  const workCards =
-    document.querySelectorAll(
-      ".work-card"
-    );
-
-
-  workCards.forEach(function (card) {
-
-    card.addEventListener(
-      "mouseenter",
-      function () {
-
-        card.classList.add(
-          "is-hovered"
-        );
-
-      }
-    );
-
-
-    card.addEventListener(
-      "mouseleave",
-      function () {
-
-        card.classList.remove(
-          "is-hovered"
-        );
-
-      }
-    );
-
-  });
-
-
-  /* =========================================================
-     CURRENT YEAR
-     ========================================================= */
-
-  const currentYear =
-    document.querySelector(
-      ".current-year"
-    );
-
-
-  if (currentYear) {
-
-    currentYear.textContent =
-      new Date().getFullYear();
-
-  }
-
-
-  /* =========================================================
-     PAGE LOADED
-     ========================================================= */
-
-  document.body.classList.add(
-    "page-loaded"
+    }
   );
 
 
+  /* =======================================================
+     CURRENT YEAR
+     ======================================================= */
+
+  const yearElements =
+    document.querySelectorAll(
+      "[data-current-year]"
+    );
+
+  yearElements.forEach(function (element) {
+
+    element.textContent =
+      new Date().getFullYear();
+
+  });
+
+
+  /* =======================================================
+     CONSOLE
+     ======================================================= */
+
   console.log(
-    "SNK Design Agency website loaded successfully."
+    "SNK Design Agency — Website Loaded Successfully."
   );
 
 });
