@@ -1,1 +1,1873 @@
-#
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Client Dashboard | SNK Design Agency</title>
+
+  <meta
+    name="description"
+    content="SNK Design Agency Client Dashboard — Manage projects, payments, files and communication."
+  >
+
+  <link rel="stylesheet" href="design-system.css">
+  <link rel="stylesheet" href="client.css">
+</head>
+
+<body>
+
+  <!-- =========================
+       CLIENT APP
+  ========================== -->
+  <div class="client-app">
+
+    <!-- =========================
+         SIDEBAR
+    ========================== -->
+    <aside class="client-sidebar" id="clientSidebar">
+
+      <div class="client-brand">
+        <div class="client-brand-logo">SNK</div>
+
+        <div class="client-brand-text">
+          <strong>SNK Design</strong>
+          <span>Agency</span>
+        </div>
+      </div>
+
+      <div class="client-profile">
+        <div class="client-avatar">SJ</div>
+
+        <div>
+          <strong>Sarah Jahan</strong>
+          <span>Client</span>
+        </div>
+      </div>
+
+      <nav class="client-nav">
+
+        <div class="client-nav-label">MAIN MENU</div>
+
+        <a href="#dashboard" class="client-nav-link active" data-page="dashboard">
+          <span class="nav-icon">⌂</span>
+          <span>Dashboard</span>
+        </a>
+
+        <a href="#projects" class="client-nav-link" data-page="projects">
+          <span class="nav-icon">▣</span>
+          <span>My Projects</span>
+          <span class="nav-count">3</span>
+        </a>
+
+        <a href="#payments" class="client-nav-link" data-page="payments">
+          <span class="nav-icon">৳</span>
+          <span>Payments</span>
+        </a>
+
+        <a href="#files" class="client-nav-link" data-page="files">
+          <span class="nav-icon">□</span>
+          <span>Files</span>
+        </a>
+
+        <a href="#messages" class="client-nav-link" data-page="messages">
+          <span class="nav-icon">✉</span>
+          <span>Messages</span>
+          <span class="nav-count notification">2</span>
+        </a>
+
+        <div class="client-nav-label">ACCOUNT</div>
+
+        <a href="#profile" class="client-nav-link" data-page="profile">
+          <span class="nav-icon">◯</span>
+          <span>My Profile</span>
+        </a>
+
+        <a href="#settings" class="client-nav-link" data-page="settings">
+          <span class="nav-icon">⚙</span>
+          <span>Settings</span>
+        </a>
+
+      </nav>
+
+      <div class="client-sidebar-bottom">
+
+        <div class="client-help-box">
+          <div class="help-icon">?</div>
+
+          <div>
+            <strong>Need Help?</strong>
+            <span>Contact our team</span>
+          </div>
+
+          <a href="#messages" class="help-link">→</a>
+        </div>
+
+        <button class="client-logout" id="logoutBtn">
+          <span>↪</span>
+          <span>Logout</span>
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =========================
+         MOBILE OVERLAY
+    ========================== -->
+    <div class="client-overlay" id="clientOverlay"></div>
+
+
+    <!-- =========================
+         MAIN CONTENT
+    ========================== -->
+    <main class="client-main">
+
+      <!-- TOPBAR -->
+      <header class="client-topbar">
+
+        <div class="topbar-left">
+
+          <button
+            class="client-menu-btn"
+            id="clientMenuBtn"
+            aria-label="Open menu"
+          >
+            ☰
+          </button>
+
+          <div>
+            <div class="topbar-page-title" id="pageTitle">
+              Dashboard
+            </div>
+
+            <div class="topbar-breadcrumb">
+              Home / Dashboard
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="topbar-right">
+
+          <button
+            class="topbar-icon-btn"
+            id="notificationBtn"
+            aria-label="Notifications"
+          >
+            ♢
+            <span class="notification-dot"></span>
+          </button>
+
+          <div class="topbar-user">
+
+            <div class="topbar-user-avatar">
+              SJ
+            </div>
+
+            <div class="topbar-user-info">
+              <strong>Sarah Jahan</strong>
+              <span>Client</span>
+            </div>
+
+            <span class="topbar-user-arrow">⌄</span>
+
+          </div>
+
+        </div>
+
+      </header>
+
+
+      <!-- =========================
+           PAGE CONTENT
+      ========================== -->
+      <div class="client-content">
+
+
+        <!-- =========================
+             DASHBOARD PAGE
+        ========================== -->
+        <section class="client-page active-page" id="dashboardPage">
+
+          <div class="client-welcome">
+
+            <div>
+              <span class="welcome-label">WELCOME BACK 👋</span>
+
+              <h1>
+                Hello, Sarah!
+              </h1>
+
+              <p>
+                Here's what's happening with your projects today.
+              </p>
+            </div>
+
+            <div class="welcome-date">
+              <span>Today</span>
+              <strong id="currentDate">21 September 2026</strong>
+            </div>
+
+          </div>
+
+
+          <!-- STATS -->
+          <div class="client-stats-grid">
+
+            <div class="client-stat-card">
+
+              <div class="client-stat-icon purple">
+                ▣
+              </div>
+
+              <div class="client-stat-content">
+                <span>Active Projects</span>
+                <strong>3</strong>
+                <small>Currently running</small>
+              </div>
+
+            </div>
+
+
+            <div class="client-stat-card">
+
+              <div class="client-stat-icon green">
+                ✓
+              </div>
+
+              <div class="client-stat-content">
+                <span>Completed</span>
+                <strong>7</strong>
+                <small>Projects delivered</small>
+              </div>
+
+            </div>
+
+
+            <div class="client-stat-card">
+
+              <div class="client-stat-icon orange">
+                ৳
+              </div>
+
+              <div class="client-stat-content">
+                <span>Total Investment</span>
+                <strong>৳85,000</strong>
+                <small>Project value</small>
+              </div>
+
+            </div>
+
+
+            <div class="client-stat-card">
+
+              <div class="client-stat-icon blue">
+                ✉
+              </div>
+
+              <div class="client-stat-content">
+                <span>Messages</span>
+                <strong>2</strong>
+                <small>Unread messages</small>
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- DASHBOARD GRID -->
+          <div class="client-dashboard-grid">
+
+
+            <!-- ACTIVE PROJECT -->
+            <div class="client-panel active-project-panel">
+
+              <div class="client-panel-header">
+
+                <div>
+                  <span class="panel-eyebrow">CURRENT PROJECT</span>
+                  <h2>Business Website</h2>
+                </div>
+
+                <span class="client-status status-progress">
+                  In Progress
+                </span>
+
+              </div>
+
+
+              <div class="project-main-info">
+
+                <div class="project-preview">
+                  <div class="preview-browser">
+                    <div class="browser-top">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </div>
+
+                    <div class="browser-content">
+                      <div class="preview-line large"></div>
+                      <div class="preview-line"></div>
+                      <div class="preview-line short"></div>
+
+                      <div class="preview-boxes">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="project-details">
+
+                  <div class="project-meta-row">
+                    <span>Project ID</span>
+                    <strong>SNK-2026-003</strong>
+                  </div>
+
+                  <div class="project-meta-row">
+                    <span>Start Date</span>
+                    <strong>05 Sep 2026</strong>
+                  </div>
+
+                  <div class="project-meta-row">
+                    <span>Deadline</span>
+                    <strong>30 Sep 2026</strong>
+                  </div>
+
+                  <div class="project-progress">
+
+                    <div class="progress-header">
+                      <span>Overall Progress</span>
+                      <strong>72%</strong>
+                    </div>
+
+                    <div class="client-progress">
+                      <div
+                        class="client-progress-bar"
+                        style="width:72%"
+                      ></div>
+                    </div>
+
+                  </div>
+
+                  <button
+                    class="client-btn client-btn-primary"
+                    data-page-target="projects"
+                  >
+                    View Project →
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- PAYMENT -->
+            <div class="client-panel payment-panel">
+
+              <div class="client-panel-header">
+
+                <div>
+                  <span class="panel-eyebrow">PAYMENT</span>
+                  <h2>Payment Overview</h2>
+                </div>
+
+                <span class="payment-icon">৳</span>
+
+              </div>
+
+
+              <div class="payment-total">
+                <span>Total Project Cost</span>
+                <strong>৳85,000</strong>
+              </div>
+
+              <div class="payment-row">
+                <span>Paid Amount</span>
+                <strong class="paid-text">৳60,000</strong>
+              </div>
+
+              <div class="payment-row">
+                <span>Due Amount</span>
+                <strong class="due-text">৳25,000</strong>
+              </div>
+
+              <div class="payment-progress">
+
+                <div class="payment-progress-bar">
+                  <span style="width:71%"></span>
+                </div>
+
+                <div class="payment-progress-label">
+                  <span>71% Paid</span>
+                  <span>৳25,000 Due</span>
+                </div>
+
+              </div>
+
+              <button
+                class="client-btn client-btn-outline full-width"
+                data-page-target="payments"
+              >
+                View Payment Details
+              </button>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- RECENT PROJECTS -->
+          <div class="client-panel recent-projects-panel">
+
+            <div class="client-panel-header">
+
+              <div>
+                <span class="panel-eyebrow">PROJECTS</span>
+                <h2>Recent Projects</h2>
+              </div>
+
+              <button
+                class="text-link"
+                data-page-target="projects"
+              >
+                View All →
+              </button>
+
+            </div>
+
+
+            <div class="client-project-table">
+
+              <div class="project-table-head">
+                <span>Project</span>
+                <span>Type</span>
+                <span>Status</span>
+                <span>Progress</span>
+                <span>Deadline</span>
+                <span></span>
+              </div>
+
+
+              <div class="project-table-row">
+
+                <div class="project-name-cell">
+                  <div class="project-small-icon">W</div>
+
+                  <div>
+                    <strong>Business Website</strong>
+                    <small>SNK-2026-003</small>
+                  </div>
+                </div>
+
+                <span>Website</span>
+
+                <span class="client-status status-progress">
+                  In Progress
+                </span>
+
+                <div class="mini-progress">
+                  <div>
+                    <span style="width:72%"></span>
+                  </div>
+                  <small>72%</small>
+                </div>
+
+                <span>30 Sep 2026</span>
+
+                <button class="row-arrow" data-page-target="projects">
+                  →
+                </button>
+
+              </div>
+
+
+              <div class="project-table-row">
+
+                <div class="project-name-cell">
+                  <div class="project-small-icon pink">U</div>
+
+                  <div>
+                    <strong>Mobile App UI/UX</strong>
+                    <small>SNK-2026-002</small>
+                  </div>
+                </div>
+
+                <span>UI/UX</span>
+
+                <span class="client-status status-review">
+                  In Review
+                </span>
+
+                <div class="mini-progress">
+                  <div>
+                    <span style="width:90%"></span>
+                  </div>
+                  <small>90%</small>
+                </div>
+
+                <span>25 Sep 2026</span>
+
+                <button class="row-arrow" data-page-target="projects">
+                  →
+                </button>
+
+              </div>
+
+
+              <div class="project-table-row">
+
+                <div class="project-name-cell">
+                  <div class="project-small-icon blue">B</div>
+
+                  <div>
+                    <strong>Brand Identity</strong>
+                    <small>SNK-2026-001</small>
+                  </div>
+                </div>
+
+                <span>Branding</span>
+
+                <span class="client-status status-completed">
+                  Completed
+                </span>
+
+                <div class="mini-progress">
+                  <div>
+                    <span style="width:100%"></span>
+                  </div>
+                  <small>100%</small>
+                </div>
+
+                <span>10 Aug 2026</span>
+
+                <button class="row-arrow" data-page-target="projects">
+                  →
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- ACTIVITY -->
+          <div class="client-bottom-grid">
+
+            <div class="client-panel">
+
+              <div class="client-panel-header">
+
+                <div>
+                  <span class="panel-eyebrow">ACTIVITY</span>
+                  <h2>Recent Activity</h2>
+                </div>
+
+                <span class="activity-live">
+                  ● Live
+                </span>
+
+              </div>
+
+
+              <div class="activity-list">
+
+                <div class="activity-item">
+
+                  <div class="activity-dot green-dot">
+                    ✓
+                  </div>
+
+                  <div>
+                    <strong>Project milestone completed</strong>
+                    <p>Homepage development has been completed.</p>
+                    <small>2 hours ago</small>
+                  </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                  <div class="activity-dot purple-dot">
+                    ✉
+                  </div>
+
+                  <div>
+                    <strong>New message from SNK Team</strong>
+                    <p>Please review the latest design update.</p>
+                    <small>Yesterday</small>
+                  </div>
+
+                </div>
+
+
+                <div class="activity-item">
+
+                  <div class="activity-dot orange-dot">
+                    ৳
+                  </div>
+
+                  <div>
+                    <strong>Payment received</strong>
+                    <p>Your payment of ৳20,000 was confirmed.</p>
+                    <small>3 days ago</small>
+                  </div>
+
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- CONTACT -->
+            <div class="client-panel contact-panel">
+
+              <div class="contact-decoration"></div>
+
+              <span class="panel-eyebrow">
+                NEED ASSISTANCE?
+              </span>
+
+              <h2>Let's build something amazing.</h2>
+
+              <p>
+                Have a question about your project?
+                Our team is always ready to help.
+              </p>
+
+              <button
+                class="client-btn client-btn-primary"
+                data-page-target="messages"
+              >
+                Contact Team →
+              </button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROJECTS PAGE
+        ========================== -->
+        <section class="client-page" id="projectsPage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">MY WORK</span>
+              <h1>My Projects</h1>
+              <p>Track all your projects and their progress.</p>
+            </div>
+
+            <button
+              class="client-btn client-btn-primary"
+              data-page-target="messages"
+            >
+              + New Project
+            </button>
+
+          </div>
+
+
+          <div class="project-cards-grid">
+
+            <article class="client-project-card">
+
+              <div class="project-card-cover website-cover">
+                <span>WEBSITE</span>
+              </div>
+
+              <div class="project-card-body">
+
+                <div class="project-card-top">
+                  <span class="client-status status-progress">
+                    In Progress
+                  </span>
+
+                  <span class="project-card-id">
+                    SNK-2026-003
+                  </span>
+                </div>
+
+                <h3>Business Website</h3>
+
+                <p>
+                  Modern responsive business website with
+                  CMS and contact system.
+                </p>
+
+                <div class="project-card-progress">
+
+                  <div>
+                    <span>Progress</span>
+                    <strong>72%</strong>
+                  </div>
+
+                  <div class="client-progress">
+                    <div
+                      class="client-progress-bar"
+                      style="width:72%"
+                    ></div>
+                  </div>
+
+                </div>
+
+                <div class="project-card-footer">
+
+                  <span>
+                    Deadline: <strong>30 Sep 2026</strong>
+                  </span>
+
+                  <button
+                    class="row-arrow"
+                    data-page-target="messages"
+                  >
+                    →
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="client-project-card">
+
+              <div class="project-card-cover uiux-cover">
+                <span>UI/UX</span>
+              </div>
+
+              <div class="project-card-body">
+
+                <div class="project-card-top">
+
+                  <span class="client-status status-review">
+                    In Review
+                  </span>
+
+                  <span class="project-card-id">
+                    SNK-2026-002
+                  </span>
+
+                </div>
+
+                <h3>Mobile App UI/UX</h3>
+
+                <p>
+                  Complete mobile application interface
+                  and user experience design.
+                </p>
+
+                <div class="project-card-progress">
+
+                  <div>
+                    <span>Progress</span>
+                    <strong>90%</strong>
+                  </div>
+
+                  <div class="client-progress">
+                    <div
+                      class="client-progress-bar"
+                      style="width:90%"
+                    ></div>
+                  </div>
+
+                </div>
+
+                <div class="project-card-footer">
+
+                  <span>
+                    Deadline: <strong>25 Sep 2026</strong>
+                  </span>
+
+                  <button
+                    class="row-arrow"
+                    data-page-target="messages"
+                  >
+                    →
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+
+
+            <article class="client-project-card">
+
+              <div class="project-card-cover branding-cover">
+                <span>BRANDING</span>
+              </div>
+
+              <div class="project-card-body">
+
+                <div class="project-card-top">
+
+                  <span class="client-status status-completed">
+                    Completed
+                  </span>
+
+                  <span class="project-card-id">
+                    SNK-2026-001
+                  </span>
+
+                </div>
+
+                <h3>Brand Identity</h3>
+
+                <p>
+                  Complete brand identity including logo,
+                  colors and brand guidelines.
+                </p>
+
+                <div class="project-card-progress">
+
+                  <div>
+                    <span>Progress</span>
+                    <strong>100%</strong>
+                  </div>
+
+                  <div class="client-progress">
+                    <div
+                      class="client-progress-bar"
+                      style="width:100%"
+                    ></div>
+                  </div>
+
+                </div>
+
+                <div class="project-card-footer">
+
+                  <span>
+                    Completed: <strong>10 Aug 2026</strong>
+                  </span>
+
+                  <button
+                    class="row-arrow"
+                    data-page-target="files"
+                  >
+                    →
+                  </button>
+
+                </div>
+
+              </div>
+
+            </article>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             PAYMENTS PAGE
+        ========================== -->
+        <section class="client-page" id="paymentsPage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">FINANCE</span>
+              <h1>Payments</h1>
+              <p>View your invoices and payment history.</p>
+            </div>
+
+          </div>
+
+
+          <div class="payment-overview-grid">
+
+            <div class="client-payment-big-card">
+
+              <span>Total Investment</span>
+              <strong>৳85,000</strong>
+
+              <div class="big-payment-bar">
+                <span style="width:71%"></span>
+              </div>
+
+              <div>
+                <span>Paid ৳60,000</span>
+                <span>Due ৳25,000</span>
+              </div>
+
+            </div>
+
+
+            <div class="client-payment-mini">
+              <span>Paid</span>
+              <strong>৳60,000</strong>
+              <small>71% of total</small>
+            </div>
+
+
+            <div class="client-payment-mini due">
+              <span>Due</span>
+              <strong>৳25,000</strong>
+              <small>29% remaining</small>
+            </div>
+
+          </div>
+
+
+          <div class="client-panel">
+
+            <div class="client-panel-header">
+
+              <div>
+                <span class="panel-eyebrow">TRANSACTIONS</span>
+                <h2>Payment History</h2>
+              </div>
+
+            </div>
+
+
+            <div class="payment-history">
+
+              <div class="payment-history-row">
+
+                <div class="payment-method-icon">৳</div>
+
+                <div>
+                  <strong>Payment #INV-003</strong>
+                  <small>20 September 2026</small>
+                </div>
+
+                <strong class="paid-text">+ ৳20,000</strong>
+
+                <span class="client-status status-completed">
+                  Paid
+                </span>
+
+                <button class="row-arrow">↓</button>
+
+              </div>
+
+
+              <div class="payment-history-row">
+
+                <div class="payment-method-icon">৳</div>
+
+                <div>
+                  <strong>Payment #INV-002</strong>
+                  <small>05 September 2026</small>
+                </div>
+
+                <strong class="paid-text">+ ৳20,000</strong>
+
+                <span class="client-status status-completed">
+                  Paid
+                </span>
+
+                <button class="row-arrow">↓</button>
+
+              </div>
+
+
+              <div class="payment-history-row">
+
+                <div class="payment-method-icon">৳</div>
+
+                <div>
+                  <strong>Payment #INV-001</strong>
+                  <small>20 August 2026</small>
+                </div>
+
+                <strong class="paid-text">+ ৳20,000</strong>
+
+                <span class="client-status status-completed">
+                  Paid
+                </span>
+
+                <button class="row-arrow">↓</button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             FILES PAGE
+        ========================== -->
+        <section class="client-page" id="filesPage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">DOCUMENTS</span>
+              <h1>Files</h1>
+              <p>Access all project files shared by our team.</p>
+            </div>
+
+            <button
+              class="client-btn client-btn-primary"
+              id="uploadFileBtn"
+            >
+              + Upload File
+            </button>
+
+          </div>
+
+
+          <div class="files-grid">
+
+            <div class="file-card">
+
+              <div class="file-icon pdf">PDF</div>
+
+              <div>
+                <strong>Brand Guidelines.pdf</strong>
+                <span>4.8 MB • 10 Aug 2026</span>
+              </div>
+
+              <button class="file-action">↓</button>
+
+            </div>
+
+
+            <div class="file-card">
+
+              <div class="file-icon figma">F</div>
+
+              <div>
+                <strong>Mobile App Design.fig</strong>
+                <span>12.4 MB • 18 Sep 2026</span>
+              </div>
+
+              <button class="file-action">↓</button>
+
+            </div>
+
+
+            <div class="file-card">
+
+              <div class="file-icon zip">ZIP</div>
+
+              <div>
+                <strong>Website Assets.zip</strong>
+                <span>28.6 MB • 20 Sep 2026</span>
+              </div>
+
+              <button class="file-action">↓</button>
+
+            </div>
+
+
+            <div class="file-card">
+
+              <div class="file-icon image">IMG</div>
+
+              <div>
+                <strong>Logo Final.png</strong>
+                <span>2.1 MB • 08 Aug 2026</span>
+              </div>
+
+              <button class="file-action">↓</button>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             MESSAGES PAGE
+        ========================== -->
+        <section class="client-page" id="messagesPage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">COMMUNICATION</span>
+              <h1>Messages</h1>
+              <p>Communicate directly with the SNK Design team.</p>
+            </div>
+
+          </div>
+
+
+          <div class="messages-layout">
+
+            <div class="conversation-list">
+
+              <div class="conversation active">
+
+                <div class="conversation-avatar">
+                  SN
+                </div>
+
+                <div>
+                  <strong>SNK Design Team</strong>
+                  <p>Please review the latest design...</p>
+                  <small>2h ago</small>
+                </div>
+
+                <span class="unread-count">2</span>
+
+              </div>
+
+
+              <div class="conversation">
+
+                <div class="conversation-avatar blue">
+                  AD
+                </div>
+
+                <div>
+                  <strong>Project Manager</strong>
+                  <p>Website milestone updated.</p>
+                  <small>Yesterday</small>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <div class="chat-box">
+
+              <div class="chat-header">
+
+                <div class="conversation-avatar">
+                  SN
+                </div>
+
+                <div>
+                  <strong>SNK Design Team</strong>
+                  <span>Online</span>
+                </div>
+
+              </div>
+
+
+              <div class="chat-messages">
+
+                <div class="chat-message received">
+                  <p>
+                    Hello Sarah! We've completed the homepage
+                    development. Please review the latest update.
+                  </p>
+                  <small>11:20 AM</small>
+                </div>
+
+
+                <div class="chat-message sent">
+                  <p>
+                    Great! I'll review it today. Thank you.
+                  </p>
+                  <small>11:42 AM</small>
+                </div>
+
+
+                <div class="chat-message received">
+                  <p>
+                    Perfect. Let us know if you need any changes.
+                  </p>
+                  <small>11:45 AM</small>
+                </div>
+
+              </div>
+
+
+              <form class="chat-input-area" id="chatForm">
+
+                <input
+                  type="text"
+                  id="messageInput"
+                  placeholder="Type your message..."
+                  autocomplete="off"
+                >
+
+                <button type="submit">
+                  Send →
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROFILE PAGE
+        ========================== -->
+        <section class="client-page" id="profilePage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">ACCOUNT</span>
+              <h1>My Profile</h1>
+              <p>Manage your personal information.</p>
+            </div>
+
+          </div>
+
+
+          <div class="profile-layout">
+
+            <div class="client-panel profile-card">
+
+              <div class="large-client-avatar">
+                SJ
+              </div>
+
+              <h2>Sarah Jahan</h2>
+
+              <p>Client</p>
+
+              <span class="profile-member">
+                Client since August 2026
+              </span>
+
+            </div>
+
+
+            <div class="client-panel">
+
+              <div class="client-panel-header">
+                <div>
+                  <span class="panel-eyebrow">PERSONAL INFO</span>
+                  <h2>Profile Information</h2>
+                </div>
+              </div>
+
+
+              <form class="client-form">
+
+                <div class="form-two-column">
+
+                  <div class="client-form-group">
+                    <label>Full Name</label>
+                    <input
+                      type="text"
+                      value="Sarah Jahan"
+                    >
+                  </div>
+
+                  <div class="client-form-group">
+                    <label>Email Address</label>
+                    <input
+                      type="email"
+                      value="sarah@example.com"
+                    >
+                  </div>
+
+                  <div class="client-form-group">
+                    <label>Phone Number</label>
+                    <input
+                      type="tel"
+                      value="+880 1700-000000"
+                    >
+                  </div>
+
+                  <div class="client-form-group">
+                    <label>Company</label>
+                    <input
+                      type="text"
+                      value="Sarah Creative Studio"
+                    >
+                  </div>
+
+                </div>
+
+                <div class="client-form-group">
+                  <label>Address</label>
+                  <textarea>Dhaka, Bangladesh</textarea>
+                </div>
+
+                <button
+                  type="button"
+                  class="client-btn client-btn-primary"
+                >
+                  Save Changes
+                </button>
+
+              </form>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- =========================
+             SETTINGS PAGE
+        ========================== -->
+        <section class="client-page" id="settingsPage">
+
+          <div class="page-heading">
+
+            <div>
+              <span class="welcome-label">PREFERENCES</span>
+              <h1>Settings</h1>
+              <p>Manage your dashboard preferences.</p>
+            </div>
+
+          </div>
+
+
+          <div class="settings-list client-panel">
+
+            <div class="settings-item">
+
+              <div>
+                <strong>Email Notifications</strong>
+                <p>
+                  Receive updates about your projects and payments.
+                </p>
+              </div>
+
+              <label class="client-switch">
+                <input type="checkbox" checked>
+                <span></span>
+              </label>
+
+            </div>
+
+
+            <div class="settings-item">
+
+              <div>
+                <strong>Project Updates</strong>
+                <p>
+                  Get notified when your project status changes.
+                </p>
+              </div>
+
+              <label class="client-switch">
+                <input type="checkbox" checked>
+                <span></span>
+              </label>
+
+            </div>
+
+
+            <div class="settings-item">
+
+              <div>
+                <strong>Payment Reminders</strong>
+                <p>
+                  Receive reminders about upcoming payments.
+                </p>
+              </div>
+
+              <label class="client-switch">
+                <input type="checkbox" checked>
+                <span></span>
+              </label>
+
+            </div>
+
+
+            <div class="settings-item">
+
+              <div>
+                <strong>Dark Mode</strong>
+                <p>
+                  Use dark mode for your dashboard.
+                </p>
+              </div>
+
+              <label class="client-switch">
+
+                <input
+                  type="checkbox"
+                  id="darkModeToggle"
+                >
+
+                <span></span>
+
+              </label>
+
+            </div>
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <!-- FOOTER -->
+      <footer class="client-footer">
+
+        <span>
+          © <span id="footerYear">2026</span>
+          SNK Design Agency
+        </span>
+
+        <span>
+          Client Portal • All rights reserved
+        </span>
+
+      </footer>
+
+    </main>
+
+  </div>
+
+
+  <!-- =========================
+       TOAST
+  ========================== -->
+  <div
+    class="client-toast"
+    id="clientToast"
+  >
+    <span class="toast-icon">✓</span>
+    <span id="toastMessage">
+      Action completed successfully.
+    </span>
+  </div>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+  <script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const sidebar = document.getElementById("clientSidebar");
+      const overlay = document.getElementById("clientOverlay");
+      const menuBtn = document.getElementById("clientMenuBtn");
+
+      const navLinks = document.querySelectorAll(".client-nav-link");
+      const pages = document.querySelectorAll(".client-page");
+
+      const pageTitle = document.getElementById("pageTitle");
+
+      const pageNames = {
+        dashboard: "Dashboard",
+        projects: "My Projects",
+        payments: "Payments",
+        files: "Files",
+        messages: "Messages",
+        profile: "My Profile",
+        settings: "Settings"
+      };
+
+
+      /* =========================
+         MOBILE MENU
+      ========================== */
+
+      function openSidebar() {
+        sidebar.classList.add("open");
+        overlay.classList.add("show");
+      }
+
+      function closeSidebar() {
+        sidebar.classList.remove("open");
+        overlay.classList.remove("show");
+      }
+
+      if (menuBtn) {
+        menuBtn.addEventListener("click", function () {
+
+          if (sidebar.classList.contains("open")) {
+            closeSidebar();
+          } else {
+            openSidebar();
+          }
+
+        });
+      }
+
+      if (overlay) {
+        overlay.addEventListener("click", closeSidebar);
+      }
+
+
+      /* =========================
+         PAGE NAVIGATION
+      ========================== */
+
+      function showPage(pageName) {
+
+        if (!pageName || !pageNames[pageName]) {
+          pageName = "dashboard";
+        }
+
+        pages.forEach(function (page) {
+          page.classList.remove("active-page");
+        });
+
+        const selectedPage = document.getElementById(
+          pageName + "Page"
+        );
+
+        if (selectedPage) {
+          selectedPage.classList.add("active-page");
+        }
+
+
+        navLinks.forEach(function (link) {
+
+          link.classList.remove("active");
+
+          if (link.dataset.page === pageName) {
+            link.classList.add("active");
+          }
+
+        });
+
+
+        pageTitle.textContent = pageNames[pageName];
+
+        closeSidebar();
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+
+
+      navLinks.forEach(function (link) {
+
+        link.addEventListener("click", function (event) {
+
+          event.preventDefault();
+
+          const pageName = link.dataset.page;
+
+          showPage(pageName);
+
+          history.replaceState(
+            null,
+            "",
+            "#" + pageName
+          );
+
+        });
+
+      });
+
+
+      /* =========================
+         DATA PAGE BUTTONS
+      ========================== */
+
+      document.querySelectorAll("[data-page-target]")
+        .forEach(function (button) {
+
+          button.addEventListener("click", function () {
+
+            const pageName = button.dataset.pageTarget;
+
+            showPage(pageName);
+
+            history.replaceState(
+              null,
+              "",
+              "#" + pageName
+            );
+
+          });
+
+        });
+
+
+      /* =========================
+         INITIAL PAGE
+      ========================== */
+
+      const initialPage =
+        window.location.hash.replace("#", "");
+
+      if (pageNames[initialPage]) {
+        showPage(initialPage);
+      } else {
+        showPage("dashboard");
+      }
+
+
+      /* =========================
+         DATE
+      ========================== */
+
+      const currentDate =
+        document.getElementById("currentDate");
+
+      if (currentDate) {
+
+        const now = new Date();
+
+        currentDate.textContent =
+          now.toLocaleDateString(
+            "en-GB",
+            {
+              day: "2-digit",
+              month: "short",
+              year: "numeric"
+            }
+          );
+
+      }
+
+
+      /* =========================
+         FOOTER YEAR
+      ========================== */
+
+      const footerYear =
+        document.getElementById("footerYear");
+
+      if (footerYear) {
+        footerYear.textContent =
+          new Date().getFullYear();
+      }
+
+
+      /* =========================
+         LOGOUT
+      ========================== */
+
+      const logoutBtn =
+        document.getElementById("logoutBtn");
+
+      if (logoutBtn) {
+
+        logoutBtn.addEventListener("click", function () {
+
+          const confirmed =
+            confirm("Are you sure you want to logout?");
+
+          if (confirmed) {
+
+            showToast("Logged out successfully.");
+
+            setTimeout(function () {
+              window.location.href = "index.html";
+            }, 900);
+
+          }
+
+        });
+
+      }
+
+
+      /* =========================
+         NOTIFICATION
+      ========================== */
+
+      const notificationBtn =
+        document.getElementById("notificationBtn");
+
+      if (notificationBtn) {
+
+        notificationBtn.addEventListener("click", function () {
+
+          showToast(
+            "You have 2 unread notifications."
+          );
+
+        });
+
+      }
+
+
+      /* =========================
+         CHAT
+      ========================== */
+
+      const chatForm =
+        document.getElementById("chatForm");
+
+      const messageInput =
+        document.getElementById("messageInput");
+
+      const chatMessages =
+        document.querySelector(".chat-messages");
+
+      if (chatForm) {
+
+        chatForm.addEventListener("submit", function (event) {
+
+          event.preventDefault();
+
+          const message =
+            messageInput.value.trim();
+
+          if (!message) return;
+
+
+          const messageElement =
+            document.createElement("div");
+
+          messageElement.className =
+            "chat-message sent";
+
+          messageElement.innerHTML =
+            "<p></p><small>Just now</small>";
+
+          messageElement.querySelector("p")
+            .textContent = message;
+
+          chatMessages.appendChild(messageElement);
+
+          messageInput.value = "";
+
+          chatMessages.scrollTop =
+            chatMessages.scrollHeight;
+
+          showToast("Message sent successfully.");
+
+        });
+
+      }
+
+
+      /* =========================
+         UPLOAD BUTTON
+      ========================== */
+
+      const uploadFileBtn =
+        document.getElementById("uploadFileBtn");
+
+      if (uploadFileBtn) {
+
+        uploadFileBtn.addEventListener("click", function () {
+
+          showToast(
+            "File upload will be connected with Firebase later."
+          );
+
+        });
+
+      }
+
+
+      /* =========================
+         DARK MODE
+      ========================== */
+
+      const darkModeToggle =
+        document.getElementById("darkModeToggle");
+
+      if (darkModeToggle) {
+
+        const savedTheme =
+          localStorage.getItem("snk-client-theme");
+
+        if (savedTheme === "dark") {
+          document.body.classList.add("client-dark");
+          darkModeToggle.checked = true;
+        }
+
+
+        darkModeToggle.addEventListener(
+          "change",
+          function () {
+
+            if (darkModeToggle.checked) {
+
+              document.body.classList.add(
+                "client-dark"
+              );
+
+              localStorage.setItem(
+                "snk-client-theme",
+                "dark"
+              );
+
+            } else {
+
+              document.body.classList.remove(
+                "client-dark"
+              );
+
+              localStorage.setItem(
+                "snk-client-theme",
+                "light"
+              );
+
+            }
+
+          }
+        );
+
+      }
+
+
+      /* =========================
+         TOAST
+      ========================== */
+
+      function showToast(message) {
+
+        const toast =
+          document.getElementById("clientToast");
+
+        const toastMessage =
+          document.getElementById("toastMessage");
+
+        if (!toast || !toastMessage) return;
+
+        toastMessage.textContent = message;
+
+        toast.classList.add("show");
+
+        setTimeout(function () {
+
+          toast.classList.remove("show");
+
+        }, 3000);
+
+      }
+
+
+      /* =========================
+         ESCAPE KEY
+      ========================== */
+
+      document.addEventListener(
+        "keydown",
+        function (event) {
+
+          if (event.key === "Escape") {
+            closeSidebar();
+          }
+
+        }
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
