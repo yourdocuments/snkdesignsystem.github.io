@@ -1,2 +1,2 @@
 # snkdesignsystem.github.io
-URL: 
+URL: https://admission.snkitinstitute.com/snkdesignsystem.github.io/
