@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Design Studio | SNK Design Agency</title>
+
+  <meta
+    name="description"
+    content="SNK Design Agency Design Studio — Create, customize and export professional poster designs."
+  >
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <!-- Design Studio CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- html2canvas -->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+    defer
+  ></script>
+
+  <!-- Design Studio JS -->
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       TOP BAR
+  ========================================================== -->
+
+  <header class="studio-header">
+
+    <div class="studio-brand">
+
+      <div class="brand-mark">
+        SNK
+      </div>
+
+      <div class="brand-copy">
+        <strong>Design Studio</strong>
+        <span>SNK Design Agency</span>
+      </div>
+
+    </div>
+
+    <div class="studio-actions">
+
+      <button
+        type="button"
+        class="header-btn"
+        id="saveDesignBtn"
+      >
+        <span>Save</span>
+      </button>
+
+      <button
+        type="button"
+        class="header-btn"
+        id="openDesignBtn"
+      >
+        <span>Open</span>
+      </button>
+
+      <button
+        type="button"
+        class="header-btn header-btn-primary"
+        id="exportTopBtn"
+      >
+        <span>Export</span>
+      </button>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================================================
+       MAIN STUDIO
+  ========================================================== -->
+
+  <main class="studio-layout">
+
+
+    <!-- =======================================================
+         LEFT EDITOR PANEL
+    ======================================================== -->
+
+    <aside class="editor-panel" id="editorPanel">
+
+      <div class="panel-heading">
+
+        <div>
+          <span class="panel-kicker">Creative Workspace</span>
+          <h1>Poster Editor</h1>
+        </div>
+
+        <button
+          type="button"
+          class="mobile-panel-close"
+          id="closeEditorBtn"
+          aria-label="Close editor"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <!-- =====================================================
+           1. BACKGROUND
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle active"
+          data-section="backgroundSection"
+        >
+          <span>
+            <small>1.1</small>
+            Background
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content active"
+          id="backgroundSection"
+        >
+
+          <div class="field-group">
+
+            <label for="backgroundColor">
+              Background Color
+            </label>
+
+            <div class="color-input-row">
+
+              <input
+                type="color"
+                id="backgroundColor"
+                value="#081426"
+              >
+
+              <input
+                type="text"
+                id="backgroundColorText"
+                value="#081426"
+                maxlength="7"
+              >
+
+            </div>
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="backgroundImage">
+              Background Image
+            </label>
+
+            <input
+              type="file"
+              id="backgroundImage"
+              accept="image/*"
+              class="file-input"
+            >
+
+          </div>
+
+
+          <button
+            type="button"
+            class="secondary-btn full-width"
+            id="removeBackgroundBtn"
+          >
+            Remove Background Image
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           1.2 LOGO & COVER
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle"
+          data-section="logoSection"
+        >
+          <span>
+            <small>1.2</small>
+            Logo & Cover
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content"
+          id="logoSection"
+        >
+
+          <div class="field-group">
+
+            <label for="logoUpload">
+              Upload Logo
+            </label>
+
+            <input
+              type="file"
+              id="logoUpload"
+              accept="image/*,.svg"
+              class="file-input"
+            >
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="coverUpload">
+              Upload Cover
+            </label>
+
+            <input
+              type="file"
+              id="coverUpload"
+              accept="image/*"
+              class="file-input"
+            >
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="logoTitle">
+              Logo / Organization Name
+            </label>
+
+            <input
+              type="text"
+              id="logoTitle"
+              placeholder="ROYAL SPECIALIZED HOSPITAL"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           1.3 MINI TITLE
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle"
+          data-section="miniTitleSection"
+        >
+          <span>
+            <small>1.3</small>
+            Mini Title
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content"
+          id="miniTitleSection"
+        >
+
+          <div class="field-group">
+
+            <label for="miniTitle">
+              Small Heading
+            </label>
+
+            <input
+              type="text"
+              id="miniTitle"
+              placeholder="বিশেষজ্ঞ চিকিৎসকবৃন্দ"
+            >
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="mainTitle">
+              Main Heading
+            </label>
+
+            <input
+              type="text"
+              id="mainTitle"
+              placeholder="OUR SPECIALIST DOCTORS"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           2. DOCTOR CARDS
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle active"
+          data-section="doctorSection"
+        >
+          <span>
+            <small>2</small>
+            Doctor Cards
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content active"
+          id="doctorSection"
+        >
+
+          <div class="doctor-editor-head">
+
+            <div>
+              <strong>Doctors</strong>
+              <span id="doctorCount">0 doctors</span>
+            </div>
+
+            <button
+              type="button"
+              class="add-btn"
+              id="addDoctorBtn"
+            >
+              + Add
+            </button>
+
+          </div>
+
+
+          <div
+            class="doctor-editor-list"
+            id="doctorEditorList"
+          >
+            <!-- Doctors will be generated by JavaScript -->
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           3. FOOTER & SOCIAL
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle"
+          data-section="footerSection"
+        >
+          <span>
+            <small>3</small>
+            Footer & Social
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content"
+          id="footerSection"
+        >
+
+          <div class="field-group">
+
+            <label for="addressText">
+              Address
+            </label>
+
+            <textarea
+              id="addressText"
+              rows="2"
+              placeholder="Sreemangal Road, Berirpar, Moulvibazar"
+            ></textarea>
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="phoneText">
+              Phone
+            </label>
+
+            <input
+              type="text"
+              id="phoneText"
+              placeholder="+880 1XXXXXXXXX"
+            >
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="websiteText">
+              Website
+            </label>
+
+            <input
+              type="text"
+              id="websiteText"
+              placeholder="www.example.com"
+            >
+
+          </div>
+
+
+          <div class="field-group">
+
+            <label for="facebookText">
+              Facebook
+            </label>
+
+            <input
+              type="text"
+              id="facebookText"
+              placeholder="facebook.com/example"
+            >
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           4. COLORS
+      ====================================================== -->
+
+      <section class="editor-section">
+
+        <button
+          type="button"
+          class="section-toggle active"
+          data-section="colorSection"
+        >
+          <span>
+            <small>4</small>
+            Color Presets
+          </span>
+
+          <span class="toggle-icon">⌄</span>
+        </button>
+
+        <div
+          class="section-content active"
+          id="colorSection"
+        >
+
+          <div class="preset-grid">
+
+            <button
+              type="button"
+              class="preset preset-royal"
+              data-preset="royal"
+            >
+              <span></span>
+              Royal
+            </button>
+
+            <button
+              type="button"
+              class="preset preset-emerald"
+              data-preset="emerald"
+            >
+              <span></span>
+              Emerald
+            </button>
+
+            <button
+              type="button"
+              class="preset preset-purple"
+              data-preset="purple"
+            >
+              <span></span>
+              Purple
+            </button>
+
+            <button
+              type="button"
+              class="preset preset-sunset"
+              data-preset="sunset"
+            >
+              <span></span>
+              Sunset
+            </button>
+
+            <button
+              type="button"
+              class="preset preset-rose"
+              data-preset="rose"
+            >
+              <span></span>
+              Rose
+            </button>
+
+            <button
+              type="button"
+              class="preset preset-snk"
+              data-preset="snk"
+            >
+              <span></span>
+              SNK
+            </button>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- =====================================================
+           RESET
+      ====================================================== -->
+
+      <div class="panel-bottom-actions">
+
+        <button
+          type="button"
+          class="danger-btn full-width"
+          id="resetDesignBtn"
+        >
+          Reset Design
+        </button>
+
+      </div>
+
+    </aside>
+
+
+    <!-- =======================================================
+         PREVIEW AREA
+    ======================================================== -->
+
+    <section class="preview-area">
+
+      <div class="preview-toolbar">
+
+        <div class="preview-title">
+
+          <span class="preview-dot"></span>
+
+          <div>
+            <strong>Live Preview</strong>
+            <small>1300 × 1300 px</small>
+          </div>
+
+        </div>
+
+
+        <div class="preview-actions">
+
+          <button
+            type="button"
+            class="toolbar-btn"
+            id="zoomOutBtn"
+            aria-label="Zoom out"
+          >
+            −
+          </button>
+
+          <span id="zoomValue">55%</span>
+
+          <button
+            type="button"
+            class="toolbar-btn"
+            id="zoomInBtn"
+            aria-label="Zoom in"
+          >
+            +
+          </button>
+
+          <button
+            type="button"
+            class="toolbar-btn"
+            id="fitPreviewBtn"
+          >
+            Fit
+          </button>
+
+        </div>
+
+      </div>
+
+
+      <div class="preview-stage" id="previewStage">
+
+        <div
+          class="poster-wrapper"
+          id="posterWrapper"
+        >
+
+          <!-- =================================================
+               POSTER
+          ================================================== -->
+
+          <div
+            class="poster"
+            id="poster"
+          >
+
+            <!-- Poster Background -->
+
+            <div
+              class="poster-background"
+              id="posterBackground"
+            ></div>
+
+
+            <!-- Cover -->
+
+            <div
+              class="poster-cover"
+              id="posterCover"
+            ></div>
+
+
+            <!-- Poster Header -->
+
+            <div class="poster-header">
+
+              <div class="poster-logo-wrap">
+
+                <img
+                  id="posterLogo"
+                  class="poster-logo"
+                  alt="Organization Logo"
+                >
+
+              </div>
+
+              <div class="poster-heading">
+
+                <div
+                  class="poster-mini-title"
+                  id="posterMiniTitle"
+                >
+                  বিশেষজ্ঞ চিকিৎসকবৃন্দ
+                </div>
+
+                <h2 id="posterMainTitle">
+                  OUR SPECIALIST DOCTORS
+                </h2>
+
+              </div>
+
+            </div>
+
+
+            <!-- Doctor Grid -->
+
+            <div
+              class="poster-doctor-grid"
+              id="posterDoctorGrid"
+            >
+              <!-- Doctor cards generated by JS -->
+            </div>
+
+
+            <!-- Bottom Timeline / Info -->
+
+            <div class="poster-timeline">
+
+              <div class="timeline-item">
+
+                <span class="timeline-number">
+                  01
+                </span>
+
+                <div>
+                  <strong>Experienced Doctors</strong>
+                  <small>Specialist Medical Team</small>
+                </div>
+
+              </div>
+
+
+              <div class="timeline-line"></div>
+
+
+              <div class="timeline-item">
+
+                <span class="timeline-number">
+                  02
+                </span>
+
+                <div>
+                  <strong>Quality Care</strong>
+                  <small>Patient Focused Service</small>
+                </div>
+
+              </div>
+
+
+              <div class="timeline-line"></div>
+
+
+              <div class="timeline-item">
+
+                <span class="timeline-number">
+                  03
+                </span>
+
+                <div>
+                  <strong>Modern Treatment</strong>
+                  <small>Trusted Healthcare</small>
+                </div>
+
+              </div>
+
+            </div>
+
+
+            <!-- Poster Footer -->
+
+            <footer class="poster-footer">
+
+              <div class="footer-main">
+
+                <div class="footer-location">
+
+                  <span class="footer-icon">⌖</span>
+
+                  <div>
+                    <strong id="posterAddress">
+                      Sreemangal Road, Berirpar, Moulvibazar
+                    </strong>
+
+                    <small>
+                      Find us for your next consultation
+                    </small>
+                  </div>
+
+                </div>
+
+
+                <div class="footer-contact">
+
+                  <strong id="posterPhone">
+                    +880 1XXXXXXXXX
+                  </strong>
+
+                  <span id="posterWebsite">
+                    www.example.com
+                  </span>
+
+                </div>
+
+              </div>
+
+
+              <div class="footer-social">
+
+                <span id="posterFacebook">
+                  facebook.com/example
+                </span>
+
+              </div>
+
+            </footer>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================================================
+       MOBILE EDITOR BUTTON
+  ========================================================== -->
+
+  <button
+    type="button"
+    class="mobile-editor-btn"
+    id="openEditorBtn"
+  >
+    Edit Design
+  </button>
+
+
+  <!-- =========================================================
+       MOBILE OVERLAY
+  ========================================================== -->
+
+  <div
+    class="editor-overlay"
+    id="editorOverlay"
+  ></div>
+
+
+  <!-- =========================================================
+       EXPORT MODAL
+  ========================================================== -->
+
+  <div
+    class="modal"
+    id="exportModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        id="closeExportModal"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <div class="modal-heading">
+
+        <span class="modal-kicker">
+          Final Output
+        </span>
+
+        <h2>Export Design</h2>
+
+        <p>
+          Choose the format you want to export.
+        </p>
+
+      </div>
+
+
+      <div class="export-options">
+
+        <button
+          type="button"
+          class="export-option"
+          data-export="png"
+        >
+
+          <strong>PNG</strong>
+
+          <span>
+            High quality transparent-ready image
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="export-option"
+          data-export="jpg"
+        >
+
+          <strong>JPG</strong>
+
+          <span>
+            Optimized image for social media
+          </span>
+
+        </button>
+
+
+        <button
+          type="button"
+          class="export-option"
+          data-export="pdf"
+        >
+
+          <strong>PDF</strong>
+
+          <span>
+            Print-friendly poster document
+          </span>
+
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       SAVE / OPEN JSON MODAL
+  ========================================================== -->
+
+  <div
+    class="modal"
+    id="fileModal"
+    aria-hidden="true"
+  >
+
+    <div class="modal-box">
+
+      <button
+        type="button"
+        class="modal-close"
+        id="closeFileModal"
+        aria-label="Close"
+      >
+        ×
+      </button>
+
+      <div class="modal-heading">
+
+        <span class="modal-kicker">
+          Design Data
+        </span>
+
+        <h2 id="fileModalTitle">
+          Save Design
+        </h2>
+
+        <p id="fileModalDescription">
+          Save your current poster configuration.
+        </p>
+
+      </div>
+
+
+      <div id="saveDesignArea">
+
+        <button
+          type="button"
+          class="primary-btn full-width"
+          id="downloadJsonBtn"
+        >
+          Download JSON
+        </button>
+
+      </div>
+
+
+      <div
+        id="openDesignArea"
+        class="hidden"
+      >
+
+        <label
+          for="jsonFileInput"
+          class="upload-dropzone"
+        >
+
+          <strong>
+            Choose JSON file
+          </strong>
+
+          <span>
+            Upload a previously saved design
+          </span>
+
+          <input
+            type="file"
+            id="jsonFileInput"
+            accept=".json,application/json"
+            hidden
+          >
+
+        </label>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       TOAST
+  ========================================================== -->
+
+  <div
+    class="toast"
+    id="toast"
+    role="status"
+    aria-live="polite"
+  >
+    <span id="toastMessage">
+      Design updated
+    </span>
+  </div>
+
+
+  <!-- =========================================================
+       HIDDEN FILE INPUT
+  ========================================================== -->
+
+  <input
+    type="file"
+    id="hiddenImageInput"
+    accept="image/*"
+    hidden
+  >
+
+</body>
+</html>
