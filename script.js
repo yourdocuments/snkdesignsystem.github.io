@@ -1,261 +1,170 @@
-/* =====================================================
+```javascript
+/* =========================================================
    SNK DESIGN AGENCY
    Main JavaScript
-   Version: Next
-===================================================== */
+   ========================================================= */
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  /* =====================================================
-     MOBILE MENU
-  ===================================================== */
+  /* =========================================================
+     ELEMENTS
+     ========================================================= */
 
-  const menuToggle = document.querySelector(".menu-toggle");
-  const navMenu = document.querySelector(".nav-menu");
+  const menuToggle = document.getElementById("menuToggle");
+  const navMenu = document.getElementById("navMenu");
+  const header = document.getElementById("header");
+
+  const navLinks = document.querySelectorAll(".nav-link");
+
+  const allAnchors = document.querySelectorAll(
+    'a[href^="#"]'
+  );
+
+
+  /* =========================================================
+     MOBILE MENU
+     ========================================================= */
 
   if (menuToggle && navMenu) {
 
     menuToggle.addEventListener("click", function () {
 
       navMenu.classList.toggle("active");
-      document.body.classList.toggle("menu-open");
 
-      const icon = menuToggle.querySelector("i");
+      menuToggle.classList.toggle("active");
 
-      if (navMenu.classList.contains("active")) {
+      const isOpen =
+        navMenu.classList.contains("active");
 
-        if (icon) {
-          icon.classList.remove("fa-bars");
-          icon.classList.add("fa-xmark");
-        }
-
-      } else {
-
-        if (icon) {
-          icon.classList.remove("fa-xmark");
-          icon.classList.add("fa-bars");
-        }
-
-      }
+      menuToggle.setAttribute(
+        "aria-expanded",
+        isOpen ? "true" : "false"
+      );
 
     });
 
+  }
 
-    /* Close menu after clicking link */
 
-    const navLinks = navMenu.querySelectorAll("a");
+  /* =========================================================
+     CLOSE MOBILE MENU AFTER CLICK
+     ========================================================= */
 
-    navLinks.forEach(function (link) {
+  navLinks.forEach(function (link) {
 
-      link.addEventListener("click", function () {
+    link.addEventListener("click", function () {
 
+      if (navMenu) {
         navMenu.classList.remove("active");
-        document.body.classList.remove("menu-open");
-
-        const icon = menuToggle.querySelector("i");
-
-        if (icon) {
-          icon.classList.remove("fa-xmark");
-          icon.classList.add("fa-bars");
-        }
-
-      });
-
-    });
-
-  }
-
-
-  /* =====================================================
-     CUSTOMER SEARCH & FILTER
-  ===================================================== */
-
-  const searchInput =
-    document.querySelector("#customerSearch");
-
-  const filterButtons =
-    document.querySelectorAll(".filter-btn");
-
-  const customerCards =
-    document.querySelectorAll(".customer-card");
-
-  const noResults =
-    document.querySelector(".no-results");
-
-  let selectedCategory = "all";
-
-
-  function filterCustomers() {
-
-    const searchText = searchInput
-      ? searchInput.value.toLowerCase().trim()
-      : "";
-
-    let visibleCount = 0;
-
-
-    customerCards.forEach(function (card) {
-
-      const cardCategory =
-        (card.getAttribute("data-category") || "")
-        .toLowerCase();
-
-      const cardText =
-        card.textContent.toLowerCase();
-
-
-      const categoryMatched =
-        selectedCategory === "all" ||
-        cardCategory === selectedCategory;
-
-
-      const searchMatched =
-        cardText.includes(searchText);
-
-
-      if (categoryMatched && searchMatched) {
-
-        card.style.display = "";
-
-        setTimeout(function () {
-          card.classList.add("visible");
-        }, 10);
-
-        visibleCount++;
-
-      } else {
-
-        card.classList.remove("visible");
-        card.style.display = "none";
-
       }
 
-    });
+      if (menuToggle) {
+        menuToggle.classList.remove("active");
 
-
-    if (noResults) {
-
-      noResults.style.display =
-        visibleCount === 0
-          ? "block"
-          : "none";
-
-    }
-
-  }
-
-
-  if (searchInput) {
-
-    searchInput.addEventListener(
-      "input",
-      filterCustomers
-    );
-
-  }
-
-
-  filterButtons.forEach(function (button) {
-
-    button.addEventListener("click", function () {
-
-      filterButtons.forEach(function (btn) {
-        btn.classList.remove("active");
-      });
-
-
-      button.classList.add("active");
-
-
-      selectedCategory =
-        (
-          button.getAttribute("data-filter") ||
-          "all"
-        ).toLowerCase();
-
-
-      filterCustomers();
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
+      }
 
     });
 
   });
 
 
-  /* =====================================================
-     SCROLL REVEAL
-  ===================================================== */
+  /* =========================================================
+     CLOSE MENU WHEN CLICKING OUTSIDE
+     ========================================================= */
 
-  const revealElements =
-    document.querySelectorAll(".reveal");
+  document.addEventListener("click", function (event) {
+
+    if (!navMenu || !menuToggle) {
+      return;
+    }
+
+    const clickedInsideMenu =
+      navMenu.contains(event.target);
+
+    const clickedMenuButton =
+      menuToggle.contains(event.target);
+
+    if (
+      !clickedInsideMenu &&
+      !clickedMenuButton
+    ) {
+
+      navMenu.classList.remove("active");
+
+      menuToggle.classList.remove("active");
+
+      menuToggle.setAttribute(
+        "aria-expanded",
+        "false"
+      );
+
+    }
+
+  });
 
 
-  function revealOnScroll() {
+  /* =========================================================
+     HEADER SCROLL EFFECT
+     ========================================================= */
 
-    const windowHeight =
-      window.innerHeight;
+  function updateHeader() {
 
+    if (!header) {
+      return;
+    }
 
-    revealElements.forEach(function (element) {
+    if (window.scrollY > 30) {
 
-      const elementTop =
-        element.getBoundingClientRect().top;
+      header.classList.add("scrolled");
 
+    } else {
 
-      if (elementTop < windowHeight - 80) {
+      header.classList.remove("scrolled");
 
-        element.classList.add("active");
-
-      }
-
-    });
+    }
 
   }
 
+  updateHeader();
 
-  if (revealElements.length > 0) {
-
-    window.addEventListener(
-      "scroll",
-      revealOnScroll,
-      { passive: true }
-    );
-
-    revealOnScroll();
-
-  }
+  window.addEventListener(
+    "scroll",
+    updateHeader,
+    { passive: true }
+  );
 
 
-  /* =====================================================
+  /* =========================================================
      ACTIVE NAVIGATION
-  ===================================================== */
+     ========================================================= */
 
   const sections =
     document.querySelectorAll("section[id]");
-
-
-  const navigationLinks =
-    document.querySelectorAll(
-      '.nav-menu a[href^="#"]'
-    );
 
 
   function updateActiveNavigation() {
 
     let currentSection = "";
 
+    const scrollPosition =
+      window.scrollY + 200;
+
 
     sections.forEach(function (section) {
 
       const sectionTop =
-        section.offsetTop - 150;
+        section.offsetTop;
 
       const sectionHeight =
         section.offsetHeight;
 
-
       if (
-        window.scrollY >= sectionTop &&
-        window.scrollY <
+        scrollPosition >= sectionTop &&
+        scrollPosition <
           sectionTop + sectionHeight
       ) {
 
@@ -267,17 +176,17 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 
-    navigationLinks.forEach(function (link) {
+    navLinks.forEach(function (link) {
 
       link.classList.remove("active");
 
-
-      const targetId =
+      const linkTarget =
         link.getAttribute("href");
 
 
       if (
-        targetId === "#" + currentSection
+        linkTarget ===
+        "#" + currentSection
       ) {
 
         link.classList.add("active");
@@ -289,6 +198,9 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
+  updateActiveNavigation();
+
+
   window.addEventListener(
     "scroll",
     updateActiveNavigation,
@@ -296,235 +208,102 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  updateActiveNavigation();
-
-
-  /* =====================================================
+  /* =========================================================
      SMOOTH SCROLL
-  ===================================================== */
+     ========================================================= */
 
-  const smoothLinks =
-    document.querySelectorAll(
-      'a[href^="#"]'
-    );
+  allAnchors.forEach(function (anchor) {
 
-
-  smoothLinks.forEach(function (link) {
-
-    link.addEventListener(
+    anchor.addEventListener(
       "click",
       function (event) {
 
         const targetId =
-          link.getAttribute("href");
+          this.getAttribute("href");
 
 
         if (
-          targetId &&
-          targetId !== "#" &&
-          document.querySelector(targetId)
+          !targetId ||
+          targetId === "#"
         ) {
 
-          event.preventDefault();
-
-
-          const targetElement =
-            document.querySelector(targetId);
-
-
-          targetElement.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
+          return;
 
         }
 
-      }
-    );
 
-  });
-
-
-  /* =====================================================
-     THEME TOGGLE
-  ===================================================== */
-
-  const themeToggle =
-    document.querySelector("#themeToggle");
+        const target =
+          document.querySelector(targetId);
 
 
-  const savedTheme =
-    localStorage.getItem("snk-theme");
+        if (!target) {
 
-
-  if (savedTheme === "dark") {
-
-    document.documentElement
-      .setAttribute(
-        "data-theme",
-        "dark"
-      );
-
-  }
-
-
-  if (themeToggle) {
-
-    themeToggle.addEventListener(
-      "click",
-      function () {
-
-        const currentTheme =
-          document.documentElement
-            .getAttribute("data-theme");
-
-
-        if (currentTheme === "dark") {
-
-          document.documentElement
-            .removeAttribute("data-theme");
-
-          localStorage.setItem(
-            "snk-theme",
-            "light"
-          );
-
-        } else {
-
-          document.documentElement
-            .setAttribute(
-              "data-theme",
-              "dark"
-            );
-
-          localStorage.setItem(
-            "snk-theme",
-            "dark"
-          );
+          return;
 
         }
 
-      }
-    );
 
-  }
+        event.preventDefault();
 
 
-  /* =====================================================
-     BACK TO TOP BUTTON
-  ===================================================== */
-
-  const backToTop =
-    document.querySelector("#backToTop");
+        const headerHeight =
+          header
+            ? header.offsetHeight
+            : 0;
 
 
-  function toggleBackToTop() {
+        const targetPosition =
+          target.getBoundingClientRect().top +
+          window.scrollY -
+          headerHeight;
 
-    if (!backToTop) return;
-
-
-    if (window.scrollY > 500) {
-
-      backToTop.classList.add("show");
-
-    } else {
-
-      backToTop.classList.remove("show");
-
-    }
-
-  }
-
-
-  window.addEventListener(
-    "scroll",
-    toggleBackToTop,
-    { passive: true }
-  );
-
-
-  if (backToTop) {
-
-    backToTop.addEventListener(
-      "click",
-      function () {
 
         window.scrollTo({
-          top: 0,
+
+          top: targetPosition,
+
           behavior: "smooth"
+
         });
 
       }
     );
 
-  }
+  });
 
 
-  /* =====================================================
-     MODAL
-  ===================================================== */
-
-  const modal =
-    document.querySelector(".modal");
-
-  const modalClose =
-    document.querySelector(".modal-close");
-
-
-  function closeModal() {
-
-    if (!modal) return;
-
-    modal.classList.remove("active");
-
-    document.body.classList.remove(
-      "modal-open"
-    );
-
-  }
-
-
-  if (modalClose) {
-
-    modalClose.addEventListener(
-      "click",
-      closeModal
-    );
-
-  }
-
-
-  if (modal) {
-
-    modal.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === modal
-        ) {
-
-          closeModal();
-
-        }
-
-      }
-    );
-
-  }
-
+  /* =========================================================
+     ESCAPE KEY — CLOSE MOBILE MENU
+     ========================================================= */
 
   document.addEventListener(
     "keydown",
     function (event) {
 
-      if (
-        event.key === "Escape" &&
-        modal &&
-        modal.classList.contains("active")
-      ) {
+      if (event.key !== "Escape") {
+        return;
+      }
 
-        closeModal();
+
+      if (navMenu) {
+
+        navMenu.classList.remove(
+          "active"
+        );
+
+      }
+
+
+      if (menuToggle) {
+
+        menuToggle.classList.remove(
+          "active"
+        );
+
+        menuToggle.setAttribute(
+          "aria-expanded",
+          "false"
+        );
 
       }
 
@@ -532,230 +311,33 @@ document.addEventListener("DOMContentLoaded", function () {
   );
 
 
-  /* =====================================================
-     CUSTOMER CARD MODAL
-  ===================================================== */
+  /* =========================================================
+     BUTTON RIPPLE EFFECT
+     ========================================================= */
 
-  const customerButtons =
+  const buttons =
     document.querySelectorAll(
-      "[data-modal]"
+      ".btn, .nav-cta"
     );
 
 
-  customerButtons.forEach(function (button) {
+  buttons.forEach(function (button) {
 
     button.addEventListener(
       "click",
       function () {
 
-        const modalId =
-          button.getAttribute(
-            "data-modal"
-          );
-
-
-        const targetModal =
-          document.querySelector(
-            modalId
-          );
-
-
-        if (targetModal) {
-
-          targetModal.classList.add(
-            "active"
-          );
-
-          document.body.classList.add(
-            "modal-open"
-          );
-
-        }
-
-      }
-    );
-
-  });
-
-
-  /* =====================================================
-     NOTIFICATION SYSTEM
-  ===================================================== */
-
-  function showNotification(
-    message,
-    type = "success"
-  ) {
-
-    let notification =
-      document.querySelector(
-        ".snk-notification"
-      );
-
-
-    if (!notification) {
-
-      notification =
-        document.createElement("div");
-
-      notification.className =
-        "snk-notification";
-
-      document.body.appendChild(
-        notification
-      );
-
-    }
-
-
-    notification.textContent =
-      message;
-
-
-    notification.className =
-      "snk-notification " + type;
-
-
-    notification.classList.add(
-      "show"
-    );
-
-
-    setTimeout(function () {
-
-      notification.classList.remove(
-        "show"
-      );
-
-    }, 3000);
-
-  }
-
-
-  /* =====================================================
-     CONTACT FORM
-  ===================================================== */
-
-  const contactForm =
-    document.querySelector(
-      "#contactForm"
-    );
-
-
-  if (contactForm) {
-
-    contactForm.addEventListener(
-      "submit",
-      function (event) {
-
-        event.preventDefault();
-
-
-        const name =
-          contactForm.querySelector(
-            '[name="name"]'
-          );
-
-
-        const email =
-          contactForm.querySelector(
-            '[name="email"]'
-          );
-
-
-        if (
-          name &&
-          name.value.trim() === ""
-        ) {
-
-          showNotification(
-            "Please enter your name.",
-            "error"
-          );
-
-          name.focus();
-
-          return;
-
-        }
-
-
-        if (
-          email &&
-          email.value.trim() === ""
-        ) {
-
-          showNotification(
-            "Please enter your email.",
-            "error"
-          );
-
-          email.focus();
-
-          return;
-
-        }
-
-
-        showNotification(
-          "Your message has been received.",
-          "success"
+        button.classList.remove(
+          "clicked"
         );
 
 
-        contactForm.reset();
-
-      }
-    );
-
-  }
+        void button.offsetWidth;
 
 
-  /* =====================================================
-     COPY BUTTON
-  ===================================================== */
-
-  const copyButtons =
-    document.querySelectorAll(
-      "[data-copy]"
-    );
-
-
-  copyButtons.forEach(function (button) {
-
-    button.addEventListener(
-      "click",
-      async function () {
-
-        const text =
-          button.getAttribute(
-            "data-copy"
-          );
-
-
-        if (!text) return;
-
-
-        try {
-
-          await navigator.clipboard.writeText(
-            text
-          );
-
-
-          showNotification(
-            "Copied successfully!",
-            "success"
-          );
-
-        } catch (error) {
-
-          showNotification(
-            "Copy failed.",
-            "error"
-          );
-
-        }
+        button.classList.add(
+          "clicked"
+        );
 
       }
     );
@@ -763,33 +345,89 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 
-  /* =====================================================
-     EXTERNAL LINKS
-  ===================================================== */
+  /* =========================================================
+     SERVICE CARD HOVER
+     ========================================================= */
 
-  const externalLinks =
+  const serviceCards =
     document.querySelectorAll(
-      'a[target="_blank"]'
+      ".service-card"
     );
 
 
-  externalLinks.forEach(function (link) {
+  serviceCards.forEach(function (card) {
 
-    link.setAttribute(
-      "rel",
-      "noopener noreferrer"
+    card.addEventListener(
+      "mouseenter",
+      function () {
+
+        card.classList.add(
+          "is-hovered"
+        );
+
+      }
+    );
+
+
+    card.addEventListener(
+      "mouseleave",
+      function () {
+
+        card.classList.remove(
+          "is-hovered"
+        );
+
+      }
     );
 
   });
 
 
-  /* =====================================================
+  /* =========================================================
+     WORK CARD HOVER
+     ========================================================= */
+
+  const workCards =
+    document.querySelectorAll(
+      ".work-card"
+    );
+
+
+  workCards.forEach(function (card) {
+
+    card.addEventListener(
+      "mouseenter",
+      function () {
+
+        card.classList.add(
+          "is-hovered"
+        );
+
+      }
+    );
+
+
+    card.addEventListener(
+      "mouseleave",
+      function () {
+
+        card.classList.remove(
+          "is-hovered"
+        );
+
+      }
+    );
+
+  });
+
+
+  /* =========================================================
      CURRENT YEAR
-  ===================================================== */
+     ========================================================= */
 
   const currentYear =
     document.querySelector(
-      "#currentYear"
+      ".current-year"
     );
 
 
@@ -801,20 +439,18 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
 
-  /* =====================================================
+  /* =========================================================
      PAGE LOADED
-  ===================================================== */
+     ========================================================= */
 
   document.body.classList.add(
     "page-loaded"
   );
 
 
-  /* =====================================================
-     INITIAL CUSTOMER FILTER
-  ===================================================== */
-
-  filterCustomers();
-
+  console.log(
+    "SNK Design Agency website loaded successfully."
+  );
 
 });
+```
