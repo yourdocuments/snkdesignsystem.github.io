@@ -1,4 +1,3 @@
-```javascript
 /* =========================================================
    SNK DESIGN AGENCY
    Main JavaScript
