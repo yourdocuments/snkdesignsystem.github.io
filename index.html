@@ -1,50 +1,41 @@
+```html
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>SNK Design Agency | Business & Professional Showcase</title>
+  <title>SNK Design Agency | Creative Digital Solutions</title>
 
   <meta
     name="description"
-    content="SNK Design Agency — Discover hospitals, clinics, doctors, companies and professional businesses."
+    content="SNK Design Agency — Professional website design, graphics, branding, UI/UX and digital solutions for modern businesses."
   >
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
   <link
-    href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap"
     rel="stylesheet"
   >
 
   <style>
-
-    /* =========================
-       ROOT VARIABLES
-    ========================= */
-
     :root {
-
-      --primary: #0758a8;
-      --primary-dark: #04376b;
-      --secondary: #16a878;
-      --accent: #c8ef00;
-
-      --background: #f3f8fd;
-      --surface: #ffffff;
-
-      --text: #16324f;
-      --muted: #718096;
-
-      --border: #dce8f2;
-
-      --shadow: 0 12px 35px rgba(5, 72, 130, 0.10);
-
+      --bg: #080b12;
+      --bg-soft: #0d111a;
+      --card: #111722;
+      --card-hover: #151d2b;
+      --text: #f5f7fb;
+      --muted: #9aa5b5;
+      --line: rgba(255,255,255,.09);
+      --accent: #d8ff3e;
+      --accent-dark: #b7dc20;
+      --white: #ffffff;
+      --danger: #ff5f6d;
+      --max: 1180px;
       --radius: 22px;
-
+      --shadow: 0 20px 60px rgba(0,0,0,.28);
     }
 
     * {
@@ -58,72 +49,33 @@
     }
 
     body {
-
-      font-family: "Hind Siliguri", sans-serif;
-
+      font-family: "Inter", sans-serif;
       background:
-        linear-gradient(
-          180deg,
-          #f8fcff,
-          #edf6ff
-        );
-
+        radial-gradient(circle at 10% 10%, rgba(216,255,62,.08), transparent 28%),
+        radial-gradient(circle at 90% 20%, rgba(94,106,255,.08), transparent 25%),
+        var(--bg);
       color: var(--text);
-
-      line-height: 1.7;
-
+      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
-      text-decoration: none;
       color: inherit;
-    }
-
-    button,
-    input,
-    select {
-      font: inherit;
+      text-decoration: none;
     }
 
     img {
-      width: 100%;
+      max-width: 100%;
       display: block;
     }
 
+    button {
+      font-family: inherit;
+    }
+
     .container {
-
-      width: min(1200px, 92%);
-
+      width: min(var(--max), calc(100% - 40px));
       margin: auto;
-
-    }
-
-    /* =========================
-       TOPBAR
-    ========================= */
-
-    .topbar {
-
-      background: var(--primary-dark);
-
-      color: #fff;
-
-      padding: 9px 0;
-
-      font-size: 14px;
-
-    }
-
-    .topbar-content {
-
-      display: flex;
-
-      justify-content: space-between;
-
-      gap: 20px;
-
-      flex-wrap: wrap;
-
     }
 
     /* =========================
@@ -131,135 +83,122 @@
     ========================= */
 
     header {
-
-      position: sticky;
-
+      position: fixed;
       top: 0;
-
-      z-index: 1000;
-
-      background: rgba(255,255,255,0.97);
-
-      backdrop-filter: blur(15px);
-
-      border-bottom: 1px solid var(--border);
-
+      left: 0;
+      width: 100%;
+      z-index: 999;
+      border-bottom: 1px solid transparent;
+      transition: .3s ease;
     }
 
-    .navbar {
+    header.scrolled {
+      background: rgba(8,11,18,.88);
+      backdrop-filter: blur(18px);
+      border-bottom-color: var(--line);
+    }
 
-      min-height: 80px;
-
+    .nav {
+      height: 78px;
       display: flex;
-
       align-items: center;
-
       justify-content: space-between;
-
-      gap: 20px;
-
+      gap: 30px;
     }
 
     .logo {
-
       display: flex;
-
       align-items: center;
-
-      gap: 12px;
-
-    }
-
-    .logo-icon {
-
-      width: 58px;
-
-      height: 58px;
-
-      border-radius: 18px;
-
-      background: var(--primary);
-
-      color: #fff;
-
-      display: grid;
-
-      place-items: center;
-
-      font-size: 28px;
-
+      gap: 11px;
       font-weight: 800;
-
+      font-size: 19px;
+      letter-spacing: -.5px;
+      white-space: nowrap;
     }
 
-    .logo-text h1 {
-
-      color: var(--primary-dark);
-
-      font-family: "Poppins", sans-serif;
-
-      font-size: 20px;
-
-      line-height: 1.2;
-
-    }
-
-    .logo-text p {
-
-      font-size: 12px;
-
-      color: var(--secondary);
-
-      font-weight: 700;
-
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: grid;
+      place-items: center;
+      color: #0a0d12;
+      background: var(--accent);
+      font-weight: 900;
+      box-shadow: 0 0 25px rgba(216,255,62,.22);
     }
 
     .nav-links {
-
       display: flex;
-
-      gap: 25px;
-
-      list-style: none;
-
       align-items: center;
-
+      gap: 28px;
+      list-style: none;
     }
 
     .nav-links a {
-
+      color: #c7cfdb;
+      font-size: 14px;
       font-weight: 600;
-
-      font-size: 15px;
-
+      transition: .2s ease;
     }
 
     .nav-links a:hover {
-
-      color: var(--primary);
-
+      color: var(--accent);
     }
 
-    .menu-button {
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-      display: none;
-
-      width: 44px;
-
-      height: 44px;
-
-      border: none;
-
-      border-radius: 12px;
-
-      background: #edf6ff;
-
-      color: var(--primary);
-
-      font-size: 24px;
-
+    .btn {
+      border: 0;
       cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 46px;
+      padding: 0 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 700;
+      transition: .25s ease;
+    }
 
+    .btn-primary {
+      color: #090c11;
+      background: var(--accent);
+      box-shadow: 0 10px 30px rgba(216,255,62,.14);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #e2ff68;
+    }
+
+    .btn-outline {
+      color: var(--text);
+      background: transparent;
+      border: 1px solid var(--line);
+    }
+
+    .btn-outline:hover {
+      border-color: rgba(216,255,62,.4);
+      color: var(--accent);
+    }
+
+    .menu-btn {
+      display: none;
+      width: 44px;
+      height: 44px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--white);
+      border-radius: 12px;
+      font-size: 21px;
+      cursor: pointer;
     }
 
     /* =========================
@@ -267,641 +206,515 @@
     ========================= */
 
     .hero {
-
-      padding: 75px 0 55px;
-
+      min-height: 100vh;
+      padding: 155px 0 90px;
+      display: flex;
+      align-items: center;
+      position: relative;
     }
 
     .hero-grid {
-
       display: grid;
-
-      grid-template-columns: 1.1fr 0.9fr;
-
-      gap: 45px;
-
+      grid-template-columns: 1.05fr .95fr;
       align-items: center;
-
+      gap: 70px;
     }
 
-    .hero-badge {
-
-      display: inline-block;
-
-      color: var(--secondary);
-
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 13px;
+      border-radius: 50px;
+      border: 1px solid rgba(216,255,62,.18);
+      background: rgba(216,255,62,.06);
+      color: var(--accent);
+      font-size: 12px;
       font-weight: 700;
-
-      margin-bottom: 12px;
-
+      margin-bottom: 24px;
     }
 
-    .hero h2 {
-
-      font-family: "Poppins", sans-serif;
-
-      font-size: clamp(32px, 5vw, 56px);
-
-      line-height: 1.2;
-
-      color: var(--primary-dark);
-
-      margin-bottom: 20px;
-
+    .eyebrow span {
+      width: 7px;
+      height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 12px var(--accent);
     }
 
-    .hero h2 span {
-
-      color: var(--secondary);
-
+    .hero h1 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(48px, 6vw, 78px);
+      line-height: 1.02;
+      letter-spacing: -2.5px;
+      max-width: 760px;
     }
 
-    .hero p {
+    .hero h1 em {
+      color: var(--accent);
+      font-style: normal;
+    }
 
+    .hero-text {
       color: var(--muted);
-
-      font-size: 17px;
-
       max-width: 620px;
-
-      margin-bottom: 25px;
-
+      font-size: 17px;
+      margin: 25px 0 32px;
     }
 
     .hero-buttons {
-
       display: flex;
-
       gap: 12px;
-
       flex-wrap: wrap;
-
     }
 
-    .button {
-
-      display: inline-flex;
-
-      align-items: center;
-
-      justify-content: center;
-
-      gap: 8px;
-
-      padding: 13px 22px;
-
-      border-radius: 12px;
-
-      font-weight: 700;
-
-      transition: 0.2s;
-
-      border: 1px solid transparent;
-
-    }
-
-    .button-primary {
-
-      background: var(--primary);
-
-      color: #fff;
-
-    }
-
-    .button-primary:hover {
-
-      background: var(--primary-dark);
-
-      transform: translateY(-2px);
-
-    }
-
-    .button-outline {
-
-      border-color: var(--primary);
-
-      color: var(--primary);
-
-      background: #fff;
-
-    }
-
-    .button-outline:hover {
-
-      background: #edf6ff;
-
-    }
-
-    .hero-card {
-
-      min-height: 350px;
-
-      padding: 35px;
-
-      border-radius: 30px;
-
-      color: #fff;
-
-      background:
-
-        linear-gradient(
-          135deg,
-          #0758a8,
-          #0d8c8b
-        );
-
-      box-shadow: var(--shadow);
-
+    .hero-stats {
       display: flex;
-
-      flex-direction: column;
-
-      justify-content: space-between;
-
-      overflow: hidden;
-
-      position: relative;
-
+      gap: 38px;
+      margin-top: 45px;
+      padding-top: 28px;
+      border-top: 1px solid var(--line);
     }
 
-    .hero-card::after {
+    .stat strong {
+      display: block;
+      font-size: 25px;
+      color: var(--white);
+    }
 
+    .stat span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .hero-visual {
+      position: relative;
+    }
+
+    .visual-main {
+      position: relative;
+      border-radius: 28px;
+      overflow: hidden;
+      min-height: 520px;
+      background:
+        linear-gradient(145deg, rgba(216,255,62,.12), transparent 40%),
+        #101722;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .visual-main::before {
       content: "";
-
       position: absolute;
-
-      width: 300px;
-
-      height: 300px;
-
-      border: 35px solid rgba(255,255,255,0.12);
-
+      width: 260px;
+      height: 260px;
+      right: -80px;
+      top: -80px;
+      background: var(--accent);
+      opacity: .13;
+      filter: blur(20px);
       border-radius: 50%;
-
-      right: -130px;
-
-      top: -100px;
-
     }
 
-    .hero-icon {
-
-      width: 85px;
-
-      height: 85px;
-
-      border-radius: 24px;
-
-      background: #fff;
-
-      color: var(--primary);
-
-      display: grid;
-
-      place-items: center;
-
-      font-size: 43px;
-
-    }
-
-    .hero-card h3 {
-
-      font-family: "Poppins", sans-serif;
-
-      font-size: 29px;
-
-      line-height: 1.3;
-
-      margin-bottom: 8px;
-
-    }
-
-    .hero-card p {
-
-      color: #e7ffff;
-
-      font-size: 15px;
-
-    }
-
-    /* =========================
-       SECTION
-    ========================= */
-
-    .section {
-
-      padding: 55px 0;
-
-    }
-
-    .section-heading {
-
-      text-align: center;
-
-      margin-bottom: 30px;
-
-    }
-
-    .mini-title {
-
-      color: var(--secondary);
-
-      font-weight: 700;
-
-      font-size: 15px;
-
-    }
-
-    .section-heading h2 {
-
-      font-family: "Poppins", sans-serif;
-
-      color: var(--primary-dark);
-
-      font-size: clamp(26px, 4vw, 38px);
-
-      line-height: 1.3;
-
-      margin: 6px 0 10px;
-
-    }
-
-    .section-heading p {
-
-      color: var(--muted);
-
-      max-width: 680px;
-
-      margin: auto;
-
-    }
-
-    /* =========================
-       STATISTICS
-    ========================= */
-
-    .stats-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(4, 1fr);
-
-      gap: 18px;
-
-    }
-
-    .stat-card {
-
-      background: var(--surface);
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      padding: 25px;
-
-      text-align: center;
-
-      box-shadow: var(--shadow);
-
-    }
-
-    .stat-card h3 {
-
-      color: var(--primary);
-
-      font-family: "Poppins", sans-serif;
-
-      font-size: 34px;
-
-      line-height: 1.2;
-
-    }
-
-    .stat-card p {
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-    }
-
-    /* =========================
-       SEARCH & FILTER
-    ========================= */
-
-    .filter-area {
-
-      background: #fff;
-
-      border: 1px solid var(--border);
-
-      padding: 22px;
-
-      border-radius: var(--radius);
-
-      box-shadow: var(--shadow);
-
-      margin-bottom: 30px;
-
-    }
-
-    .filter-grid {
-
-      display: grid;
-
-      grid-template-columns: 1fr 230px;
-
-      gap: 15px;
-
-    }
-
-    .input {
-
-      width: 100%;
-
-      padding: 14px 17px;
-
-      border: 1px solid var(--border);
-
-      border-radius: 12px;
-
-      outline: none;
-
-      background: #f8fcff;
-
-      color: var(--text);
-
-    }
-
-    .input:focus {
-
-      border-color: var(--primary);
-
-    }
-
-    /* =========================
-       CUSTOMER CARDS
-    ========================= */
-
-    .customer-grid {
-
-      display: grid;
-
-      grid-template-columns: repeat(3, 1fr);
-
-      gap: 22px;
-
-    }
-
-    .customer-card {
-
-      background: #fff;
-
-      border: 1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      overflow: hidden;
-
-      box-shadow: var(--shadow);
-
-      transition: 0.25s;
-
-    }
-
-    .customer-card:hover {
-
-      transform: translateY(-5px);
-
-      box-shadow: 0 18px 40px rgba(5,72,130,0.16);
-
-    }
-
-    .customer-cover {
-
-      height: 130px;
-
-      background:
-
-        linear-gradient(
-          135deg,
-          #0758a8,
-          #19a974
-        );
-
-      position: relative;
-
-    }
-
-    .customer-cover.green {
-
-      background: linear-gradient(
-        135deg,
-        #087f5b,
-        #1bbf92
-      );
-
-    }
-
-    .customer-cover.purple {
-
-      background: linear-gradient(
-        135deg,
-        #4c3a91,
-        #8c6de8
-      );
-
-    }
-
-    .customer-logo {
-
-      width: 85px;
-
-      height: 85px;
-
-      border-radius: 22px;
-
-      background: #fff;
-
-      border: 5px solid #fff;
-
+    .mockup {
       position: absolute;
-
-      bottom: -38px;
-
-      left: 22px;
-
-      display: grid;
-
-      place-items: center;
-
-      font-size: 40px;
-
-      box-shadow: 0 8px 22px rgba(0,0,0,0.12);
-
+      left: 8%;
+      top: 9%;
+      width: 84%;
+      height: 82%;
+      border-radius: 20px;
+      background: #0a0e15;
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 18px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
+      transform: rotate(3deg);
     }
 
-    .customer-content {
-
-      padding: 55px 22px 22px;
-
-    }
-
-    .customer-category {
-
-      color: var(--secondary);
-
-      font-size: 13px;
-
-      font-weight: 700;
-
-    }
-
-    .customer-content h3 {
-
-      color: var(--primary-dark);
-
-      font-size: 22px;
-
-      line-height: 1.3;
-
-      margin: 5px 0 8px;
-
-    }
-
-    .customer-content p {
-
-      color: var(--muted);
-
-      font-size: 14px;
-
-      min-height: 65px;
-
-    }
-
-    .customer-location {
-
-      color: var(--muted);
-
-      font-size: 13px;
-
-      margin: 12px 0;
-
-    }
-
-    .card-actions {
-
+    .mock-top {
       display: flex;
-
-      gap: 8px;
-
-      flex-wrap: wrap;
-
-      padding-top: 15px;
-
-      border-top: 1px solid var(--border);
-
+      gap: 6px;
+      margin-bottom: 18px;
     }
 
-    .small-button {
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #394252;
+    }
 
-      display: inline-flex;
+    .mock-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
 
+    .mock-card {
+      min-height: 115px;
+      border-radius: 14px;
+      background: #151c27;
+      border: 1px solid rgba(255,255,255,.06);
+      padding: 16px;
+    }
+
+    .mock-card.large {
+      grid-column: span 2;
+      min-height: 170px;
+      background:
+        linear-gradient(135deg, rgba(216,255,62,.18), transparent),
+        #151c27;
+    }
+
+    .mock-line {
+      height: 9px;
+      width: 65%;
+      background: #313b4a;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .mock-line.small {
+      width: 38%;
+      height: 7px;
+    }
+
+    .floating-card {
+      position: absolute;
+      right: -28px;
+      bottom: 40px;
+      width: 190px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(20,27,39,.94);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+    }
+
+    .floating-card small {
+      color: var(--muted);
+    }
+
+    .floating-card strong {
+      display: block;
+      font-size: 24px;
+      margin-top: 5px;
+      color: var(--accent);
+    }
+
+    /* =========================
+       SECTIONS
+    ========================= */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 30px;
+      margin-bottom: 45px;
+    }
+
+    .section-kicker {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(35px, 4vw, 52px);
+      line-height: 1.1;
+      letter-spacing: -1px;
+    }
+
+    .section-desc {
+      max-width: 470px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    /* =========================
+       SERVICES
+    ========================= */
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      padding: 30px;
+      min-height: 280px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: linear-gradient(145deg, rgba(255,255,255,.025), rgba(255,255,255,.01));
+      transition: .3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-7px);
+      background: var(--card-hover);
+      border-color: rgba(216,255,62,.22);
+    }
+
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 15px;
+      display: grid;
+      place-items: center;
+      background: rgba(216,255,62,.09);
+      border: 1px solid rgba(216,255,62,.15);
+      color: var(--accent);
+      font-size: 24px;
+      margin-bottom: 28px;
+    }
+
+    .service-card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .service-arrow {
+      position: absolute;
+      right: 25px;
+      bottom: 24px;
+      color: var(--accent);
+      font-size: 22px;
+    }
+
+    /* =========================
+       ABOUT
+    ========================= */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
       align-items: center;
+    }
 
-      justify-content: center;
+    .about-image {
+      min-height: 470px;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(145deg, rgba(216,255,62,.14), transparent 50%),
+        radial-gradient(circle at 70% 30%, rgba(109,121,255,.18), transparent 35%),
+        #111722;
+      position: relative;
+      overflow: hidden;
+    }
 
-      gap: 5px;
+    .about-shape {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 1px solid rgba(216,255,62,.2);
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+    }
 
-      padding: 9px 12px;
+    .about-shape::after {
+      content: "SNK";
+      position: absolute;
+      inset: 30px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      font-size: 55px;
+      font-weight: 900;
+      color: var(--accent);
+      background: rgba(216,255,62,.05);
+      border: 1px solid rgba(216,255,62,.18);
+    }
 
-      border-radius: 9px;
+    .about-content p {
+      color: var(--muted);
+      margin: 22px 0;
+      font-size: 15px;
+    }
 
-      font-size: 13px;
+    .check-list {
+      display: grid;
+      gap: 12px;
+      margin: 25px 0 30px;
+    }
 
+    .check-item {
+      display: flex;
+      gap: 11px;
+      align-items: center;
+      color: #d6dce5;
+      font-size: 14px;
+    }
+
+    .check {
+      width: 21px;
+      height: 21px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(216,255,62,.1);
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    /* =========================
+       WORK
+    ========================= */
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .work-card {
+      min-height: 330px;
+      border-radius: 24px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: #111722;
+      position: relative;
+    }
+
+    .work-art {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(216,255,62,.18), transparent 35%),
+        radial-gradient(circle at 80% 20%, rgba(110,125,255,.2), transparent 25%),
+        #151c28;
+      transition: .4s ease;
+    }
+
+    .work-card:nth-child(2) .work-art {
+      background:
+        linear-gradient(135deg, rgba(255,101,196,.13), transparent 40%),
+        radial-gradient(circle at 75% 25%, rgba(216,255,62,.13), transparent 25%),
+        #161923;
+    }
+
+    .work-card:nth-child(3) .work-art {
+      background:
+        linear-gradient(135deg, rgba(92,214,255,.14), transparent 40%),
+        radial-gradient(circle at 75% 25%, rgba(153,104,255,.15), transparent 25%),
+        #121923;
+    }
+
+    .work-card:nth-child(4) .work-art {
+      background:
+        linear-gradient(135deg, rgba(255,166,77,.13), transparent 40%),
+        radial-gradient(circle at 75% 25%, rgba(216,255,62,.1), transparent 25%),
+        #171922;
+    }
+
+    .work-card:hover .work-art {
+      transform: scale(1.05);
+    }
+
+    .work-content {
+      position: absolute;
+      left: 25px;
+      right: 25px;
+      bottom: 25px;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(7,10,16,.75);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+
+    .work-content small {
+      color: var(--accent);
+      font-size: 11px;
       font-weight: 700;
-
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .small-primary {
-
-      background: var(--primary);
-
-      color: #fff;
-
+    .work-content h3 {
+      margin-top: 6px;
+      font-size: 21px;
     }
 
-    .small-green {
+    /* =========================
+       PROCESS
+    ========================= */
 
-      background: #e6fff4;
-
-      color: #078457;
-
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
     }
 
-    .small-light {
+    .process-card {
+      padding: 25px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--bg-soft);
+    }
 
-      background: #edf6ff;
+    .process-number {
+      color: var(--accent);
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 35px;
+    }
 
-      color: var(--primary);
+    .process-card h3 {
+      margin-bottom: 10px;
+    }
 
+    .process-card p {
+      color: var(--muted);
+      font-size: 13px;
     }
 
     /* =========================
        CTA
     ========================= */
 
-    .cta {
-
-      background: linear-gradient(
-        135deg,
-        var(--primary-dark),
-        var(--primary)
-      );
-
-      color: #fff;
-
-      padding: 40px;
-
-      border-radius: 28px;
-
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      gap: 25px;
-
-      box-shadow: var(--shadow);
-
+    .cta-box {
+      padding: 70px 60px;
+      border-radius: 30px;
+      border: 1px solid rgba(216,255,62,.18);
+      background:
+        radial-gradient(circle at 80% 20%, rgba(216,255,62,.13), transparent 30%),
+        linear-gradient(145deg, #121923, #0d121a);
+      text-align: center;
+      overflow: hidden;
     }
 
-    .cta h2 {
-
-      font-size: 30px;
-
-      line-height: 1.3;
-
-      margin-bottom: 8px;
-
+    .cta-box h2 {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(38px, 5vw, 58px);
+      line-height: 1.05;
+      max-width: 750px;
+      margin: auto;
     }
 
-    .cta p {
-
-      opacity: 0.9;
-
-    }
-
-    .cta .button {
-
-      background: var(--accent);
-
-      color: #183700;
-
-      white-space: nowrap;
-
+    .cta-box p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 18px auto 28px;
     }
 
     /* =========================
@@ -909,105 +722,50 @@
     ========================= */
 
     footer {
-
-      background: #052e59;
-
-      color: #dcecff;
-
-      padding: 45px 0 20px;
-
-      margin-top: 40px;
-
+      padding: 60px 0 30px;
+      border-top: 1px solid var(--line);
+      background: #06090e;
     }
 
     .footer-grid {
-
       display: grid;
-
-      grid-template-columns: 1.5fr 1fr 1fr;
-
-      gap: 35px;
-
+      grid-template-columns: 1.4fr repeat(3, 1fr);
+      gap: 40px;
+      padding-bottom: 45px;
     }
 
-    footer h3 {
-
-      color: #fff;
-
-      margin-bottom: 12px;
-
-      font-size: 20px;
-
+    .footer-brand p {
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 320px;
+      margin-top: 18px;
     }
 
-    footer p,
-
-    footer li {
-
-      color: #c4d9ed;
-
-      font-size: 14px;
-
+    .footer-col h4 {
+      font-size: 13px;
+      margin-bottom: 18px;
     }
 
-    footer ul {
-
-      list-style: none;
-
+    .footer-col a {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+      transition: .2s;
     }
 
-    footer li {
-
-      margin-bottom: 7px;
-
+    .footer-col a:hover {
+      color: var(--accent);
     }
 
     .copyright {
-
-      border-top: 1px solid rgba(255,255,255,0.15);
-
-      margin-top: 30px;
-
-      padding-top: 20px;
-
-      text-align: center;
-
-      font-size: 13px;
-
-    }
-
-    /* =========================
-       FLOATING BUTTON
-    ========================= */
-
-    .floating-call {
-
-      position: fixed;
-
-      right: 22px;
-
-      bottom: 22px;
-
-      width: 60px;
-
-      height: 60px;
-
-      border-radius: 50%;
-
-      background: var(--secondary);
-
-      color: #fff;
-
-      display: grid;
-
-      place-items: center;
-
-      font-size: 26px;
-
-      box-shadow: 0 12px 30px rgba(22,168,120,0.35);
-
-      z-index: 999;
-
+      padding-top: 25px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      color: #697386;
+      font-size: 12px;
     }
 
     /* =========================
@@ -1016,856 +774,792 @@
 
     @media (max-width: 1000px) {
 
-      .hero-grid {
-
-        grid-template-columns: 1fr;
-
-      }
-
-      .customer-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-      }
-
-      .stats-grid {
-
-        grid-template-columns: repeat(2, 1fr);
-
-      }
-
-      .footer-grid {
-
-        grid-template-columns: 1fr 1fr;
-
-      }
-
-    }
-
-    @media (max-width: 680px) {
-
-      .topbar-content {
-
-        justify-content: center;
-
-        text-align: center;
-
-      }
-
-      .menu-button {
-
-        display: block;
-
-      }
-
       .nav-links {
+        gap: 16px;
+      }
 
+      .nav-actions .btn-outline {
         display: none;
-
-        position: absolute;
-
-        top: 80px;
-
-        left: 0;
-
-        right: 0;
-
-        background: #fff;
-
-        padding: 22px 5%;
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 15px;
-
-        border-bottom: 1px solid var(--border);
-
       }
 
-      .nav-links.open {
-
-        display: flex;
-
-      }
-
-      .logo-text h1 {
-
-        font-size: 16px;
-
-      }
-
-      .logo-icon {
-
-        width: 48px;
-
-        height: 48px;
-
+      .hero-grid {
+        grid-template-columns: 1fr;
       }
 
       .hero {
-
-        padding-top: 40px;
-
+        padding-top: 130px;
       }
 
-      .hero-card {
-
-        min-height: 290px;
-
-        padding: 25px;
-
+      .hero-visual {
+        max-width: 650px;
+        width: 100%;
+        margin: auto;
       }
 
-      .hero-card h3 {
-
-        font-size: 24px;
-
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .filter-grid {
+      .process-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
+      .about-grid {
         grid-template-columns: 1fr;
-
       }
 
-      .customer-grid {
-
-        grid-template-columns: 1fr;
-
-      }
-
-      .stats-grid {
-
-        grid-template-columns: 1fr 1fr;
-
-      }
-
-      .cta {
-
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        padding: 28px;
-
-      }
-
-      .cta h2 {
-
-        font-size: 25px;
-
+      .about-image {
+        max-width: 600px;
+        width: 100%;
       }
 
       .footer-grid {
-
-        grid-template-columns: 1fr;
-
+        grid-template-columns: repeat(2, 1fr);
       }
-
     }
 
+    @media (max-width: 760px) {
+
+      .container {
+        width: min(var(--max), calc(100% - 28px));
+      }
+
+      .nav {
+        height: 68px;
+      }
+
+      .nav-links {
+        position: absolute;
+        left: 14px;
+        right: 14px;
+        top: 76px;
+        display: none;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding: 10px;
+        border-radius: 18px;
+        background: rgba(13,17,26,.97);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow);
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .nav-links li a {
+        display: block;
+        padding: 14px;
+        border-radius: 10px;
+      }
+
+      .nav-links li a:hover {
+        background: rgba(216,255,62,.05);
+      }
+
+      .nav-actions {
+        margin-left: auto;
+      }
+
+      .nav-actions .btn-primary {
+        min-height: 40px;
+        padding: 0 14px;
+        font-size: 12px;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero {
+        padding: 120px 0 70px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        letter-spacing: -1.8px;
+      }
+
+      .hero-text {
+        font-size: 15px;
+      }
+
+      .hero-stats {
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .stat strong {
+        font-size: 21px;
+      }
+
+      .visual-main {
+        min-height: 400px;
+      }
+
+      .floating-card {
+        right: 10px;
+        bottom: 20px;
+      }
+
+      section {
+        padding: 75px 0;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-desc {
+        margin-top: 15px;
+      }
+
+      .services-grid,
+      .work-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .work-card {
+        min-height: 290px;
+      }
+
+      .about-image {
+        min-height: 360px;
+      }
+
+      .cta-box {
+        padding: 50px 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      .footer-brand {
+        grid-column: span 2;
+      }
+
+      .copyright {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 480px) {
+
+      .logo {
+        font-size: 15px;
+      }
+
+      .logo-mark {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+      }
+
+      .nav-actions .btn-primary {
+        display: none;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .hero-buttons {
+        flex-direction: column;
+      }
+
+      .hero-buttons .btn {
+        width: 100%;
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mockup {
+        width: 88%;
+        left: 6%;
+      }
+
+      .floating-card {
+        width: 160px;
+        padding: 14px;
+      }
+
+      .floating-card strong {
+        font-size: 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
 
   <!-- =========================
-       TOPBAR
-  ========================= -->
-
-  <div class="topbar">
-
-    <div class="container topbar-content">
-
-      <span>🌐 SNK Design Agency</span>
-
-      <span>📞 +880 1XXXXXXXXX</span>
-
-    </div>
-
-  </div>
-
-  <!-- =========================
        HEADER
   ========================= -->
 
-  <header>
+  <header id="header">
 
-    <div class="container navbar">
+    <div class="container nav">
 
-      <a href="#" class="logo">
-
-        <div class="logo-icon">SNK</div>
-
-        <div class="logo-text">
-
-          <h1>SNK Design Agency</h1>
-
-          <p>Creative • Professional • Digital</p>
-
-        </div>
-
+      <a href="#home" class="logo">
+        <div class="logo-mark">S</div>
+        <span>SNK Design Agency</span>
       </a>
 
-      <button
-        class="menu-button"
-        id="menuButton"
-        aria-label="Open menu"
-      >
-        ☰
-      </button>
-
       <ul class="nav-links" id="navLinks">
-
         <li><a href="#home">Home</a></li>
-
-        <li><a href="#customers">Customers</a></li>
-
-        <li><a href="#categories">Categories</a></li>
-
-        <li><a href="#about">About Us</a></li>
-
+        <li><a href="#services">Services</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Our Work</a></li>
+        <li><a href="#process">Process</a></li>
         <li><a href="#contact">Contact</a></li>
-
       </ul>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn btn-outline">Let's Talk</a>
+        <a href="#contact" class="btn btn-primary">Start Project</a>
+        <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+      </div>
 
     </div>
 
   </header>
 
-  <main>
 
-    <!-- =========================
-         HERO
-    ========================= -->
+  <!-- =========================
+       HERO
+  ========================= -->
+
+  <main>
 
     <section class="hero" id="home">
 
       <div class="container hero-grid">
 
-        <div>
+        <div class="hero-content">
 
-          <div class="hero-badge">
-            ✦ Welcome to SNK Design Agency
+          <div class="eyebrow">
+            <span></span>
+            Creative Digital Agency
           </div>
 
-          <h2>
-            Discover Amazing<br>
-            <span>Businesses & Professionals</span>
-          </h2>
+          <h1>
+            We Build
+            <em>Digital</em>
+            Experiences.
+          </h1>
 
-          <p>
-            এক প্ল্যাটফর্মে বিভিন্ন কোম্পানি, হাসপাতাল, ক্লিনিক,
-            ডাক্তার ও প্রফেশনাল প্রতিষ্ঠানের তথ্য খুঁজে নিন।
-            আপনার প্রয়োজনীয় সেবা ও প্রতিষ্ঠানের সঙ্গে সহজেই যোগাযোগ করুন।
+          <p class="hero-text">
+            SNK Design Agency helps businesses build powerful brands,
+            modern websites and professional digital experiences that
+            turn ideas into real results.
           </p>
 
           <div class="hero-buttons">
-
-            <a href="#customers" class="button button-primary">
-              Explore Customers →
+            <a href="#contact" class="btn btn-primary">
+              Start Your Project →
             </a>
 
-            <a href="#contact" class="button button-outline">
-              Add Your Business
+            <a href="#work" class="btn btn-outline">
+              Explore Our Work
             </a>
+          </div>
+
+          <div class="hero-stats">
+
+            <div class="stat">
+              <strong>100+</strong>
+              <span>Projects Delivered</span>
+            </div>
+
+            <div class="stat">
+              <strong>50+</strong>
+              <span>Happy Clients</span>
+            </div>
+
+            <div class="stat">
+              <strong>24/7</strong>
+              <span>Support</span>
+            </div>
 
           </div>
 
         </div>
 
-        <div class="hero-card">
 
-          <div class="hero-icon">✦</div>
+        <div class="hero-visual">
+
+          <div class="visual-main">
+
+            <div class="mockup">
+
+              <div class="mock-top">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+              </div>
+
+              <div class="mock-content">
+
+                <div class="mock-card large">
+                  <div class="mock-line"></div>
+                  <div class="mock-line small"></div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-line"></div>
+                  <div class="mock-line small"></div>
+                </div>
+
+                <div class="mock-card">
+                  <div class="mock-line"></div>
+                  <div class="mock-line small"></div>
+                </div>
+
+                <div class="mock-card large">
+                  <div class="mock-line"></div>
+                  <div class="mock-line small"></div>
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="floating-card">
+              <small>Project Growth</small>
+              <strong>+87.4%</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         SERVICES
+    ========================= -->
+
+    <section id="services">
+
+      <div class="container">
+
+        <div class="section-head">
 
           <div>
-
-            <h3>One Platform.<br>Many Possibilities.</h3>
-
-            <p>
-              Company • Hospital • Clinic • Doctor • Business
-            </p>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-         STATS
-    ========================= -->
-
-    <section class="section">
-
-      <div class="container">
-
-        <div class="stats-grid">
-
-          <div class="stat-card">
-            <h3>100+</h3>
-            <p>Professional Profiles</p>
-          </div>
-
-          <div class="stat-card">
-            <h3>50+</h3>
-            <p>Companies</p>
-          </div>
-
-          <div class="stat-card">
-            <h3>25+</h3>
-            <p>Hospitals & Clinics</p>
-          </div>
-
-          <div class="stat-card">
-            <h3>24/7</h3>
-            <p>Online Access</p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-         CATEGORIES
-    ========================= -->
-
-    <section class="section" id="categories">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div class="mini-title">Explore Categories</div>
-
-          <h2>Find What You Need</h2>
-
-          <p>
-            আপনার পছন্দের প্রতিষ্ঠান বা পেশাজীবী খুঁজে নিন।
-          </p>
-
-        </div>
-
-        <div class="stats-grid">
-
-          <a href="#customers" class="stat-card">
-            <h3>🏢</h3>
-            <p>Companies</p>
-          </a>
-
-          <a href="#customers" class="stat-card">
-            <h3>🏥</h3>
-            <p>Hospitals</p>
-          </a>
-
-          <a href="#customers" class="stat-card">
-            <h3>🩺</h3>
-            <p>Clinics</p>
-          </a>
-
-          <a href="#customers" class="stat-card">
-            <h3>👨‍⚕️</h3>
-            <p>Doctors</p>
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-         CUSTOMER SECTION
-    ========================= -->
-
-    <section class="section" id="customers">
-
-      <div class="container">
-
-        <div class="section-heading">
-
-          <div class="mini-title">Our Customer Showcase</div>
-
-          <h2>Discover Our Customers</h2>
-
-          <p>
-            বিভিন্ন প্রতিষ্ঠানের প্রোফাইল, তথ্য ও যোগাযোগের মাধ্যম দেখুন।
-          </p>
-
-        </div>
-
-        <!-- SEARCH -->
-
-        <div class="filter-area">
-
-          <div class="filter-grid">
-
-            <input
-              type="search"
-              id="searchInput"
-              class="input"
-              placeholder="🔍 কোম্পানি, হাসপাতাল বা ডাক্তার খুঁজুন..."
-            >
-
-            <select id="categoryFilter" class="input">
-
-              <option value="all">সব ক্যাটাগরি</option>
-
-              <option value="company">Company</option>
-
-              <option value="hospital">Hospital</option>
-
-              <option value="clinic">Clinic</option>
-
-              <option value="doctor">Doctor</option>
-
-            </select>
-
-          </div>
-
-        </div>
-
-        <!-- CUSTOMER CARDS -->
-
-        <div class="customer-grid" id="customerGrid">
-
-          <!-- CUSTOMER 1 -->
-
-          <article
-            class="customer-card"
-            data-name="Royal Specialized Hospital"
-            data-category="hospital"
-          >
-
-            <div class="customer-cover">
-
-              <div class="customer-logo">🏥</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Hospital
-              </div>
-
-              <h3>Royal Specialized Hospital</h3>
-
-              <p>
-                আধুনিক স্বাস্থ্যসেবা, অভিজ্ঞ চিকিৎসক
-                এবং রোগীবান্ধব পরিবেশ।
-              </p>
-
-              <div class="customer-location">
-                📍 Sreemangal Road, Berirpar, Moulvibazar
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="https://example.com"
-                  target="_blank"
-                  class="small-button small-primary"
-                >
-                  🌐 Website
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="https://wa.me/8801000000000"
-                  target="_blank"
-                  class="small-button small-light"
-                >
-                  WhatsApp
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- CUSTOMER 2 -->
-
-          <article
-            class="customer-card"
-            data-name="SNK IT Institute"
-            data-category="company"
-          >
-
-            <div class="customer-cover green">
-
-              <div class="customer-logo">💻</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Company
-              </div>
-
-              <h3>SNK IT Institute</h3>
-
-              <p>
-                Practical IT Education, Digital Skills
-                এবং Career-focused Training।
-              </p>
-
-              <div class="customer-location">
-                📍 Bangladesh
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="https://snkitinstitute.github.io/"
-                  target="_blank"
-                  class="small-button small-primary"
-                >
-                  🌐 Website
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="#"
-                  class="small-button small-light"
-                >
-                  Facebook
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- CUSTOMER 3 -->
-
-          <article
-            class="customer-card"
-            data-name="Royal Diagnostic Center"
-            data-category="clinic"
-          >
-
-            <div class="customer-cover purple">
-
-              <div class="customer-logo">🧪</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Clinic
-              </div>
-
-              <h3>Royal Diagnostic Center</h3>
-
-              <p>
-                নির্ভরযোগ্য পরীক্ষা-নিরীক্ষা ও
-                স্বাস্থ্যসেবা সংক্রান্ত সুবিধা।
-              </p>
-
-              <div class="customer-location">
-                📍 Moulvibazar, Bangladesh
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="#"
-                  class="small-button small-primary"
-                >
-                  🌐 Website
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="#"
-                  class="small-button small-light"
-                >
-                  Facebook
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- CUSTOMER 4 -->
-
-          <article
-            class="customer-card"
-            data-name="Demo Specialist Doctor"
-            data-category="doctor"
-          >
-
-            <div class="customer-cover green">
-
-              <div class="customer-logo">👨‍⚕️</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Doctor
-              </div>
-
-              <h3>ডা. মো. আব্দুল্লাহ</h3>
-
-              <p>
-                গাইনি ও সার্জারি বিশেষজ্ঞ।
-                চিকিৎসা পরামর্শের জন্য যোগাযোগ করুন।
-              </p>
-
-              <div class="customer-location">
-                📍 Moulvibazar, Bangladesh
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="#"
-                  class="small-button small-primary"
-                >
-                  🌐 Profile
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="#"
-                  class="small-button small-light"
-                >
-                  Facebook
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- CUSTOMER 5 -->
-
-          <article
-            class="customer-card"
-            data-name="Future Tech Company"
-            data-category="company"
-          >
-
-            <div class="customer-cover">
-
-              <div class="customer-logo">🚀</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Company
-              </div>
-
-              <h3>Future Tech Company</h3>
-
-              <p>
-                আধুনিক প্রযুক্তি ও ডিজিটাল সলিউশন
-                প্রদানকারী প্রতিষ্ঠান।
-              </p>
-
-              <div class="customer-location">
-                📍 Bangladesh
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="#"
-                  class="small-button small-primary"
-                >
-                  🌐 Website
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="#"
-                  class="small-button small-light"
-                >
-                  Facebook
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-          <!-- CUSTOMER 6 -->
-
-          <article
-            class="customer-card"
-            data-name="Care Medical Clinic"
-            data-category="clinic"
-          >
-
-            <div class="customer-cover purple">
-
-              <div class="customer-logo">🩺</div>
-
-            </div>
-
-            <div class="customer-content">
-
-              <div class="customer-category">
-                Clinic
-              </div>
-
-              <h3>Care Medical Clinic</h3>
-
-              <p>
-                রোগীদের জন্য সহজলভ্য ও আন্তরিক
-                চিকিৎসা পরামর্শ সেবা।
-              </p>
-
-              <div class="customer-location">
-                📍 Bangladesh
-              </div>
-
-              <div class="card-actions">
-
-                <a
-                  href="#"
-                  class="small-button small-primary"
-                >
-                  🌐 Website
-                </a>
-
-                <a
-                  href="tel:+8801000000000"
-                  class="small-button small-green"
-                >
-                  📞 Call
-                </a>
-
-                <a
-                  href="#"
-                  class="small-button small-light"
-                >
-                  Facebook
-                </a>
-
-              </div>
-
-            </div>
-
-          </article>
-
-        </div>
-
-        <p
-          id="noResults"
-          style="display:none;text-align:center;margin-top:25px;color:#718096;"
-        >
-          কোনো Customer পাওয়া যায়নি।
-        </p>
-
-      </div>
-
-    </section>
-
-    <!-- =========================
-         CTA
-    ========================= -->
-
-    <section class="section" id="contact">
-
-      <div class="container">
-
-        <div class="cta">
-
-          <div>
-
-            <h2>
-              আপনার প্রতিষ্ঠানও যুক্ত করুন
+            <div class="section-kicker">What We Do</div>
+            <h2 class="section-title">
+              Services designed<br>
+              for growth.
             </h2>
-
-            <p>
-              আপনার কোম্পানি, হাসপাতাল, ক্লিনিক বা প্রফেশনাল প্রোফাইল
-              আমাদের প্ল্যাটফর্মে প্রদর্শন করতে যোগাযোগ করুন।
-            </p>
-
           </div>
 
-          <a
-            href="tel:+8801000000000"
-            class="button"
-          >
-            📞 যোগাযোগ করুন
-          </a>
+          <p class="section-desc">
+            From strategy to execution, we create digital solutions
+            that help your business look professional and grow online.
+          </p>
+
+        </div>
+
+
+        <div class="services-grid">
+
+          <article class="service-card">
+
+            <div class="service-icon">◈</div>
+
+            <h3>Web Design & Development</h3>
+
+            <p>
+              Modern, responsive and professional websites designed
+              around your brand, customers and business goals.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">✦</div>
+
+            <h3>UI/UX Design</h3>
+
+            <p>
+              Clean user interfaces and thoughtful experiences that
+              make your digital products easy and enjoyable to use.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">✎</div>
+
+            <h3>Branding & Graphics</h3>
+
+            <p>
+              Logo, social media design, promotional graphics and
+              complete visual identity for your business.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">◎</div>
+
+            <h3>Digital Marketing</h3>
+
+            <p>
+              Strategic digital campaigns and content designed to
+              increase awareness, engagement and customer growth.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">▣</div>
+
+            <h3>Business Solutions</h3>
+
+            <p>
+              Custom digital systems and solutions that help organize
+              your business and improve everyday operations.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
+
+
+          <article class="service-card">
+
+            <div class="service-icon">⚡</div>
+
+            <h3>Creative Consultation</h3>
+
+            <p>
+              Get practical creative and digital guidance for your
+              next website, campaign, product or brand.
+            </p>
+
+            <div class="service-arrow">↗</div>
+
+          </article>
 
         </div>
 
       </div>
 
     </section>
+
 
     <!-- =========================
          ABOUT
     ========================= -->
 
-    <section class="section" id="about">
+    <section id="about">
+
+      <div class="container about-grid">
+
+        <div class="about-image">
+
+          <div class="about-shape"></div>
+
+        </div>
+
+
+        <div class="about-content">
+
+          <div class="section-kicker">About SNK</div>
+
+          <h2 class="section-title">
+            Ideas become powerful
+            when design meets strategy.
+          </h2>
+
+          <p>
+            SNK Design Agency is a creative digital agency focused on
+            helping businesses, entrepreneurs and organizations build
+            a stronger presence in the digital world.
+          </p>
+
+          <p>
+            We combine creative design, technology and practical
+            strategy to deliver digital experiences that are beautiful,
+            useful and built for real business needs.
+          </p>
+
+          <div class="check-list">
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Professional & Modern Design
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Mobile Responsive Solutions
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Client-Focused Development
+            </div>
+
+            <div class="check-item">
+              <span class="check">✓</span>
+              Long-Term Support
+            </div>
+
+          </div>
+
+          <a href="#contact" class="btn btn-primary">
+            Work With Us →
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         OUR WORK
+    ========================= -->
+
+    <section id="work">
 
       <div class="container">
 
-        <div class="section-heading">
+        <div class="section-head">
 
-          <div class="mini-title">About SNK Design Agency</div>
+          <div>
+            <div class="section-kicker">Selected Projects</div>
 
-          <h2>একটি ডিজিটাল পরিচিতির প্ল্যাটফর্ম</h2>
+            <h2 class="section-title">
+              Work we're proud of.
+            </h2>
+          </div>
+
+          <p class="section-desc">
+            A glimpse of the kind of digital experiences we can
+            create for modern businesses.
+          </p>
+
+        </div>
+
+
+        <div class="work-grid">
+
+          <article class="work-card">
+
+            <div class="work-art"></div>
+
+            <div class="work-content">
+              <small>Web Development</small>
+              <h3>Business Website</h3>
+            </div>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <div class="work-art"></div>
+
+            <div class="work-content">
+              <small>Brand Identity</small>
+              <h3>Modern Brand System</h3>
+            </div>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <div class="work-art"></div>
+
+            <div class="work-content">
+              <small>UI / UX</small>
+              <h3>Digital Product Interface</h3>
+            </div>
+
+          </article>
+
+
+          <article class="work-card">
+
+            <div class="work-art"></div>
+
+            <div class="work-content">
+              <small>Creative Design</small>
+              <h3>Social Media Campaign</h3>
+            </div>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         PROCESS
+    ========================= -->
+
+    <section id="process">
+
+      <div class="container">
+
+        <div class="section-head">
+
+          <div>
+            <div class="section-kicker">How We Work</div>
+
+            <h2 class="section-title">
+              Simple process.<br>
+              Serious results.
+            </h2>
+          </div>
+
+          <p class="section-desc">
+            We keep the process simple, transparent and focused on
+            delivering what your business actually needs.
+          </p>
+
+        </div>
+
+
+        <div class="process-grid">
+
+          <article class="process-card">
+
+            <div class="process-number">01 / DISCOVER</div>
+
+            <h3>Understand</h3>
+
+            <p>
+              We learn about your business, audience, goals and
+              project requirements.
+            </p>
+
+          </article>
+
+
+          <article class="process-card">
+
+            <div class="process-number">02 / PLAN</div>
+
+            <h3>Strategize</h3>
+
+            <p>
+              We create a clear plan, structure and direction before
+              starting the actual design.
+            </p>
+
+          </article>
+
+
+          <article class="process-card">
+
+            <div class="process-number">03 / CREATE</div>
+
+            <h3>Build</h3>
+
+            <p>
+              Our team turns the strategy into a professional digital
+              product or creative solution.
+            </p>
+
+          </article>
+
+
+          <article class="process-card">
+
+            <div class="process-number">04 / DELIVER</div>
+
+            <h3>Launch</h3>
+
+            <p>
+              After testing and final approval, your project is
+              delivered and ready to grow.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         CTA / CONTACT
+    ========================= -->
+
+    <section id="contact">
+
+      <div class="container">
+
+        <div class="cta-box">
+
+          <div class="section-kicker">
+            Start Something Great
+          </div>
+
+          <h2>
+            Have a project in mind?
+            Let's build it together.
+          </h2>
 
           <p>
-            SNK Design Agency-এর লক্ষ্য হলো বিভিন্ন প্রতিষ্ঠান,
-            কোম্পানি ও পেশাজীবীদের জন্য সুন্দর ও তথ্যবহুল
-            ডিজিটাল প্রোফাইল প্রদর্শনের সুযোগ তৈরি করা।
+            Tell us about your idea and we'll help you turn it into
+            a professional digital experience.
           </p>
+
+          <div class="hero-buttons" style="justify-content:center;">
+
+            <a
+              href="mailto:hello@snkdesignagency.com"
+              class="btn btn-primary"
+            >
+              Email Us →
+            </a>
+
+            <a
+              href="tel:+8801000000000"
+              class="btn btn-outline"
+            >
+              Call Us
+            </a>
+
+          </div>
 
         </div>
 
@@ -1874,6 +1568,7 @@
     </section>
 
   </main>
+
 
   <!-- =========================
        FOOTER
@@ -1885,53 +1580,79 @@
 
       <div class="footer-grid">
 
-        <div>
+        <div class="footer-brand">
 
-          <h3>SNK Design Agency</h3>
+          <a href="#home" class="logo">
+            <div class="logo-mark">S</div>
+            <span>SNK Design Agency</span>
+          </a>
 
           <p>
-            Creative Design, Professional Showcase
-            এবং Digital Profile Solutions।
+            Creative digital solutions for businesses that want to
+            build, grow and stand out online.
           </p>
 
         </div>
 
-        <div>
 
-          <h3>Quick Links</h3>
+        <div class="footer-col">
 
-          <ul>
+          <h4>Company</h4>
 
-            <li><a href="#home">Home</a></li>
-
-            <li><a href="#customers">Customers</a></li>
-
-            <li><a href="#about">About Us</a></li>
-
-            <li><a href="#contact">Contact</a></li>
-
-          </ul>
+          <a href="#about">About</a>
+          <a href="#work">Our Work</a>
+          <a href="#process">Process</a>
+          <a href="#contact">Contact</a>
 
         </div>
 
-        <div>
 
-          <h3>Contact</h3>
+        <div class="footer-col">
 
-          <p>📞 +880 1XXXXXXXXX</p>
+          <h4>Services</h4>
 
-          <p>✉️ info@example.com</p>
+          <a href="#services">Web Design</a>
+          <a href="#services">UI/UX Design</a>
+          <a href="#services">Branding</a>
+          <a href="#services">Digital Marketing</a>
 
-          <p>📍 Bangladesh</p>
+        </div>
+
+
+        <div class="footer-col">
+
+          <h4>Connect</h4>
+
+          <a href="mailto:hello@snkdesignagency.com">
+            Email
+          </a>
+
+          <a href="tel:+8801000000000">
+            Phone
+          </a>
+
+          <a href="#">
+            Facebook
+          </a>
+
+          <a href="#">
+            Instagram
+          </a>
 
         </div>
 
       </div>
 
+
       <div class="copyright">
 
-        © <span id="year"></span> SNK Design Agency.
-        All Rights Reserved.
+        <span>
+          © <span id="year"></span> SNK Design Agency. All rights reserved.
+        </span>
+
+        <span>
+          Designed & Developed by SNK Design Agency
+        </span>
 
       </div>
 
@@ -1939,15 +1660,6 @@
 
   </footer>
 
-  <!-- FLOATING CALL BUTTON -->
-
-  <a
-    href="tel:+8801000000000"
-    class="floating-call"
-    aria-label="Call now"
-  >
-    ☎
-  </a>
 
   <!-- =========================
        JAVASCRIPT
@@ -1955,96 +1667,57 @@
 
   <script>
 
-    /* MOBILE MENU */
+    const header = document.getElementById("header");
 
-    const menuButton = document.getElementById("menuButton");
+    const menuBtn = document.getElementById("menuBtn");
 
     const navLinks = document.getElementById("navLinks");
 
-    menuButton.addEventListener("click", function () {
 
-      navLinks.classList.toggle("open");
+    /* Header scroll effect */
 
-      menuButton.textContent =
-        navLinks.classList.contains("open")
-          ? "✕"
-          : "☰";
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 30) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
 
     });
 
-    document.querySelectorAll(".nav-links a").forEach(function (link) {
 
-      link.addEventListener("click", function () {
+    /* Mobile menu */
 
-        navLinks.classList.remove("open");
+    menuBtn.addEventListener("click", () => {
 
-        menuButton.textContent = "☰";
+      navLinks.classList.toggle("active");
+
+      if (navLinks.classList.contains("active")) {
+        menuBtn.textContent = "✕";
+      } else {
+        menuBtn.textContent = "☰";
+      }
+
+    });
+
+
+    /* Close mobile menu after click */
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        navLinks.classList.remove("active");
+
+        menuBtn.textContent = "☰";
 
       });
 
     });
 
-    /* CUSTOMER SEARCH & FILTER */
 
-    const searchInput = document.getElementById("searchInput");
-
-    const categoryFilter = document.getElementById("categoryFilter");
-
-    const customerCards = document.querySelectorAll(".customer-card");
-
-    const noResults = document.getElementById("noResults");
-
-    function filterCustomers() {
-
-      const searchText =
-        searchInput.value.toLowerCase().trim();
-
-      const selectedCategory =
-        categoryFilter.value;
-
-      let visibleCount = 0;
-
-      customerCards.forEach(function (card) {
-
-        const name =
-          card.dataset.name.toLowerCase();
-
-        const category =
-          card.dataset.category;
-
-        const matchesSearch =
-          name.includes(searchText);
-
-        const matchesCategory =
-          selectedCategory === "all" ||
-          category === selectedCategory;
-
-        if (matchesSearch && matchesCategory) {
-
-          card.style.display = "";
-
-          visibleCount++;
-
-        } else {
-
-          card.style.display = "none";
-
-        }
-
-      });
-
-      noResults.style.display =
-        visibleCount === 0
-          ? "block"
-          : "none";
-
-    }
-
-    searchInput.addEventListener("input", filterCustomers);
-
-    categoryFilter.addEventListener("change", filterCustomers);
-
-    /* CURRENT YEAR */
+    /* Current year */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
@@ -2053,3 +1726,4 @@
 
 </body>
 </html>
+```
