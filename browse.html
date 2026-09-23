@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Add links | SNK Admin</title>
+<title>Our work | SNK Design Agency</title>
+<meta name="description" content="Designs SNK Design Agency made for real businesses. Open a card to see the full design.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,272 +15,193 @@
   --bg:#08090d; --bg-soft:#0d0f14; --surface:#11141b; --surface-2:#161a22; --surface-3:#1b2029;
   --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.14);
   --text:#f5f7fa; --soft:#a9afbb; --muted:#747c89;
-  --primary:#b8ff35; --danger:#ff6262; --t:.2s ease;
+  --primary:#b8ff35; --primary-dark:#8bc91d;
+  --t:.2s ease;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Inter,"Hind Siliguri","Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.5}
+html{scroll-behavior:smooth}
+body{font-family:Inter,"Hind Siliguri","Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6}
 a{color:inherit;text-decoration:none}
-button,input,textarea,select{font:inherit;color:inherit}
+button,input{font:inherit;color:inherit}
 :focus-visible{outline:2px solid var(--primary);outline-offset:2px}
+.wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
 
-.top{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding:12px 22px;border-bottom:1px solid var(--border);background:var(--bg-soft)}
+/* header */
+.site-head{position:sticky;top:0;z-index:50;background:rgba(8,9,13,.86);backdrop-filter:blur(14px);border-bottom:1px solid var(--border)}
+.site-head .wrap{display:flex;align-items:center;gap:16px;min-height:68px}
 .brand{display:flex;align-items:center;gap:11px;margin-right:auto}
-.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--primary);color:#10130b;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px}
+.brand-mark{width:38px;height:38px;border-radius:11px;background:var(--primary);color:#10130b;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:14px;letter-spacing:-.5px}
 .brand strong{display:block;font-size:15px;line-height:1.2}
 .brand span{display:block;color:var(--muted);font-size:11px}
-.btn{min-height:38px;padding:0 14px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);font-size:12px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:7px;transition:var(--t);white-space:nowrap;cursor:pointer}
+.btn{min-height:40px;padding:0 16px;border:1px solid var(--border);border-radius:9px;background:var(--surface-2);font-size:13px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:var(--t);white-space:nowrap;cursor:pointer}
 .btn:hover{background:var(--surface-3);border-color:var(--border-2)}
 .btn.primary{background:var(--primary);border-color:transparent;color:#10130b}
 .btn.primary:hover{background:#caff76}
-.btn.danger{background:rgba(255,98,98,.1);border-color:rgba(255,98,98,.16);color:var(--danger)}
-.btn.sm{min-height:30px;padding:0 10px;font-size:11px}
+.btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
 
-.layout{display:grid;grid-template-columns:420px minmax(0,1fr);gap:22px;padding:22px;max-width:1300px;margin:0 auto}
-.panel{border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:18px}
-.panel h2{font-size:16px;margin-bottom:14px}
-.form{display:flex;flex-direction:column;gap:13px}
-.field{display:flex;flex-direction:column;gap:6px}
-.field>span{color:var(--soft);font-size:12px;font-weight:600}
-.hint{color:var(--muted);font-size:11px;font-weight:400}
-input[type=text],input[type=url],input[type=date],textarea{
-  width:100%;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);
-  padding:0 12px;height:42px;font-size:13px;outline:none;transition:var(--t)}
-textarea{height:auto;min-height:80px;padding:10px 12px;resize:vertical}
-input:focus,textarea:focus{border-color:rgba(184,255,53,.55);box-shadow:0 0 0 3px rgba(184,255,53,.08)}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.filebox{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:10px;border:1px dashed var(--border-2);border-radius:8px;background:var(--surface-2)}
-.thumb{width:44px;height:44px;border-radius:8px;border:1px solid var(--border);background:#fff center/contain no-repeat;flex:none}
-.thumb.empty{background:var(--surface-3);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px}
-.meta{flex:1;min-width:100px}.meta b{display:block;font-size:12px}.meta small{color:var(--muted);font-size:11px}
-input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--border);border-radius:8px;background:var(--surface-2);cursor:pointer}
-.btns{display:flex;gap:10px;margin-top:4px}
-.btns .btn{flex:1;min-height:42px}
+/* intro */
+.intro{padding:56px 0 26px}
+.intro h1{font-size:clamp(30px,5vw,46px);line-height:1.12;letter-spacing:-1.2px;max-width:16ch;font-weight:800}
+.intro p{margin-top:14px;max-width:52ch;color:var(--soft)}
+.tools{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-top:28px}
+.search{position:relative;flex:1 1 260px;max-width:380px}
+.search input{width:100%;height:44px;padding:0 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);outline:none;font-size:14px;transition:var(--t)}
+.search input:focus{border-color:rgba(184,255,53,.55);box-shadow:0 0 0 3px rgba(184,255,53,.08)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{height:36px;padding:0 14px;border:1px solid var(--border);border-radius:999px;background:transparent;color:var(--soft);font-size:13px;font-weight:600;cursor:pointer;transition:var(--t)}
+.chip:hover{border-color:var(--border-2);color:var(--text)}
+.chip.on{background:var(--primary);border-color:transparent;color:#10130b}
 
-.list{display:flex;flex-direction:column;gap:10px}
-.item{display:flex;align-items:center;gap:12px;padding:12px;border:1px solid var(--border);border-radius:12px;background:var(--surface-2)}
-.item .thumb{width:46px;height:46px;font-weight:800;font-size:16px;color:#10130b}
-.item .info{flex:1;min-width:0}
-.item .info b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item .info small{display:block;color:var(--muted);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.item .go{display:flex;gap:6px}
-.empty{padding:36px 16px;text-align:center;color:var(--muted);border:1px dashed var(--border-2);border-radius:12px}
-.note{margin-top:14px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface-2);color:var(--soft);font-size:12px}
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:22px;padding:14px 0 70px}
+.card{position:relative;display:flex;flex-direction:column;border:1px solid var(--border);border-radius:18px;background:var(--surface);overflow:hidden;transition:transform var(--t),border-color var(--t)}
+.card:hover{transform:translateY(-3px);border-color:var(--border-2)}
+.cover{height:170px;background-size:cover;background-position:center}
+.logo{position:absolute;left:20px;top:132px;width:64px;height:64px;border-radius:16px;border:3px solid var(--surface);background:#fff center/contain no-repeat;display:flex;align-items:center;justify-content:center;color:#10130b;font-weight:800;font-size:20px}
+.body{padding:42px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.meta{display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:12px}
+.tag{padding:3px 10px;border-radius:999px;background:rgba(184,255,53,.1);color:var(--primary);font-weight:700}
+.card h3{font-size:19px;line-height:1.3}
+.card p{color:var(--soft);font-size:14px;flex:1}
+.actions{display:flex;gap:10px;margin-top:6px}
+.actions .btn{flex:1}
+.feature{grid-column:span 2}
+.feature .cover{height:230px}
+.feature .logo{top:192px}
+.feature h3{font-size:24px}
 
-.toast{position:fixed;right:20px;bottom:20px;max-width:360px;padding:13px 16px;border:1px solid var(--border-2);border-radius:12px;background:var(--surface-2);box-shadow:0 25px 60px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(12px);transition:var(--t);z-index:50;font-size:13px}
-.toast.show{opacity:1;visibility:visible;transform:none}
-.toast.err{border-color:rgba(255,98,98,.35)}
+.empty{grid-column:1/-1;padding:60px 24px;border:1px dashed var(--border-2);border-radius:18px;text-align:center;color:var(--soft)}
+.empty strong{display:block;color:var(--text);font-size:17px;margin-bottom:6px}
 
-@media (max-width:900px){.layout{grid-template-columns:1fr;padding:14px}}
+footer{border-top:1px solid var(--border);padding:26px 0 40px;color:var(--muted);font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+
+@media (max-width:700px){
+  .feature{grid-column:auto}
+  .feature .cover{height:170px}.feature .logo{top:132px}.feature h3{font-size:19px}
+  .site-head .btn.hide-s{display:none}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 </head>
 
 <body>
-<header class="top">
-  <div class="brand">
-    <div class="brand-mark">SNK</div>
-    <div><strong>Add links</strong><span>Admin / public page cards</span></div>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <div class="brand-mark">SNK</div>
+      <div><strong>SNK Design Agency</strong><span>Our work</span></div>
+    </a>
+    <a class="btn hide-s" href="index.html#contact">Contact us</a>
+    <a class="btn primary" href="client.html">Client login</a>
   </div>
-  <button class="btn" type="button" id="exportBtn">Save backup</button>
-  <button class="btn" type="button" id="importBtn">Open backup</button>
-  <input type="file" id="importInput" accept="application/json,.json" hidden>
-  <a class="btn primary" href="browse.html" target="_blank" rel="noopener">Open public page</a>
 </header>
 
-<div class="layout">
-
-  <!-- FORM -->
-  <section class="panel">
-    <h2 id="formTitle">New card</h2>
-    <form class="form" id="form" autocomplete="off">
-      <label class="field"><span>Company name</span><input type="text" id="name" required></label>
-      <label class="field"><span>Link (paste the URL)</span><input type="url" id="url" placeholder="https://" required></label>
-      <div class="row2">
-        <label class="field"><span>Category</span><input type="text" id="category" list="cats" placeholder="Healthcare"></label>
-        <label class="field"><span>Date</span><input type="date" id="date"></label>
-      </div>
-      <datalist id="cats"></datalist>
-      <label class="field"><span>Short description</span><textarea id="description" rows="3" maxlength="180"></textarea></label>
-
-      <div class="filebox">
-        <div class="thumb empty" id="logoThumb">None</div>
-        <div class="meta"><b>Logo</b><small>Square image works best.</small></div>
-        <label class="btn sm">Upload<input type="file" accept="image/*" hidden id="logoFile"></label>
-        <button class="btn sm danger" type="button" id="logoClear">Remove</button>
-      </div>
-      <div class="filebox">
-        <div class="thumb empty" id="coverThumb">None</div>
-        <div class="meta"><b>Cover image</b><small>Wide image. Without it, the card uses the color below.</small></div>
-        <label class="btn sm">Upload<input type="file" accept="image/*" hidden id="coverFile"></label>
-        <button class="btn sm danger" type="button" id="coverClear">Remove</button>
-      </div>
-      <label class="field"><span>Card color</span><input type="color" id="color" value="#1d5b73"></label>
-
-      <div class="btns">
-        <button class="btn" type="button" id="cancelBtn">Clear form</button>
-        <button class="btn primary" type="submit" id="saveBtn">Add card</button>
-      </div>
-    </form>
+<main class="wrap">
+  <section class="intro">
+    <h1>Designs we made for real businesses</h1>
+    <p>Posters, brand kits and pages from our clients. Open a card to see the full design.</p>
+    <div class="tools">
+      <div class="search"><input type="search" id="q" placeholder="Search by company or topic" aria-label="Search designs"></div>
+      <div class="chips" id="chips"></div>
+    </div>
   </section>
 
-  <!-- LIST -->
-  <section class="panel">
-    <h2>Cards on the public page <span class="hint" id="count"></span></h2>
-    <div class="list" id="list"></div>
-    <div class="note">Cards are saved in this browser for now. They will show for every visitor once Firebase is connected. Use Save backup to keep a copy.</div>
-  </section>
-</div>
+  <section class="grid" id="grid" aria-live="polite"></section>
+</main>
 
-<div class="toast" id="toast" role="status"></div>
+<footer>
+  <div class="wrap">
+    <span>© <span id="yr"></span> SNK Design Agency</span>
+    <span>Designed and built by SNK</span>
+  </div>
+</footer>
 
 <script>
 (function () {
   'use strict';
   var KEY = 'snk_links_v1';
-  var $ = function (s) { return document.querySelector(s); };
 
-  /* Data layer: swap these two functions for Firestore later. */
-  function load() { try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; } catch (e) { return []; } }
-  function persist() {
-    try { localStorage.setItem(KEY, JSON.stringify(items)); return true; }
-    catch (e) { toast('Browser storage is full. Remove a large image or save a backup.', true); return false; }
+  /* Data layer: today it reads this browser's storage.
+     When Firebase is connected, only load() needs to change. */
+  var DEMO = [
+    { id: 'd1', name: 'Royal Multicare', category: 'Healthcare', description: 'Doctor schedule poster for a diagnostic and consultation centre.', url: '', color: '#0b5a9c', date: '2026-09-20' },
+    { id: 'd2', name: 'Green Basket', category: 'Branding', description: 'Logo, colour system and packaging labels for a grocery start-up.', url: '', color: '#1f6b4f', date: '2026-09-14' },
+    { id: 'd3', name: 'Nur Fashion House', category: 'Social media', description: 'A month of Facebook and Instagram post designs.', url: '', color: '#8a2b4d', date: '2026-09-06' },
+    { id: 'd4', name: 'Sylhet Tea Co.', category: 'Website', description: 'One-page website with product gallery and order button.', url: '', color: '#9a4a10', date: '2026-08-28' }
+  ];
+  function load() {
+    try { var d = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(d)) return d; } catch (e) {}
+    return DEMO.slice();
   }
 
-  var items = load();
-  var editId = null, logo = null, cover = null;
-
-  function uid() { return 'l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
-  function today() { var d = new Date(), p = function (n) { return String(n).padStart(2, '0'); }; return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate()); }
-  function cleanUrl(u) {
-    u = String(u || '').trim(); if (!u) return '';
-    if (!/^https?:\/\//i.test(u)) u = 'https://' + u;
-    try { var x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; }
+  function safeUrl(u) {
+    try { var x = new URL(String(u || '').trim()); return /^https?:$/.test(x.protocol) ? x.href : ''; } catch (e) { return ''; }
   }
-  function toast(m, err) {
-    var t = $('#toast'); t.textContent = m; t.classList.toggle('err', !!err); t.classList.add('show');
-    clearTimeout(toast.t); toast.t = setTimeout(function () { t.classList.remove('show'); }, 3200);
-  }
-  function h(tag, cls, kids) {
-    var n = document.createElement(tag); if (cls) n.className = cls;
+  function h(tag, cls, kids, attrs) {
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (attrs) Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
     (Array.isArray(kids) ? kids : kids == null ? [] : [kids]).forEach(function (k) { n.append(k); });
     return n;
   }
+  function fmt(d) {
+    var x = new Date(d); if (isNaN(x)) return '';
+    return x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+  }
 
-  function readImage(file, maxDim) {
-    return new Promise(function (res, rej) {
-      var url = URL.createObjectURL(file), img = new Image();
-      img.onload = function () {
-        var w = img.naturalWidth, hh = img.naturalHeight, k = Math.min(1, maxDim / Math.max(w, hh));
-        w = Math.max(1, Math.round(w * k)); hh = Math.max(1, Math.round(hh * k));
-        var c = document.createElement('canvas'); c.width = w; c.height = hh;
-        var x = c.getContext('2d'), alpha = /png|webp|gif/.test(file.type);
-        if (!alpha) { x.fillStyle = '#fff'; x.fillRect(0, 0, w, hh); }
-        x.drawImage(img, 0, 0, w, hh); URL.revokeObjectURL(url);
-        res(c.toDataURL(alpha ? 'image/png' : 'image/jpeg', 0.85));
-      };
-      img.onerror = function () { URL.revokeObjectURL(url); rej(new Error('Could not read this image.')); };
-      img.src = url;
+  var items = load().sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
+  var cat = 'All', term = '';
+
+  function chips() {
+    var cats = ['All'];
+    items.forEach(function (i) { if (i.category && cats.indexOf(i.category) < 0) cats.push(i.category); });
+    var box = document.getElementById('chips'); box.innerHTML = '';
+    cats.forEach(function (c) {
+      var b = h('button', 'chip' + (c === cat ? ' on' : ''), c, { type: 'button' });
+      b.addEventListener('click', function () { cat = c; chips(); draw(); });
+      box.append(b);
     });
   }
 
-  function thumb(el, src, emptyText) {
-    if (src) { el.classList.remove('empty'); el.textContent = ''; el.style.backgroundImage = 'url("' + src + '")'; }
-    else { el.classList.add('empty'); el.style.backgroundImage = ''; el.textContent = emptyText; }
-  }
+  function card(i, first) {
+    var color = i.color || '#1d5b73';
+    var cover = h('div', 'cover');
+    cover.style.backgroundImage = i.cover
+      ? 'url("' + i.cover + '")'
+      : 'linear-gradient(135deg,' + color + ',#0d0f14)';
+    var logo = h('div', 'logo', i.logo ? '' : (i.name || '?').trim().charAt(0).toUpperCase());
+    if (i.logo) logo.style.backgroundImage = 'url("' + i.logo + '")';
 
-  function resetForm() {
-    editId = null; logo = null; cover = null;
-    $('#form').reset(); $('#date').value = today(); $('#color').value = '#1d5b73';
-    thumb($('#logoThumb'), null, 'None'); thumb($('#coverThumb'), null, 'None');
-    $('#formTitle').textContent = 'New card'; $('#saveBtn').textContent = 'Add card';
-  }
+    var url = safeUrl(i.url);
+    var view = h('a', 'btn primary', url ? 'View design' : 'Link not added yet');
+    if (url) { view.href = url; view.target = '_blank'; view.rel = 'noopener'; }
+    else view.setAttribute('aria-disabled', 'true');
 
-  function cats() {
-    var seen = {}; $('#cats').innerHTML = '';
-    items.forEach(function (i) { if (i.category && !seen[i.category]) { seen[i.category] = 1; var o = document.createElement('option'); o.value = i.category; $('#cats').append(o); } });
+    var meta = h('div', 'meta', [h('span', 'tag', i.category || 'Design'), h('span', null, fmt(i.date))]);
+    var body = h('div', 'body', [meta, h('h3', null, i.name), h('p', null, i.description || ''), h('div', 'actions', [view])]);
+    return h('article', 'card' + (first ? ' feature' : ''), [cover, logo, body]);
   }
 
   function draw() {
-    var box = $('#list'); box.innerHTML = '';
-    $('#count').textContent = items.length ? '(' + items.length + ')' : '';
-    if (!items.length) { box.append(h('div', 'empty', 'No cards yet. Add your first company on the left.')); cats(); return; }
-    items.forEach(function (i, idx) {
-      var t = h('div', 'thumb', i.logo ? '' : (i.name || '?').charAt(0).toUpperCase());
-      if (i.logo) t.style.backgroundImage = 'url("' + i.logo + '")'; else t.style.background = i.color || '#1d5b73';
-      var info = h('div', 'info', [h('b', null, i.name), h('small', null, i.url || 'No link')]);
-      var edit = h('button', 'btn sm', 'Edit'); edit.type = 'button';
-      var del = h('button', 'btn sm danger', 'Delete'); del.type = 'button';
-      edit.addEventListener('click', function () { startEdit(i.id); });
-      del.addEventListener('click', function () {
-        if (!confirm('Delete "' + i.name + '"?')) return;
-        items.splice(idx, 1); if (persist()) { draw(); toast('Deleted.'); }
-        if (editId === i.id) resetForm();
-      });
-      box.append(h('div', 'item', [t, info, h('div', 'go', [edit, del])]));
+    var grid = document.getElementById('grid'); grid.innerHTML = '';
+    var t = term.trim().toLowerCase();
+    var list = items.filter(function (i) {
+      var okCat = cat === 'All' || i.category === cat;
+      var okTerm = !t || (i.name + ' ' + (i.description || '') + ' ' + (i.category || '')).toLowerCase().indexOf(t) > -1;
+      return okCat && okTerm;
     });
-    cats();
+    if (!list.length) {
+      grid.append(h('div', 'empty', [h('strong', null, items.length ? 'Nothing matches your search' : 'No designs yet'),
+        items.length ? 'Try a different word or pick All.' : 'Designs will appear here once they are added.']));
+      return;
+    }
+    list.forEach(function (i, idx) { grid.append(card(i, idx === 0 && cat === 'All' && !t && list.length > 2)); });
   }
 
-  function startEdit(id) {
-    var i = items.find(function (x) { return x.id === id; }); if (!i) return;
-    editId = id; logo = i.logo || null; cover = i.cover || null;
-    $('#name').value = i.name || ''; $('#url').value = i.url || ''; $('#category').value = i.category || '';
-    $('#date').value = i.date || today(); $('#description').value = i.description || ''; $('#color').value = i.color || '#1d5b73';
-    thumb($('#logoThumb'), logo, 'None'); thumb($('#coverThumb'), cover, 'None');
-    $('#formTitle').textContent = 'Edit card'; $('#saveBtn').textContent = 'Save changes';
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  $('#form').addEventListener('submit', function (e) {
-    e.preventDefault();
-    var url = cleanUrl($('#url').value);
-    if (!url) { toast('This link is not valid. Paste the full address, like https://example.com', true); return; }
-    var rec = {
-      id: editId || uid(), name: $('#name').value.trim(), url: url, category: $('#category').value.trim(),
-      date: $('#date').value || today(), description: $('#description').value.trim(),
-      color: $('#color').value, logo: logo, cover: cover
-    };
-    var wasEdit = !!editId;
-    if (wasEdit) items = items.map(function (x) { return x.id === editId ? rec : x; });
-    else items.unshift(rec);
-    if (!persist()) { if (!wasEdit) items.shift(); return; }
-    draw(); resetForm(); toast(wasEdit ? 'Changes saved.' : 'Card added.');
-  });
-
-  $('#cancelBtn').addEventListener('click', resetForm);
-  function pick(inputSel, max, setter, thumbSel) {
-    $(inputSel).addEventListener('change', function (e) {
-      var f = e.target.files && e.target.files[0]; if (!f) return;
-      readImage(f, max).then(function (d) { setter(d); thumb($(thumbSel), d, 'None'); })
-        .catch(function (err) { toast(err.message, true); });
-      e.target.value = '';
-    });
-  }
-  pick('#logoFile', 400, function (d) { logo = d; }, '#logoThumb');
-  pick('#coverFile', 1100, function (d) { cover = d; }, '#coverThumb');
-  $('#logoClear').addEventListener('click', function () { logo = null; thumb($('#logoThumb'), null, 'None'); });
-  $('#coverClear').addEventListener('click', function () { cover = null; thumb($('#coverThumb'), null, 'None'); });
-
-  /* backup */
-  $('#exportBtn').addEventListener('click', function () {
-    var a = document.createElement('a');
-    a.href = URL.createObjectURL(new Blob([JSON.stringify(items)], { type: 'application/json' }));
-    a.download = 'snk-links-backup.json'; document.body.append(a); a.click(); a.remove();
-    toast('Backup saved.');
-  });
-  $('#importBtn').addEventListener('click', function () { $('#importInput').click(); });
-  $('#importInput').addEventListener('change', function (e) {
-    var f = e.target.files && e.target.files[0]; if (!f) return;
-    var r = new FileReader();
-    r.onload = function () {
-      try {
-        var d = JSON.parse(r.result); if (!Array.isArray(d)) throw 0;
-        items = d.filter(function (x) { return x && x.name; }); if (persist()) { draw(); toast('Backup opened.'); }
-      } catch (err) { toast('This is not a valid backup file.', true); }
-    };
-    r.readAsText(f); e.target.value = '';
-  });
-
-  resetForm(); draw();
+  document.getElementById('q').addEventListener('input', function (e) { term = e.target.value; draw(); });
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  chips(); draw();
 })();
 </script>
 </body>

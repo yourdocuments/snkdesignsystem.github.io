@@ -1,1190 +1,252 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Admin Login | SNK Design Agency</title>
-
-  <meta
-    name="description"
-    content="Secure administrator login for SNK Design Agency."
-  >
+  <meta name="description" content="Secure administrator login for SNK Design Agency.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-
-    :root {
-      --primary: #6c4df6;
-      --primary-dark: #5437d6;
-
-      --bg: #f5f7fb;
-      --card: #ffffff;
-      --text: #172033;
-      --muted: #737b8c;
-
-      --border: #e5e8ef;
-
-      --danger: #dc2626;
-      --success: #16a34a;
-
-      --radius: 18px;
+    :root{
+      --bg:#08090d; --bg-soft:#0d0f14; --card:#11141b; --card-2:#161a22;
+      --border:rgba(255,255,255,.08); --border-2:rgba(255,255,255,.14);
+      --text:#f5f7fa; --muted:#747c89;
+      --primary:#b8ff35; --primary-dark:#8bc91d;
+      --danger:#ff6262; --success:#43d98b;
+      --radius:18px;
     }
-
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      font-family:"Inter",sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center;
+      background:radial-gradient(circle at 10% 10%,rgba(184,255,53,.06),transparent 35%),
+                 radial-gradient(circle at 90% 90%,rgba(184,255,53,.05),transparent 35%), var(--bg);
+      color:var(--text);padding:20px;
     }
-
-
-    body {
-      font-family: "Inter", sans-serif;
-
-      min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        radial-gradient(
-          circle at 10% 10%,
-          rgba(108,77,246,.16),
-          transparent 35%
-        ),
-        radial-gradient(
-          circle at 90% 90%,
-          rgba(108,77,246,.12),
-          transparent 35%
-        ),
-        var(--bg);
-
-      color: var(--text);
-
-      padding: 20px;
+    .login-wrapper{width:100%;max-width:430px}
+    .brand{text-align:center;margin-bottom:25px}
+    .brand-logo{
+      width:65px;height:65px;margin:0 auto 14px;border-radius:18px;display:flex;align-items:center;justify-content:center;
+      background:var(--primary);color:#10130b;font-size:20px;font-weight:800;box-shadow:0 15px 35px rgba(184,255,53,.18);
     }
-
-
-    .login-wrapper {
-      width: 100%;
-      max-width: 430px;
+    .brand h1{font-size:23px;font-weight:800}
+    .brand p{margin-top:5px;color:var(--muted);font-size:12px}
+    .login-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:30px;box-shadow:0 25px 70px rgba(0,0,0,.4)}
+    .login-heading{margin-bottom:22px}
+    .login-heading h2{font-size:20px;font-weight:800}
+    .login-heading p{color:var(--muted);font-size:12px;margin-top:5px}
+    .form-group{margin-bottom:17px}
+    .form-group label{display:block;font-size:11px;font-weight:700;margin-bottom:7px;color:var(--muted)}
+    .input-wrapper{position:relative}
+    .input-wrapper i{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:13px}
+    .input-wrapper input{
+      width:100%;height:47px;border:1px solid var(--border);border-radius:10px;outline:none;
+      padding:0 45px 0 40px;color:var(--text);background:var(--card-2);font-size:13px;transition:.2s;
     }
-
-
-    .brand {
-      text-align: center;
-      margin-bottom: 25px;
+    .input-wrapper input:focus{border-color:rgba(184,255,53,.55);box-shadow:0 0 0 3px rgba(184,255,53,.08)}
+    .password-toggle{position:absolute;right:12px;top:50%;transform:translateY(-50%);border:none;background:transparent;color:var(--muted);cursor:pointer}
+    .login-options{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+    .remember{display:flex;align-items:center;gap:7px;color:var(--muted);font-size:11px}
+    .remember input{accent-color:var(--primary)}
+    .forgot-btn{border:none;background:transparent;color:var(--primary);font-size:11px;font-weight:700;cursor:pointer}
+    .login-btn{
+      width:100%;height:48px;border:none;border-radius:10px;background:var(--primary);color:#10130b;
+      font-size:13px;font-weight:800;cursor:pointer;transition:.2s;box-shadow:0 10px 25px rgba(184,255,53,.14);
     }
-
-
-    .brand-logo {
-      width: 65px;
-      height: 65px;
-
-      margin: 0 auto 14px;
-
-      border-radius: 18px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          #9b7cff
-        );
-
-      color: #fff;
-
-      font-size: 20px;
-      font-weight: 800;
-
-      box-shadow:
-        0 15px 35px
-        rgba(108,77,246,.25);
-    }
-
-
-    .brand h1 {
-      font-size: 23px;
-      font-weight: 800;
-    }
-
-
-    .brand p {
-      margin-top: 5px;
-
-      color: var(--muted);
-
-      font-size: 12px;
-    }
-
-
-    .login-card {
-      background: var(--card);
-
-      border:
-        1px solid var(--border);
-
-      border-radius: var(--radius);
-
-      padding: 30px;
-
-      box-shadow:
-        0 25px 70px
-        rgba(20,30,50,.10);
-    }
-
-
-    .login-heading {
-      margin-bottom: 22px;
-    }
-
-
-    .login-heading h2 {
-      font-size: 20px;
-      font-weight: 800;
-    }
-
-
-    .login-heading p {
-      color: var(--muted);
-
-      font-size: 12px;
-
-      margin-top: 5px;
-    }
-
-
-    .form-group {
-      margin-bottom: 17px;
-    }
-
-
-    .form-group label {
-      display: block;
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      margin-bottom: 7px;
-    }
-
-
-    .input-wrapper {
-      position: relative;
-    }
-
-
-    .input-wrapper i {
-      position: absolute;
-
-      left: 13px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      color: var(--muted);
-
-      font-size: 13px;
-    }
-
-
-    .input-wrapper input {
-      width: 100%;
-
-      height: 47px;
-
-      border:
-        1px solid var(--border);
-
-      border-radius: 10px;
-
-      outline: none;
-
-      padding:
-        0 45px 0 40px;
-
-      color: var(--text);
-
-      background: #fafbfc;
-
-      font-size: 13px;
-    }
-
-
-    .input-wrapper input:focus {
-      border-color:
-        var(--primary);
-
-      box-shadow:
-        0 0 0 3px
-        rgba(108,77,246,.08);
-    }
-
-
-    .password-toggle {
-      position: absolute;
-
-      right: 12px;
-      top: 50%;
-
-      transform:
-        translateY(-50%);
-
-      border: none;
-
-      background: transparent;
-
-      color: var(--muted);
-
-      cursor: pointer;
-    }
-
-
-    .login-options {
-      display: flex;
-
-      justify-content: space-between;
-
-      align-items: center;
-
-      margin-bottom: 20px;
-    }
-
-
-    .remember {
-      display: flex;
-
-      align-items: center;
-
-      gap: 7px;
-
-      color: var(--muted);
-
-      font-size: 11px;
-    }
-
-
-    .remember input {
-      accent-color:
-        var(--primary);
-    }
-
-
-    .forgot-btn {
-      border: none;
-
-      background: transparent;
-
-      color: var(--primary);
-
-      font-size: 11px;
-
-      font-weight: 700;
-
-      cursor: pointer;
-    }
-
-
-    .login-btn {
-      width: 100%;
-
-      height: 48px;
-
-      border: none;
-
-      border-radius: 10px;
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary),
-          #8065f8
-        );
-
-      color: #fff;
-
-      font-size: 13px;
-
-      font-weight: 800;
-
-      cursor: pointer;
-
-      transition: .2s;
-
-      box-shadow:
-        0 10px 25px
-        rgba(108,77,246,.22);
-    }
-
-
-    .login-btn:hover {
-      transform:
-        translateY(-1px);
-
-      background:
-        linear-gradient(
-          135deg,
-          var(--primary-dark),
-          #7356e8
-        );
-    }
-
-
-    .login-btn:disabled {
-      opacity: .65;
-
-      cursor: not-allowed;
-
-      transform: none;
-    }
-
-
-    .login-btn .loader {
-      display: none;
-    }
-
-
-    .login-btn.loading .btn-text {
-      display: none;
-    }
-
-
-    .login-btn.loading .loader {
-      display: inline-block;
-    }
-
-
-    .message {
-      display: none;
-
-      padding: 11px 12px;
-
-      border-radius: 9px;
-
-      font-size: 11px;
-
-      line-height: 1.5;
-
-      margin-bottom: 16px;
-    }
-
-
-    .message.error {
-      display: block;
-
-      color: #991b1b;
-
-      background: #fef2f2;
-
-      border:
-        1px solid #fecaca;
-    }
-
-
-    .message.success {
-      display: block;
-
-      color: #166534;
-
-      background: #f0fdf4;
-
-      border:
-        1px solid #bbf7d0;
-    }
-
-
-    .security-note {
-      margin-top: 20px;
-
-      padding-top: 17px;
-
-      border-top:
-        1px solid var(--border);
-
-      display: flex;
-
-      align-items: flex-start;
-
-      gap: 9px;
-
-      color: var(--muted);
-
-      font-size: 10px;
-
-      line-height: 1.6;
-    }
-
-
-    .security-note i {
-      color: var(--success);
-
-      margin-top: 2px;
-    }
-
-
-    .footer {
-      text-align: center;
-
-      color: var(--muted);
-
-      font-size: 10px;
-
-      margin-top: 18px;
-    }
-
-
-    @media (max-width: 480px) {
-
-      .login-card {
-        padding: 23px 20px;
-      }
-
-      .brand h1 {
-        font-size: 20px;
-      }
-
-    }
-
+    .login-btn:hover{transform:translateY(-1px);background:#caff76}
+    .login-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+    .login-btn .loader{display:none}
+    .login-btn.loading .btn-text{display:none}
+    .login-btn.loading .loader{display:inline-block}
+    .message{display:none;padding:11px 12px;border-radius:9px;font-size:11px;line-height:1.5;margin-bottom:16px}
+    .message.error{display:block;color:#ffb3b3;background:rgba(255,98,98,.1);border:1px solid rgba(255,98,98,.25)}
+    .message.success{display:block;color:#a8f0c9;background:rgba(67,217,139,.1);border:1px solid rgba(67,217,139,.25)}
+    .security-note{margin-top:20px;padding-top:17px;border-top:1px solid var(--border);display:flex;align-items:flex-start;gap:9px;color:var(--muted);font-size:10px;line-height:1.6}
+    .security-note i{color:var(--success);margin-top:2px}
+    .footer{text-align:center;color:var(--muted);font-size:10px;margin-top:18px}
+    @media (max-width:480px){.login-card{padding:23px 20px}.brand h1{font-size:20px}}
   </style>
-
 </head>
 
-
 <body>
-
-
   <main class="login-wrapper">
 
-
-    <!-- BRAND -->
-
     <div class="brand">
-
-      <div class="brand-logo">
-        SNK
-      </div>
-
-      <h1>
-        SNK Design Agency
-      </h1>
-
-      <p>
-        Secure Administration Portal
-      </p>
-
+      <div class="brand-logo">SNK</div>
+      <h1>SNK Design Agency</h1>
+      <p>Secure Administration Portal</p>
     </div>
-
-
-    <!-- LOGIN CARD -->
 
     <div class="login-card">
 
-
       <div class="login-heading">
-
-        <h2>
-          Admin Login
-        </h2>
-
-        <p>
-          Sign in to manage customers, projects and payments.
-        </p>
-
+        <h2>Admin Login</h2>
+        <p>Sign in to manage customers, projects and payments.</p>
       </div>
 
-
-      <!-- MESSAGE -->
-
-      <div
-        class="message"
-        id="message"
-      ></div>
-
-
-      <!-- LOGIN FORM -->
+      <div class="message" id="message"></div>
 
       <form id="loginForm">
 
-
         <div class="form-group">
-
-          <label for="email">
-            Admin Email
-          </label>
-
+          <label for="email">Admin Email</label>
           <div class="input-wrapper">
-
             <i class="fa-solid fa-envelope"></i>
-
-            <input
-              type="email"
-              id="email"
-              autocomplete="email"
-              placeholder="admin@example.com"
-              required
-            >
-
+            <input type="email" id="email" autocomplete="email" placeholder="admin@example.com" required>
           </div>
-
         </div>
 
-
         <div class="form-group">
-
-          <label for="password">
-            Password
-          </label>
-
+          <label for="password">Password</label>
           <div class="input-wrapper">
-
             <i class="fa-solid fa-lock"></i>
-
-            <input
-              type="password"
-              id="password"
-              autocomplete="current-password"
-              placeholder="Enter your password"
-              minlength="6"
-              required
-            >
-
-            <button
-              type="button"
-              class="password-toggle"
-              id="passwordToggle"
-              aria-label="Show password"
-            >
+            <input type="password" id="password" autocomplete="current-password" placeholder="Enter your password" minlength="6" required>
+            <button type="button" class="password-toggle" id="passwordToggle" aria-label="Show password">
               <i class="fa-regular fa-eye"></i>
             </button>
-
           </div>
-
         </div>
-
 
         <div class="login-options">
-
-          <label class="remember">
-
-            <input
-              type="checkbox"
-              id="remember"
-            >
-
-            Remember me
-
-          </label>
-
-
-          <button
-            type="button"
-            class="forgot-btn"
-            id="forgotPassword"
-          >
-            Forgot password?
-          </button>
-
+          <label class="remember"><input type="checkbox" id="remember">Remember me</label>
+          <button type="button" class="forgot-btn" id="forgotPassword">Forgot password?</button>
         </div>
 
-
-        <button
-          type="submit"
-          class="login-btn"
-          id="loginBtn"
-        >
-
-          <span class="btn-text">
-            Sign In
-          </span>
-
-          <span class="loader">
-            Signing in...
-          </span>
-
+        <button type="submit" class="login-btn" id="loginBtn">
+          <span class="btn-text">Sign In</span>
+          <span class="loader">Signing in...</span>
         </button>
-
 
       </form>
 
-
       <div class="security-note">
-
         <i class="fa-solid fa-shield-halved"></i>
-
-        <span>
-          This portal is restricted to authorized
-          SNK Design Agency administrators.
-          Access is verified through Firebase Authentication
-          and administrator authorization.
-        </span>
-
+        <span>This portal is restricted to authorized SNK Design Agency administrators. Access is verified through Firebase Authentication and administrator authorization.</span>
       </div>
-
     </div>
 
-
-    <div class="footer">
-
-      © <span id="year"></span>
-      SNK Design Agency · Admin Portal
-
-    </div>
-
+    <div class="footer">© <span id="year"></span> SNK Design Agency · Admin Portal</div>
 
   </main>
 
-
-  <!-- =====================================================
-       FIREBASE
-  ===================================================== -->
-
   <script type="module">
-
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import {
-      initializeApp
-    }
-    from
-    "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
-
-
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      sendPasswordResetEmail,
-      onAuthStateChanged,
-      setPersistence,
-      browserLocalPersistence,
-      browserSessionPersistence
-    }
-    from
-    "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
-
+      getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged,
+      setPersistence, browserLocalPersistence, browserSessionPersistence
+    } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
 
     /* =====================================================
        FIREBASE CONFIG
-       
-       IMPORTANT:
-       Replace these values with YOUR Firebase project config.
+       IMPORTANT: replace these with YOUR Firebase project config.
     ===================================================== */
-
     const firebaseConfig = {
-
-      apiKey:
-        "YOUR_API_KEY",
-
-      authDomain:
-        "YOUR_PROJECT.firebaseapp.com",
-
-      projectId:
-        "YOUR_PROJECT_ID",
-
-      storageBucket:
-        "YOUR_PROJECT.firebasestorage.app",
-
-      messagingSenderId:
-        "YOUR_MESSAGING_SENDER_ID",
-
-      appId:
-        "YOUR_APP_ID"
-
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT.firebasestorage.app",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
     };
 
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
-    /* =====================================================
-       INITIALIZE FIREBASE
-    ===================================================== */
+    const loginForm = document.getElementById("loginForm");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const rememberInput = document.getElementById("remember");
+    const loginBtn = document.getElementById("loginBtn");
+    const message = document.getElementById("message");
 
-    const app =
-      initializeApp(
-        firebaseConfig
-      );
+    function showMessage(text, type = "error") { message.textContent = text; message.className = "message " + type; }
+    function clearMessage() { message.textContent = ""; message.className = "message"; }
 
+    document.getElementById("passwordToggle").addEventListener("click", function () {
+      const icon = this.querySelector("i");
+      if (passwordInput.type === "password") {
+        passwordInput.type = "text"; icon.classList.remove("fa-eye"); icon.classList.add("fa-eye-slash");
+      } else {
+        passwordInput.type = "password"; icon.classList.remove("fa-eye-slash"); icon.classList.add("fa-eye");
+      }
+    });
 
-    const auth =
-      getAuth(app);
-
-
-    /* =====================================================
-       DOM
-    ===================================================== */
-
-    const loginForm =
-      document.getElementById(
-        "loginForm"
-      );
-
-
-    const emailInput =
-      document.getElementById(
-        "email"
-      );
-
-
-    const passwordInput =
-      document.getElementById(
-        "password"
-      );
-
-
-    const rememberInput =
-      document.getElementById(
-        "remember"
-      );
-
-
-    const loginBtn =
-      document.getElementById(
-        "loginBtn"
-      );
-
-
-    const message =
-      document.getElementById(
-        "message"
-      );
-
-
-    /* =====================================================
-       MESSAGE
-    ===================================================== */
-
-    function showMessage(
-      text,
-      type = "error"
-    ) {
-
-      message.textContent =
-        text;
-
-      message.className =
-        "message " + type;
-
-    }
-
-
-    function clearMessage() {
-
-      message.textContent = "";
-
-      message.className =
-        "message";
-
-    }
-
-
-    /* =====================================================
-       PASSWORD TOGGLE
-    ===================================================== */
-
-    document
-      .getElementById(
-        "passwordToggle"
-      )
-      .addEventListener(
-        "click",
-        function() {
-
-          const icon =
-            this.querySelector("i");
-
-
-          if (
-            passwordInput.type ===
-            "password"
-          ) {
-
-            passwordInput.type =
-              "text";
-
-            icon.classList.remove(
-              "fa-eye"
-            );
-
-            icon.classList.add(
-              "fa-eye-slash"
-            );
-
-          } else {
-
-            passwordInput.type =
-              "password";
-
-            icon.classList.remove(
-              "fa-eye-slash"
-            );
-
-            icon.classList.add(
-              "fa-eye"
-            );
-
-          }
-
-        }
-      );
-
-
-    /* =====================================================
-       FIREBASE ERROR
-    ===================================================== */
-
-    function getFirebaseError(
-      errorCode
-    ) {
-
+    function getFirebaseError(errorCode) {
       const errors = {
-
-        "auth/invalid-email":
-          "Please enter a valid email address.",
-
-        "auth/user-not-found":
-          "No administrator account was found with this email.",
-
-        "auth/wrong-password":
-          "Incorrect password.",
-
-        "auth/invalid-credential":
-          "Invalid email or password.",
-
-        "auth/user-disabled":
-          "This administrator account has been disabled.",
-
-        "auth/too-many-requests":
-          "Too many login attempts. Please try again later.",
-
-        "auth/network-request-failed":
-          "Network error. Please check your internet connection."
-
+        "auth/invalid-email": "Please enter a valid email address.",
+        "auth/user-not-found": "No administrator account was found with this email.",
+        "auth/wrong-password": "Incorrect password.",
+        "auth/invalid-credential": "Invalid email or password.",
+        "auth/user-disabled": "This administrator account has been disabled.",
+        "auth/too-many-requests": "Too many login attempts. Please try again later.",
+        "auth/network-request-failed": "Network error. Please check your internet connection."
       };
-
-
-      return (
-        errors[errorCode] ||
-        "Unable to sign in. Please try again."
-      );
-
+      return errors[errorCode] || "Unable to sign in. Please try again.";
     }
 
-
-    /* =====================================================
-       LOGIN
-    ===================================================== */
-
-    loginForm.addEventListener(
-      "submit",
-      async function(event) {
-
-        event.preventDefault();
-
-        clearMessage();
-
-
-        const email =
-          emailInput.value.trim();
-
-
-        const password =
-          passwordInput.value;
-
-
-        if (!email || !password) {
-
-          showMessage(
-            "Please enter your email and password."
-          );
-
-          return;
-
-        }
-
-
-        loginBtn.disabled = true;
-
-        loginBtn.classList.add(
-          "loading"
-        );
-
-
-        try {
-
-          /*
-            Firebase session persistence.
-
-            Remember checked:
-            Browser local persistence.
-
-            Remember unchecked:
-            Browser session persistence.
-          */
-
-          await setPersistence(
-            auth,
-            rememberInput.checked
-              ? browserLocalPersistence
-              : browserSessionPersistence
-          );
-
-
-          const credential =
-            await signInWithEmailAndPassword(
-              auth,
-              email,
-              password
-            );
-
-
-          /*
-            IMPORTANT:
-            Authentication alone is NOT enough.
-
-            We now check the Firebase
-            custom admin claim.
-          */
-
-          const user =
-            credential.user;
-
-
-          const tokenResult =
-            await user.getIdTokenResult(
-              true
-            );
-
-
-          const isAdmin =
-            tokenResult.claims.admin === true;
-
-
-          if (!isAdmin) {
-
-            /*
-              User is authenticated but
-              does not have administrator permission.
-            */
-
-            await auth.signOut();
-
-
-            showMessage(
-              "Your account is authenticated, but it does not have administrator permission."
-            );
-
-
-            loginBtn.disabled =
-              false;
-
-            loginBtn.classList.remove(
-              "loading"
-            );
-
-            return;
-
-          }
-
-
-          showMessage(
-            "Login successful. Opening dashboard...",
-            "success"
-          );
-
-
-          /*
-            Small delay so the user
-            can see the success message.
-          */
-
-          setTimeout(
-            function() {
-
-              window.location.href =
-                "admin.html";
-
-            },
-            500
-          );
-
-
-        } catch (error) {
-
-          console.error(
-            "Firebase Login Error:",
-            error
-          );
-
-
-          showMessage(
-            getFirebaseError(
-              error.code
-            )
-          );
-
-
-          loginBtn.disabled =
-            false;
-
-          loginBtn.classList.remove(
-            "loading"
-          );
-
-        }
-
-      }
-    );
-
-
-    /* =====================================================
-       FORGOT PASSWORD
-    ===================================================== */
-
-    document
-      .getElementById(
-        "forgotPassword"
-      )
-      .addEventListener(
-        "click",
-        async function() {
-
-          clearMessage();
-
-
-          const email =
-            emailInput.value.trim();
-
-
-          if (!email) {
-
-            showMessage(
-              "Enter your admin email first."
-            );
-
-            emailInput.focus();
-
-            return;
-
-          }
-
-
-          try {
-
-            await sendPasswordResetEmail(
-              auth,
-              email
-            );
-
-
-            showMessage(
-              "Password reset email sent. Please check your inbox.",
-              "success"
-            );
-
-
-          } catch (error) {
-
-            console.error(
-              error
-            );
-
-
-            showMessage(
-              getFirebaseError(
-                error.code
-              )
-            );
-
-          }
-
-        }
-      );
-
-
-    /* =====================================================
-       AUTH STATE
-    ===================================================== */
-
-    onAuthStateChanged(
-      auth,
-      async function(user) {
-
-        if (!user) {
+    loginForm.addEventListener("submit", async function (event) {
+      event.preventDefault();
+      clearMessage();
+      const email = emailInput.value.trim();
+      const password = passwordInput.value;
+      if (!email || !password) { showMessage("Please enter your email and password."); return; }
+
+      loginBtn.disabled = true;
+      loginBtn.classList.add("loading");
+
+      try {
+        await setPersistence(auth, rememberInput.checked ? browserLocalPersistence : browserSessionPersistence);
+        const credential = await signInWithEmailAndPassword(auth, email, password);
+        const user = credential.user;
+        const tokenResult = await user.getIdTokenResult(true);
+        const isAdmin = tokenResult.claims.admin === true;
+
+        if (!isAdmin) {
+          await auth.signOut();
+          showMessage("Your account is authenticated, but it does not have administrator permission.");
+          loginBtn.disabled = false;
+          loginBtn.classList.remove("loading");
           return;
         }
 
+        showMessage("Login successful. Opening dashboard...", "success");
+        setTimeout(function () { window.location.href = "admin.html"; }, 500);
 
-        /*
-          If an already authenticated
-          administrator opens login page,
-          send them directly to dashboard.
-        */
-
-        try {
-
-          const tokenResult =
-            await user.getIdTokenResult(
-              true
-            );
-
-
-          if (
-            tokenResult.claims.admin === true
-          ) {
-
-            window.location.href =
-              "admin.html";
-
-          }
-
-        } catch (error) {
-
-          console.error(
-            "Auth state error:",
-            error
-          );
-
-        }
-
+      } catch (error) {
+        console.error("Firebase Login Error:", error);
+        showMessage(getFirebaseError(error.code));
+        loginBtn.disabled = false;
+        loginBtn.classList.remove("loading");
       }
-    );
+    });
 
+    document.getElementById("forgotPassword").addEventListener("click", async function () {
+      clearMessage();
+      const email = emailInput.value.trim();
+      if (!email) { showMessage("Enter your admin email first."); emailInput.focus(); return; }
+      try {
+        await sendPasswordResetEmail(auth, email);
+        showMessage("Password reset email sent. Please check your inbox.", "success");
+      } catch (error) {
+        console.error(error);
+        showMessage(getFirebaseError(error.code));
+      }
+    });
 
-    /* =====================================================
-       YEAR
-    ===================================================== */
+    onAuthStateChanged(auth, async function (user) {
+      if (!user) return;
+      try {
+        const tokenResult = await user.getIdTokenResult(true);
+        if (tokenResult.claims.admin === true) window.location.href = "admin.html";
+      } catch (error) { console.error("Auth state error:", error); }
+    });
 
-    document.getElementById(
-      "year"
-    ).textContent =
-      new Date().getFullYear();
-
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-
-  <!-- Font Awesome -->
-
-  <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
-  ></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"></script>
 
 </body>
-
 </html>

@@ -40,17 +40,17 @@
        HEADER
        ===================================================== -->
 
-  <header class="site-header" id="siteHeader">
+  <header class="header" id="siteHeader">
 
     <div class="container nav-container">
 
-      <a href="#home" class="brand">
+      <a href="#home" class="logo">
 
-        <div class="brand-mark">
+        <div class="logo-mark">
           SNK
         </div>
 
-        <div class="brand-text">
+        <div class="logo-text">
           <strong>SNK</strong>
           <span>DESIGN AGENCY</span>
         </div>
@@ -58,7 +58,7 @@
       </a>
 
 
-      <nav class="main-nav" id="mainNav">
+      <nav class="nav-menu" id="mainNav">
 
         <a href="#home" class="nav-link active">
           Home
@@ -84,6 +84,10 @@
           Contact
         </a>
 
+        <a href="browse.html" class="nav-cta" style="margin-top:10px">
+          Our Work Feed →
+        </a>
+
       </nav>
 
 
@@ -94,7 +98,7 @@
 
 
       <button
-        class="mobile-menu-button"
+        class="menu-toggle"
         id="mobileMenuButton"
         type="button"
         aria-label="Open Menu"
@@ -116,14 +120,17 @@
 
   <main>
 
-    <section class="hero-section" id="home">
+    <section class="hero" id="home">
 
-      <div class="container hero-grid">
+      <div class="hero-glow glow-one"></div>
+      <div class="hero-glow glow-two"></div>
+
+      <div class="container hero-container">
 
         <div class="hero-content">
 
           <div class="hero-badge">
-            <span class="hero-badge-dot"></span>
+            <span class="badge-dot"></span>
             Creative Digital Agency
           </div>
 
@@ -144,12 +151,12 @@
 
           <div class="hero-buttons">
 
-            <a href="#work" class="primary-button">
+            <a href="#work" class="btn btn-primary">
               Explore Our Work
               <span>↗</span>
             </a>
 
-            <a href="#services" class="secondary-button">
+            <a href="#services" class="btn btn-outline">
               Our Services
               <span>→</span>
             </a>
@@ -161,16 +168,16 @@
 
             <div class="trust-avatars">
 
-              <div class="trust-avatar">S</div>
-              <div class="trust-avatar">N</div>
-              <div class="trust-avatar">K</div>
-              <div class="trust-avatar">+</div>
+              <span>S</span>
+              <span>N</span>
+              <span>K</span>
+              <span>+</span>
 
             </div>
 
             <div class="trust-text">
               <strong>Trusted by growing businesses</strong>
-              <span>Creative solutions that make an impact.</span>
+              <small>Creative solutions that make an impact.</small>
             </div>
 
           </div>
@@ -182,17 +189,14 @@
 
         <div class="hero-visual">
 
-          <div class="visual-glow"></div>
-
-
-          <div class="browser-window">
+          <div class="main-card">
 
             <div class="browser-top">
 
               <div class="browser-dots">
-                <span></span>
-                <span></span>
-                <span></span>
+                <i></i>
+                <i></i>
+                <i></i>
               </div>
 
               <div class="browser-address">
@@ -204,22 +208,17 @@
 
             <div class="browser-content">
 
-              <div class="mockup-header">
-
-                <div class="mockup-logo">
-                  SNK
-                </div>
-
-                <div class="mockup-menu">
+              <div class="mini-nav">
+                <strong>SNK</strong>
+                <div>
                   <span></span>
                   <span></span>
                   <span></span>
                 </div>
-
               </div>
 
 
-              <div class="mockup-main">
+              <div class="mini-hero">
 
                 <small>
                   CREATIVE DIGITAL STUDIO
@@ -227,38 +226,20 @@
 
                 <h3>
                   Make Your
-                  <strong>Digital</strong>
+                  <em>Digital</em>
                   Presence
-                  <strong>Powerful.</strong>
+                  <em>Powerful.</em>
                 </h3>
 
-                <div class="mockup-button">
-                  Start a Project →
-                </div>
+                <div class="mini-line"></div>
 
               </div>
 
 
-              <div class="mockup-cards">
-
-                <div class="mini-card">
-                  <div class="mini-icon">✦</div>
-                  <strong>Design</strong>
-                  <span>Creative UI/UX</span>
-                </div>
-
-                <div class="mini-card">
-                  <div class="mini-icon">⌘</div>
-                  <strong>Development</strong>
-                  <span>Modern Websites</span>
-                </div>
-
-                <div class="mini-card">
-                  <div class="mini-icon">↗</div>
-                  <strong>Growth</strong>
-                  <span>Digital Strategy</span>
-                </div>
-
+              <div class="mini-boxes">
+                <div></div>
+                <div></div>
+                <div></div>
               </div>
 
             </div>
@@ -266,7 +247,7 @@
           </div>
 
 
-          <div class="floating-card floating-card-one">
+          <div class="floating-card floating-one">
 
             <div class="floating-icon">
               ✓
@@ -280,13 +261,10 @@
           </div>
 
 
-          <div class="floating-card floating-card-two">
+          <div class="floating-card floating-two">
 
-            <div class="rating-stars">
-              ★★★★★
-            </div>
-
-            <strong>Happy Clients</strong>
+            <strong>4.9★</strong>
+            <span>Happy Clients</span>
 
           </div>
 
@@ -307,22 +285,22 @@
 
         <div class="stat-item">
           <strong>100<span>+</span></strong>
-          <p>Projects Delivered</p>
+          <span>Projects Delivered</span>
         </div>
 
         <div class="stat-item">
           <strong>50<span>+</span></strong>
-          <p>Happy Clients</p>
+          <span>Happy Clients</span>
         </div>
 
         <div class="stat-item">
           <strong>24<span>/7</span></strong>
-          <p>Support</p>
+          <span>Support</span>
         </div>
 
         <div class="stat-item">
           <strong>100<span>%</span></strong>
-          <p>Creative Focus</p>
+          <span>Creative Focus</span>
         </div>
 
       </div>
@@ -364,158 +342,51 @@
         <div class="services-grid">
 
           <article class="service-card">
-
-            <div class="service-number">
-              01
-            </div>
-
-            <div class="service-icon">
-              ◇
-            </div>
-
-            <h3>
-              Website Design
-            </h3>
-
-            <p>
-              Modern, responsive and conversion-focused
-              websites designed to make your brand stand out.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">01</div>
+            <div class="service-icon">◇</div>
+            <h3>Website Design</h3>
+            <p>Modern, responsive and conversion-focused websites designed to make your brand stand out.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
-
           <article class="service-card">
-
-            <div class="service-number">
-              02
-            </div>
-
-            <div class="service-icon">
-              ✦
-            </div>
-
-            <h3>
-              Web Development
-            </h3>
-
-            <p>
-              Fast, secure and scalable websites built
-              with modern technologies and clean code.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">02</div>
+            <div class="service-icon">✦</div>
+            <h3>Web Development</h3>
+            <p>Fast, secure and scalable websites built with modern technologies and clean code.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
-
           <article class="service-card">
-
-            <div class="service-number">
-              03
-            </div>
-
-            <div class="service-icon">
-              ◎
-            </div>
-
-            <h3>
-              UI/UX Design
-            </h3>
-
-            <p>
-              User-friendly interfaces and meaningful
-              experiences that keep your customers engaged.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">03</div>
+            <div class="service-icon">◎</div>
+            <h3>UI/UX Design</h3>
+            <p>User-friendly interfaces and meaningful experiences that keep your customers engaged.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
-
           <article class="service-card">
-
-            <div class="service-number">
-              04
-            </div>
-
-            <div class="service-icon">
-              ◆
-            </div>
-
-            <h3>
-              Branding
-            </h3>
-
-            <p>
-              Strong visual identities that communicate
-              your brand personality and build recognition.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">04</div>
+            <div class="service-icon">◆</div>
+            <h3>Branding</h3>
+            <p>Strong visual identities that communicate your brand personality and build recognition.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
-
           <article class="service-card">
-
-            <div class="service-number">
-              05
-            </div>
-
-            <div class="service-icon">
-              ↗
-            </div>
-
-            <h3>
-              Digital Marketing
-            </h3>
-
-            <p>
-              Digital strategies that help your business
-              reach the right audience and generate growth.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">05</div>
+            <div class="service-icon">↗</div>
+            <h3>Digital Marketing</h3>
+            <p>Digital strategies that help your business reach the right audience and generate growth.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
-
           <article class="service-card">
-
-            <div class="service-number">
-              06
-            </div>
-
-            <div class="service-icon">
-              ⚡
-            </div>
-
-            <h3>
-              Custom Solutions
-            </h3>
-
-            <p>
-              Tailored digital solutions created specifically
-              for your unique business requirements.
-            </p>
-
-            <a href="#contact" class="service-link">
-              Learn More →
-            </a>
-
+            <div class="service-number">06</div>
+            <div class="service-icon">⚡</div>
+            <h3>Custom Solutions</h3>
+            <p>Tailored digital solutions created specifically for your unique business requirements.</p>
+            <a href="#contact">Learn More →</a>
           </article>
 
         </div>
@@ -536,28 +407,10 @@
         <div class="about-visual">
 
           <div class="about-main-card">
-
-            <span class="about-small-label">
-              SNK DESIGN AGENCY
-            </span>
-
-            <div class="about-big-text">
-              CREATE.
-              <br>
-              BUILD.
-              <br>
-              <span>GROW.</span>
-            </div>
-
-            <div class="about-line"></div>
-
-            <p>
-              Turning ideas into meaningful
-              digital experiences.
-            </p>
-
+            <div class="about-logo">SNK</div>
+            <span>SNK DESIGN AGENCY</span>
+            <strong>CREATE. BUILD. GROW.</strong>
           </div>
-
 
           <div class="about-small-card">
             <strong>01</strong>
@@ -569,9 +422,7 @@
 
         <div class="about-content">
 
-          <span class="section-label">
-            ABOUT SNK
-          </span>
+          <span class="section-label">ABOUT SNK</span>
 
           <h2>
             We Don't Just
@@ -594,36 +445,26 @@
 
           <div class="about-features">
 
-            <div class="about-feature">
+            <div>
               <span>✓</span>
-              <div>
-                <strong>Creative Approach</strong>
-                <p>Fresh ideas for every project.</p>
-              </div>
+              <div><strong>Creative Approach</strong></div>
             </div>
 
-            <div class="about-feature">
+            <div>
               <span>✓</span>
-              <div>
-                <strong>Business Focused</strong>
-                <p>Design that supports your goals.</p>
-              </div>
+              <div><strong>Business Focused</strong></div>
             </div>
 
-            <div class="about-feature">
+            <div>
               <span>✓</span>
-              <div>
-                <strong>Long-Term Support</strong>
-                <p>We stay with you after launch.</p>
-              </div>
+              <div><strong>Long-Term Support</strong></div>
             </div>
 
           </div>
 
 
-          <a href="#contact" class="primary-button">
-            Work With Us
-            <span>↗</span>
+          <a href="#contact" class="text-link">
+            Work With Us →
           </a>
 
         </div>
@@ -644,19 +485,12 @@
         <div class="section-heading">
 
           <div>
-
-            <span class="section-label">
-              OUR WORK
-            </span>
-
-            <h2>
-              Selected Projects.
-            </h2>
-
+            <span class="section-label">OUR WORK</span>
+            <h2>Selected Projects.</h2>
           </div>
 
-          <a href="#contact" class="text-button">
-            Start Your Project →
+          <a href="browse.html" class="text-link">
+            See all projects →
           </a>
 
         </div>
@@ -664,133 +498,71 @@
 
         <div class="work-grid">
 
-          <article class="work-card work-large">
-
-            <div class="work-image work-image-one">
-
-              <div class="work-browser">
-
-                <div class="work-browser-top">
-                  <span></span>
-                  <span></span>
+          <article class="work-card">
+            <div class="work-image project-one">
+              <div class="project-browser">
+                <div class="project-header">SNK · WEB</div>
+                <div class="project-content">
+                  <small>BUSINESS WEBSITE</small>
+                  <strong>Grow<br>Online</strong>
                   <span></span>
                 </div>
-
-                <div class="work-browser-body">
-
-                  <div class="fake-sidebar"></div>
-
-                  <div class="fake-content">
-
-                    <div class="fake-title"></div>
-                    <div class="fake-title short"></div>
-
-                    <div class="fake-boxes">
-                      <span></span>
-                      <span></span>
-                      <span></span>
-                    </div>
-
-                  </div>
-
-                </div>
-
               </div>
-
             </div>
-
             <div class="work-info">
-              <div>
-                <span>Web Design</span>
-                <h3>Business Website</h3>
-              </div>
-              <a href="#contact">↗</a>
+              <span>Web Design</span>
+              <h3>Business Website</h3>
             </div>
-
           </article>
 
-
           <article class="work-card">
-
-            <div class="work-image work-image-two">
-
+            <div class="work-image project-two">
               <div class="brand-preview">
-                <span>YOUR</span>
                 <strong>BRAND</strong>
-                <small>CREATE DIFFERENT.</small>
+                <span>CREATE DIFFERENT.</span>
               </div>
-
             </div>
-
             <div class="work-info">
-              <div>
-                <span>Branding</span>
-                <h3>Brand Identity</h3>
-              </div>
-              <a href="#contact">↗</a>
+              <span>Branding</span>
+              <h3>Brand Identity</h3>
             </div>
-
           </article>
 
-
           <article class="work-card">
-
-            <div class="work-image work-image-three">
-
-              <div class="mobile-preview">
-
-                <div class="mobile-top"></div>
-
+            <div class="work-image project-three">
+              <div class="mobile-screen">
+                <div class="mobile-top">SNK</div>
                 <div class="mobile-content">
                   <span></span>
-                  <strong></strong>
-                  <i></i>
-                  <i></i>
+                  <span></span>
+                  <span></span>
                 </div>
-
               </div>
-
             </div>
-
             <div class="work-info">
-              <div>
-                <span>UI/UX Design</span>
-                <h3>Mobile Experience</h3>
-              </div>
-              <a href="#contact">↗</a>
+              <span>UI/UX Design</span>
+              <h3>Mobile Experience</h3>
             </div>
-
           </article>
 
-
           <article class="work-card">
-
-            <div class="work-image work-image-four">
-
-              <div class="dashboard-preview">
-
-                <div class="dashboard-bar"></div>
-
-                <div class="dashboard-chart">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
+            <div class="work-image project-four">
+              <div class="project-ui">
+                <div class="ui-top"></div>
+                <div class="ui-columns">
+                  <div></div>
+                  <div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
                 </div>
-
               </div>
-
             </div>
-
             <div class="work-info">
-              <div>
-                <span>Development</span>
-                <h3>Business Dashboard</h3>
-              </div>
-              <a href="#contact">↗</a>
+              <span>Development</span>
+              <h3>Business Dashboard</h3>
             </div>
-
           </article>
 
         </div>
@@ -808,113 +580,37 @@
 
       <div class="container">
 
-        <div class="section-heading centered">
-
-          <span class="section-label">
-            HOW WE WORK
-          </span>
-
-          <h2>
-            Simple Process.
-            <br>
-            Powerful Results.
-          </h2>
-
-          <p>
-            We keep our process simple, transparent and
-            focused on delivering real value.
-          </p>
-
+        <div class="section-heading process-heading">
+          <span class="section-label">HOW WE WORK</span>
+          <h2>Simple Process. Powerful Results.</h2>
+          <p>We keep our process simple, transparent and focused on delivering real value.</p>
         </div>
 
 
         <div class="process-grid">
 
           <div class="process-item">
-
-            <div class="process-number">
-              01
-            </div>
-
-            <div class="process-icon">
-              ◎
-            </div>
-
-            <h3>
-              Discover
-            </h3>
-
-            <p>
-              We understand your business, audience,
-              goals and challenges.
-            </p>
-
+            <div class="process-top"><span>01</span><div>◎</div></div>
+            <h3>Discover</h3>
+            <p>We understand your business, audience, goals and challenges.</p>
           </div>
 
-
           <div class="process-item">
-
-            <div class="process-number">
-              02
-            </div>
-
-            <div class="process-icon">
-              ◇
-            </div>
-
-            <h3>
-              Strategy
-            </h3>
-
-            <p>
-              We create a clear strategy and direction
-              for your digital project.
-            </p>
-
+            <div class="process-top"><span>02</span><div>◇</div></div>
+            <h3>Strategy</h3>
+            <p>We create a clear strategy and direction for your digital project.</p>
           </div>
 
-
           <div class="process-item">
-
-            <div class="process-number">
-              03
-            </div>
-
-            <div class="process-icon">
-              ✦
-            </div>
-
-            <h3>
-              Create
-            </h3>
-
-            <p>
-              Our team designs and develops your
-              solution with attention to detail.
-            </p>
-
+            <div class="process-top"><span>03</span><div>✦</div></div>
+            <h3>Create</h3>
+            <p>Our team designs and develops your solution with attention to detail.</p>
           </div>
 
-
           <div class="process-item">
-
-            <div class="process-number">
-              04
-            </div>
-
-            <div class="process-icon">
-              ↗
-            </div>
-
-            <h3>
-              Launch & Grow
-            </h3>
-
-            <p>
-              We launch your project and continue
-              supporting your digital growth.
-            </p>
-
+            <div class="process-top"><span>04</span><div>↗</div></div>
+            <h3>Launch & Grow</h3>
+            <p>We launch your project and continue supporting your digital growth.</p>
           </div>
 
         </div>
@@ -934,12 +630,9 @@
 
         <div class="cta-box">
 
-          <div class="cta-decoration cta-decoration-one"></div>
-          <div class="cta-decoration cta-decoration-two"></div>
+          <div class="cta-glow"></div>
 
-          <span class="section-label">
-            HAVE A PROJECT IN MIND?
-          </span>
+          <span class="section-label">HAVE A PROJECT IN MIND?</span>
 
           <h2>
             Let's Build Something
@@ -954,18 +647,12 @@
 
           <div class="cta-buttons">
 
-            <a
-              href="mailto:hello@snkdesignagency.com"
-              class="primary-button"
-            >
+            <a href="mailto:hello@snkdesignagency.com" class="btn btn-primary">
               hello@snkdesignagency.com
               <span>↗</span>
             </a>
 
-            <a
-              href="tel:+8801000000000"
-              class="secondary-button"
-            >
+            <a href="tel:+8801000000000" class="btn btn-outline">
               +880 1000-000000
             </a>
 
@@ -984,279 +671,65 @@
        FOOTER
        ===================================================== -->
 
-  <footer class="site-footer">
+  <footer class="footer">
 
-    <div class="container">
+    <div class="container footer-top">
 
-      <div class="footer-grid">
+      <div class="footer-brand">
 
-        <div class="footer-brand">
+        <a href="#home" class="logo">
+          <div class="logo-mark">SNK</div>
+          <div class="logo-text"><strong>SNK</strong><span>DESIGN AGENCY</span></div>
+        </a>
 
-          <a href="#home" class="brand">
-
-            <div class="brand-mark">
-              SNK
-            </div>
-
-            <div class="brand-text">
-              <strong>SNK</strong>
-              <span>DESIGN AGENCY</span>
-            </div>
-
-          </a>
-
-          <p>
-            We create digital experiences that
-            help businesses grow.
-          </p>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            Company
-          </h4>
-
-          <a href="#about">About</a>
-          <a href="#work">Our Work</a>
-          <a href="#process">Process</a>
-          <a href="#contact">Contact</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            Services
-          </h4>
-
-          <a href="#services">Web Design</a>
-          <a href="#services">Development</a>
-          <a href="#services">UI/UX Design</a>
-          <a href="#services">Branding</a>
-
-        </div>
-
-
-        <div class="footer-column">
-
-          <h4>
-            Connect
-          </h4>
-
-          <a href="mailto:hello@snkdesignagency.com">
-            Email
-          </a>
-
-          <a href="tel:+8801000000000">
-            Phone
-          </a>
-
-          <a href="#" target="_blank">
-            Facebook
-          </a>
-
-          <a href="#" target="_blank">
-            Instagram
-          </a>
-
-        </div>
+        <p>We create digital experiences that help businesses grow.</p>
 
       </div>
 
 
-      <div class="footer-bottom">
+      <div class="footer-column">
+        <h4>Company</h4>
+        <a href="#about">About</a>
+        <a href="#work">Our Work</a>
+        <a href="#process">Process</a>
+        <a href="#contact">Contact</a>
+      </div>
 
-        <p>
-          © 2026 SNK Design Agency. All rights reserved.
-        </p>
 
-        <p>
-          Designed & Built by SNK
-        </p>
+      <div class="footer-column">
+        <h4>Services</h4>
+        <a href="#services">Web Design</a>
+        <a href="#services">Development</a>
+        <a href="#services">UI/UX Design</a>
+        <a href="#services">Branding</a>
+      </div>
 
+
+      <div class="footer-column">
+        <h4>Connect</h4>
+        <a href="mailto:hello@snkdesignagency.com">Email</a>
+        <a href="tel:+8801000000000">Phone</a>
+        <a href="#" target="_blank">Facebook</a>
+        <a href="#" target="_blank">Instagram</a>
+      </div>
+
+    </div>
+
+
+    <div class="container footer-bottom">
+
+      <p>© <span data-current-year></span> SNK Design Agency. All rights reserved.</p>
+
+      <div>
+        <a href="admin-login.html">Admin</a>
+        <a href="client.html">Client</a>
       </div>
 
     </div>
 
   </footer>
 
-
-  <!-- =====================================================
-       JAVASCRIPT
-       ===================================================== -->
-
-  <script>
-
-    document.addEventListener("DOMContentLoaded", function () {
-
-      const mobileButton =
-        document.getElementById("mobileMenuButton");
-
-      const mainNav =
-        document.getElementById("mainNav");
-
-      const navLinks =
-        document.querySelectorAll(".nav-link");
-
-      const siteHeader =
-        document.getElementById("siteHeader");
-
-
-      /* Mobile Menu */
-
-      if (mobileButton && mainNav) {
-
-        mobileButton.addEventListener("click", function () {
-
-          const isOpen =
-            mainNav.classList.toggle("mobile-open");
-
-          mobileButton.classList.toggle("active", isOpen);
-
-          mobileButton.setAttribute(
-            "aria-expanded",
-            isOpen ? "true" : "false"
-          );
-
-        });
-
-
-        navLinks.forEach(function (link) {
-
-          link.addEventListener("click", function () {
-
-            mainNav.classList.remove("mobile-open");
-
-            mobileButton.classList.remove("active");
-
-            mobileButton.setAttribute(
-              "aria-expanded",
-              "false"
-            );
-
-          });
-
-        });
-
-      }
-
-
-      /* Header Scroll Effect */
-
-      function handleHeaderScroll() {
-
-        if (!siteHeader) return;
-
-        if (window.scrollY > 40) {
-          siteHeader.classList.add("scrolled");
-        } else {
-          siteHeader.classList.remove("scrolled");
-        }
-
-      }
-
-      window.addEventListener(
-        "scroll",
-        handleHeaderScroll
-      );
-
-      handleHeaderScroll();
-
-
-      /* Active Navigation */
-
-      const sections =
-        document.querySelectorAll("section[id]");
-
-      function updateActiveNav() {
-
-        let current = "";
-
-        sections.forEach(function (section) {
-
-          const sectionTop =
-            section.offsetTop - 150;
-
-          if (window.scrollY >= sectionTop) {
-            current = section.getAttribute("id");
-          }
-
-        });
-
-
-        navLinks.forEach(function (link) {
-
-          link.classList.remove("active");
-
-          const href =
-            link.getAttribute("href");
-
-          if (href === "#" + current) {
-            link.classList.add("active");
-          }
-
-        });
-
-      }
-
-      window.addEventListener(
-        "scroll",
-        updateActiveNav
-      );
-
-      updateActiveNav();
-
-
-      /* Smooth Scroll */
-
-      document.querySelectorAll(
-        'a[href^="#"]'
-      ).forEach(function (anchor) {
-
-        anchor.addEventListener(
-          "click",
-          function (event) {
-
-            const targetId =
-              this.getAttribute("href");
-
-            if (
-              targetId === "#" ||
-              !document.querySelector(targetId)
-            ) {
-              return;
-            }
-
-            event.preventDefault();
-
-            const target =
-              document.querySelector(targetId);
-
-            const headerHeight =
-              siteHeader
-                ? siteHeader.offsetHeight
-                : 0;
-
-            const targetPosition =
-              target.offsetTop - headerHeight;
-
-            window.scrollTo({
-              top: targetPosition,
-              behavior: "smooth"
-            });
-
-          }
-        );
-
-      });
-
-    });
-
-  </script>
+  <script src="script.js"></script>
 
 </body>
 </html>
