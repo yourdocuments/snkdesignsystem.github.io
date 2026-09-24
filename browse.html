@@ -117,22 +117,38 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
   </div>
 </footer>
 
-<script>
+<script type="module">
+  import { FIREBASE_READY, db } from './firebase-init.js';
+  import { collection, onSnapshot, query, orderBy } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js';
 (function () {
   'use strict';
   var KEY = 'snk_links_v1';
 
-  /* Data layer: today it reads this browser's storage.
-     When Firebase is connected, only load() needs to change. */
+  /* Data layer:
+     FIREBASE_READY = false -> demo cards, or whatever links-admin.html
+                                saved in THIS browser's storage.
+     FIREBASE_READY = true  -> live Firestore data, same for every visitor.
+     Fill in firebase-init.js with your config to switch over. */
   var DEMO = [
     { id: 'd1', name: 'Royal Multicare', category: 'Healthcare', description: 'Doctor schedule poster for a diagnostic and consultation centre.', url: '', color: '#0b5a9c', date: '2026-09-20' },
     { id: 'd2', name: 'Green Basket', category: 'Branding', description: 'Logo, colour system and packaging labels for a grocery start-up.', url: '', color: '#1f6b4f', date: '2026-09-14' },
     { id: 'd3', name: 'Nur Fashion House', category: 'Social media', description: 'A month of Facebook and Instagram post designs.', url: '', color: '#8a2b4d', date: '2026-09-06' },
     { id: 'd4', name: 'Sylhet Tea Co.', category: 'Website', description: 'One-page website with product gallery and order button.', url: '', color: '#9a4a10', date: '2026-08-28' }
   ];
-  function load() {
+  function loadLocal() {
     try { var d = JSON.parse(localStorage.getItem(KEY)); if (Array.isArray(d)) return d; } catch (e) {}
     return DEMO.slice();
+  }
+  function watchFirestore() {
+    var col = collection(db, 'links');
+    onSnapshot(query(col, orderBy('date', 'desc')), function (snap) {
+      items = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); });
+      chips(); draw();
+    }, function (err) {
+      console.error(err);
+      items = [];
+      chips(); draw();
+    });
   }
 
   function safeUrl(u) {
@@ -150,7 +166,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
     return x.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
   }
 
-  var items = load().sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
+  var items = FIREBASE_READY ? [] : loadLocal().sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
   var cat = 'All', term = '';
 
   function chips() {
@@ -201,7 +217,7 @@ footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
 
   document.getElementById('q').addEventListener('input', function (e) { term = e.target.value; draw(); });
   document.getElementById('yr').textContent = new Date().getFullYear();
-  chips(); draw();
+  if (FIREBASE_READY) watchFirestore(); else { chips(); draw(); }
 })();
 </script>
 </body>

@@ -131,20 +131,53 @@ input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--bord
 
 <div class="toast" id="toast" role="status"></div>
 
-<script>
+<script type="module">
+  import { FIREBASE_READY, db } from './firebase-init.js';
+  import {
+    collection, doc, setDoc, deleteDoc, onSnapshot, query, orderBy
+  } from 'https://www.gstatic.com/firebasejs/12.2.1/firebase-firestore.js';
 (function () {
   'use strict';
   var KEY = 'snk_links_v1';
   var $ = function (s) { return document.querySelector(s); };
 
-  /* Data layer: swap these two functions for Firestore later. */
-  function load() { try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; } catch (e) { return []; } }
-  function persist() {
+  /* ---------------------------------------------------------
+     DATA LAYER
+     FIREBASE_READY = false  -> this browser's local storage only
+     FIREBASE_READY = true   -> Firestore, shared with every visitor
+     Fill in firebase-init.js with your config to switch over.
+     --------------------------------------------------------- */
+  function loadLocal() { try { var d = JSON.parse(localStorage.getItem(KEY)); return Array.isArray(d) ? d : []; } catch (e) { return []; } }
+  function persistLocal() {
     try { localStorage.setItem(KEY, JSON.stringify(items)); return true; }
     catch (e) { toast('Browser storage is full. Remove a large image or save a backup.', true); return false; }
   }
 
-  var items = load();
+  var linksCol = FIREBASE_READY ? collection(db, 'links') : null;
+
+  function watchFirestore() {
+    onSnapshot(query(linksCol, orderBy('date', 'desc')), function (snap) {
+      items = snap.docs.map(function (d) { return Object.assign({ id: d.id }, d.data()); });
+      draw();
+    }, function (err) {
+      console.error(err);
+      toast('Could not reach Firestore. Check your security rules and sign-in.', true);
+    });
+  }
+
+  async function saveOne(rec) {
+    if (!FIREBASE_READY) return persistLocal();
+    try { await setDoc(doc(db, 'links', rec.id), rec); return true; }
+    catch (e) { console.error(e); toast('Could not save to Firestore: ' + e.message, true); return false; }
+  }
+
+  async function deleteOne(id) {
+    if (!FIREBASE_READY) { persistLocal(); return true; }
+    try { await deleteDoc(doc(db, 'links', id)); return true; }
+    catch (e) { console.error(e); toast('Could not delete from Firestore: ' + e.message, true); return false; }
+  }
+
+  var items = FIREBASE_READY ? [] : loadLocal();
   var editId = null, logo = null, cover = null;
 
   function uid() { return 'l' + Date.now().toString(36) + Math.random().toString(36).slice(2, 5); }
@@ -209,9 +242,13 @@ input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--bord
       var edit = h('button', 'btn sm', 'Edit'); edit.type = 'button';
       var del = h('button', 'btn sm danger', 'Delete'); del.type = 'button';
       edit.addEventListener('click', function () { startEdit(i.id); });
-      del.addEventListener('click', function () {
+      del.addEventListener('click', async function () {
         if (!confirm('Delete "' + i.name + '"?')) return;
-        items.splice(idx, 1); if (persist()) { draw(); toast('Deleted.'); }
+        var ok = await deleteOne(i.id);
+        if (ok) {
+          if (!FIREBASE_READY) { items.splice(idx, 1); draw(); }
+          toast('Deleted.');
+        }
         if (editId === i.id) resetForm();
       });
       box.append(h('div', 'item', [t, info, h('div', 'go', [edit, del])]));
@@ -229,7 +266,7 @@ input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--bord
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  $('#form').addEventListener('submit', function (e) {
+  $('#form').addEventListener('submit', async function (e) {
     e.preventDefault();
     var url = cleanUrl($('#url').value);
     if (!url) { toast('This link is not valid. Paste the full address, like https://example.com', true); return; }
@@ -239,10 +276,14 @@ input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--bord
       color: $('#color').value, logo: logo, cover: cover
     };
     var wasEdit = !!editId;
-    if (wasEdit) items = items.map(function (x) { return x.id === editId ? rec : x; });
-    else items.unshift(rec);
-    if (!persist()) { if (!wasEdit) items.shift(); return; }
-    draw(); resetForm(); toast(wasEdit ? 'Changes saved.' : 'Card added.');
+    var ok = await saveOne(rec);
+    if (!ok) return;
+    if (!FIREBASE_READY) {
+      if (wasEdit) items = items.map(function (x) { return x.id === editId ? rec : x; });
+      else items.unshift(rec);
+      draw();
+    }
+    resetForm(); toast(wasEdit ? 'Changes saved.' : 'Card added.');
   });
 
   $('#cancelBtn').addEventListener('click', resetForm);
@@ -270,16 +311,28 @@ input[type=color]{width:100%;height:42px;padding:3px;border:1px solid var(--bord
   $('#importInput').addEventListener('change', function (e) {
     var f = e.target.files && e.target.files[0]; if (!f) return;
     var r = new FileReader();
-    r.onload = function () {
+    r.onload = async function () {
       try {
         var d = JSON.parse(r.result); if (!Array.isArray(d)) throw 0;
-        items = d.filter(function (x) { return x && x.name; }); if (persist()) { draw(); toast('Backup opened.'); }
+        var clean = d.filter(function (x) { return x && x.name; });
+        if (FIREBASE_READY) {
+          for (var k = 0; k < clean.length; k++) { await saveOne(Object.assign({}, clean[k], { id: clean[k].id || uid() })); }
+          toast('Backup opened.');
+        } else {
+          items = clean;
+          if (persistLocal()) { draw(); toast('Backup opened.'); }
+        }
       } catch (err) { toast('This is not a valid backup file.', true); }
     };
     r.readAsText(f); e.target.value = '';
   });
 
-  resetForm(); draw();
+  resetForm();
+  if (FIREBASE_READY) watchFirestore(); else draw();
+  if (!FIREBASE_READY) {
+    var warn = document.querySelector('.note');
+    if (warn) warn.textContent = 'Firestore is not configured yet, so cards are saved in this browser only. Fill in firebase-init.js to share them with every visitor.';
+  }
 })();
 </script>
 </body>

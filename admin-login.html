@@ -132,27 +132,18 @@
   </main>
 
   <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-app.js";
     import {
       getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, onAuthStateChanged,
       setPersistence, browserLocalPersistence, browserSessionPersistence
     } from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+    import { firebaseApp, FIREBASE_READY } from "./firebase-init.js";
 
-    /* =====================================================
-       FIREBASE CONFIG
-       IMPORTANT: replace these with YOUR Firebase project config.
-    ===================================================== */
-    const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_PROJECT.firebaseapp.com",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_PROJECT.firebasestorage.app",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+    /* Config lives in one shared place: firebase-init.js */
+    if (!FIREBASE_READY) {
+      document.getElementById("message").className = "message error";
+      document.getElementById("message").textContent = "Firebase is not configured yet. Add your project config to firebase-init.js.";
+    }
+    const auth = FIREBASE_READY ? getAuth(firebaseApp) : null;
 
     const loginForm = document.getElementById("loginForm");
     const emailInput = document.getElementById("email");
@@ -235,7 +226,7 @@
       }
     });
 
-    onAuthStateChanged(auth, async function (user) {
+    if (FIREBASE_READY) onAuthStateChanged(auth, async function (user) {
       if (!user) return;
       try {
         const tokenResult = await user.getIdTokenResult(true);
